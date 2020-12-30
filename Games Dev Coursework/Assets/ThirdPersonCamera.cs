@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -18,28 +19,39 @@ public class ThirdPersonCamera : MonoBehaviour
     private Vector3 rotationSmoothVelocity;
     private Vector3 currentRotation;
 
+    int currentscene;
+
     void Start() 
     {
-        if (lockCursor) 
+        currentscene = SceneManager.GetActiveScene().buildIndex;
+        if (currentscene != 1) 
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (lockCursor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
+
     }
     // Update is called once per frame after all the other Update Methods
     void LateUpdate()
     {
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        //Clamping it so Camera cant do a full rotation
-        pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+        if (currentscene != 1)
+        {
+            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            //Clamping it so Camera cant do a full rotation
+            pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
 
-        
 
-        //Smoothing Camera Rotation
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
 
-        transform.eulerAngles = currentRotation;
+            //Smoothing Camera Rotation
+            currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
+
+            transform.eulerAngles = currentRotation;
+        }
+
 
         //Makes the Camera look at the Target
         transform.position = target.position - transform.forward * dstfromTarget;
