@@ -6,31 +6,23 @@ public class TurnBasedSystem : MonoBehaviour
 {
     //Disabling the player UI
     public GameObject pui;
+    EnemyAI ea;
 
     float Timer = 0;
 
-    bool enemyturn = false;
+    public bool enemyturn = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ea = GameObject.Find("Enemy").GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Timer > 0)
+        if (enemyturn)
         {
-            Timer -= Time.deltaTime;
-        }
-        else
-        {
-            if (enemyturn) 
-            {
-                PlayerTurn();
-                enemyturn = false;
-            }
-            
+            EnemyTurn();
         }
 
     }
@@ -43,11 +35,12 @@ public class TurnBasedSystem : MonoBehaviour
 
     public void EnemyTurn() 
     {
-        enemyturn = true;
         pui.SetActive(false);
-        Debug.Log("Enemy Turn");
+        //Debug.Log("Enemy Turn");
 
-        //After Enemy Animation then it goes back to player But For Now it is Timer based
-        Timer = 5;
+        //Gets the enemy attack function from the Enemy Ai script
+        ea.EnemyAttack();
     }
+
+
 }

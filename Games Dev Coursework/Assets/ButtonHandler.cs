@@ -17,6 +17,8 @@ public class ButtonHandler : MonoBehaviour
         Debug.Log("Attack Button");
         //Everytime i press button take away -10
         eh.LoseHealth(10);
-        tbs.EnemyTurn();
+
+        //My Turn will be over and it will be the enemies turn
+        tbs.enemyturn = true;
     }
 }

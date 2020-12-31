@@ -58,11 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\ThirdPersonCamera.cs" />
-    <Compile Include="Assets\StartBattle.cs" />
-    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\ButtonHandler.cs" />
+    <Compile Include="Assets\StartBattle.cs" />
     <Compile Include="Assets\EnemyHealth.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\TurnBasedSystem.cs" />
+    <Compile Include="Assets\EnemyAI.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

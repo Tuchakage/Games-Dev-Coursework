@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Slider phealthslider;
+    public GameObject player;
+
+    public float phealth = 100;
     public static GameManager Instance
     {
         get
@@ -38,6 +43,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        phealthslider.value = phealth;
+
+        if (phealth <= 0) 
+        {
+            Destroy(player);
+        }
     }
+
 }
