@@ -21,6 +21,5 @@ public class StartBattle : MonoBehaviour
     {
         Debug.Log(gameObject.name + " OnCollisionEnter()" + col.gameObject.name);
         SceneManager.LoadScene("battle test");
-
     }
 }
