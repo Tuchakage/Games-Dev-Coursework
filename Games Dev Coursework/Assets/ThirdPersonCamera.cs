@@ -21,9 +21,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
     int currentscene;
 
+
     void Start() 
     {
         currentscene = SceneManager.GetActiveScene().buildIndex;
+        //If not in Battle Scene then you can't use the cursor
         if (currentscene != 1) 
         {
             if (lockCursor)
@@ -33,6 +35,20 @@ public class ThirdPersonCamera : MonoBehaviour
             }
         }
 
+    }
+
+    private void Update()
+    {
+        //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor
+        if (currentscene == 1) 
+        {
+            if (lockCursor) 
+            {
+                lockCursor = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
     }
     // Update is called once per frame after all the other Update Methods
     void LateUpdate()

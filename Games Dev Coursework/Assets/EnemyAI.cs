@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     public float originalspotdist;
     bool attack = false;
 
-    //Used to make the cube move towards the player the first time when the function is called
+    //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
     // Start is called before the first frame update
     void Start()
