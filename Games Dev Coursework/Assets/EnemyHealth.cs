@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : MonoBehaviour
 {
+    GameManager gm;
 
     public Slider ehealthslider;
-
     public float ehealth = 100;
     // Start is called before the first frame update
     void Start()
     {
-        ehealthslider.value = ehealth;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -20,9 +21,12 @@ public class EnemyHealth : MonoBehaviour
     {
         ehealthslider.value = ehealth;
 
+        //When Enemy Health is 0 or below 0 then the Enemy Object will be destroyed battleend will be set to true and you will be put back to the scene before the battle
         if (ehealth <= 0) 
         {
             Destroy(gameObject);
+            gm.battleend = true;
+            SceneManager.LoadScene("test");
         }
     }
 

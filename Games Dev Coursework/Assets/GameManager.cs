@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     int currentscene;
     //Player Base Health
     public float phealth = 100;
+    //To Indicate if a battle has just ended
+    public bool battleend = false;
     public static GameManager Instance
     {
         get
@@ -48,10 +50,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Updates The Health If In Battle Scene
-        if (currentscene == 1) 
+
+        if (currentscene == 1)
         {
+            //Updates The Health If In Battle Scene
             phealthslider.value = phealth;
+        }
+        else 
+        {
+            //If Not In Battle Scene then it will keep record of the players last position
+            if (!battleend) 
+            {
+                playerlastpos = player.transform.position;
+            }
+            
         }
         
 
@@ -60,7 +72,7 @@ public class GameManager : MonoBehaviour
             Destroy(player);
         }
 
-        playerlastpos = player.transform.position;
+        
     }
 
     //Whenever the Game Object is enabled this function will run
@@ -74,16 +86,27 @@ public class GameManager : MonoBehaviour
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log("OnSceneLoaded: " + scene.name);
         //Debug.Log(mode);
 
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        //Everytime a Scene is loaded it will try to find the Player Health
-        phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
-
         player = GameObject.Find("Player");
+
+        if (currentscene == 1)
+        {
+            //Look For The Health Slider if the scene has changed to the Battle Scene
+            phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
+        }
+
+        if (battleend) 
+        {
+            //Set The Players Position to where he was before the battle
+            player.transform.position = playerlastpos;
+            battleend = false;
+        }
+        
 
 
     }
