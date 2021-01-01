@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class StartBattle : MonoBehaviour
 {
-
-    public GameObject player;
-
-    GameObject[] enemy;
     // Start is called before the first frame update
     void Start()
     {

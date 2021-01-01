@@ -6,9 +6,8 @@ public class TurnBasedSystem : MonoBehaviour
 {
     //Disabling the player UI
     public GameObject pui;
-    EnemyAI ea;
 
-    float Timer = 0;
+    EnemyAI ea;
 
     public bool enemyturn = false;
     // Start is called before the first frame update

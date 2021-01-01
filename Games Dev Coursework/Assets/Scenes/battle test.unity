@@ -735,9 +735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2090542338}
   originalspot: {fileID: 1132635167}
-  enemydist: 0
   originalspotdist: 0
-  attack: 0
+  moveonce: 0
 --- !u!195 &681891018
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1194,6 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pui: {fileID: 256305174}
+  enemyturn: 0
 --- !u!4 &1031166401
 Transform:
   m_ObjectHideFlags: 0
