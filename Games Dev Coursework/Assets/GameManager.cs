@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    PlayerStats ps;
+
     public Slider phealthslider;
     public GameObject player;
     public GameObject enemy;
 
+    public int pHealth;
     //Gets The Players last position
     public Vector3 playerlastpos;
     int currentscene;
-    //Player Base Health
-    public float phealth = 100;
     //To Indicate if a battle has just ended
     public bool battleend = false;
     public static GameManager Instance
@@ -41,21 +42,25 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //pHealth is set to the HP Stat in the Player Stats
+        pHealth = ps.stats["HP"];
 
         if (currentscene == 1)
         {
             //Updates The Health If In Battle Scene
-            phealthslider.value = phealth;
+            phealthslider.value = pHealth;
         }
         else 
         {
@@ -67,8 +72,8 @@ public class GameManager : MonoBehaviour
             
         }
         
-
-        if (phealth <= 0) 
+        //When The Player Health is 0 Then the Object will be destroyed
+        if (pHealth <= 0) 
         {
             Destroy(player);
         }
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("OnEnable called");
         //Adds OnSceneLoaded()
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     //When A New Scene Loads this function will be run

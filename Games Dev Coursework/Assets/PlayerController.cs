@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    Animator anim;
     private CharacterController controller;
     public Transform camera;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
         currentscene = SceneManager.GetActiveScene().buildIndex;
         Debug.Log(currentscene);
@@ -54,6 +56,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (currentscene != 1)
+            {
+                anim.SetTrigger("attack");
+                Debug.Log("Attack");
+            }
+            
+        }
 
 
     }

@@ -63,7 +63,9 @@
     <Compile Include="Assets\StartBattle.cs" />
     <Compile Include="Assets\EnemyHealth.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\PlayerStats.cs" />
     <Compile Include="Assets\TurnBasedSystem.cs" />
+    <Compile Include="Assets\EnemyStats.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
