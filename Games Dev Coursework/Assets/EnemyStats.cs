@@ -13,7 +13,7 @@ public class EnemyStats : MonoBehaviour
         stats.Add("HP", 100);
         stats.Add("Defence", 5);
         stats.Add("Speed", Random.Range(10,40));
-        Debug.Log("Speed Stat:" + stats["Speed"]);
+        Debug.Log("Enemy Speed Stat:" + stats["Speed"]);
 
     }
     // Update is called once per frame

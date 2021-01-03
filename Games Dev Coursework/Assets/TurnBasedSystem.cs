@@ -10,6 +10,8 @@ public class TurnBasedSystem : MonoBehaviour
     EnemyAI ea;
     EnemyStats es;
     PlayerStats ps;
+    StartBattle sb;
+    Advantage adv;
 
     int playerspeed;
     int enemyspeed;
@@ -21,15 +23,24 @@ public class TurnBasedSystem : MonoBehaviour
         ea = GameObject.Find("Enemy").GetComponent<EnemyAI>();
         es = GameObject.Find("GameManager").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
-
+        sb = GameObject.Find("Blade").GetComponent<StartBattle>();
+        adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         playerspeed = ps.stats["Speed"];
         enemyspeed = es.stats["Speed"];
 
-        //If The Player is slower than the Enemy than the Enemy goes first
-        if (playerspeed < enemyspeed) 
+
+        //Enemy Goes First If the speed is higher than the Players And Player Advantage is not true Or If Enemy Advantage is true
+        if (playerspeed < enemyspeed && !adv.GetPlayerAdvantage() || adv.GetEnemyAdvantage())
         {
             enemyturn = true;
         }
+        //Player Goes First if its speed is higher than the Enemys And Enemy Advantage is not true Or If Player Advantage is true
+        else if (playerspeed > enemyspeed && adv.GetEnemyAdvantage() || adv.GetPlayerAdvantage())
+        {
+            PlayerTurn();
+        }
+
+
     }
 
     // Update is called once per frame

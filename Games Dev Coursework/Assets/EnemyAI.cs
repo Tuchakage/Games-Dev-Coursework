@@ -54,14 +54,14 @@ public class EnemyAI : MonoBehaviour
 
             //Indicates that the Enemy has already attacked
             attack = true;
-            Debug.Log("1");
+            //Debug.Log("1");
 
         }
         else if (enemydist < 3 && attack) // If the Enemy has finished his attack and is still near the player, it will go back to its original spot
         {
             na.SetDestination(originalspot.position);
             na.isStopped = false;
-            Debug.Log("2");
+            //Debug.Log("2");
 
         }
 
@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
             na.SetDestination(target.position);
             na.isStopped = true;
             attack = false;
-            Debug.Log("Works");
+            //Debug.Log("Works");
 
             //Used to indicate the end of the enemy turn
             tbs.enemyturn = false;
