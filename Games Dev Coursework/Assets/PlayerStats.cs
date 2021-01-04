@@ -7,8 +7,9 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
 
     public Dictionary<string, int> stats = null;
-    //public string attacktype;
-    void Start()
+
+    //Player Stat will be loaded in before the Game Manager trys to get the HP Stat so that the player gameobject is not destroyed straight away
+    void Awake()
     {
         stats = new Dictionary<string, int>();
         stats.Add("Attack", 10);

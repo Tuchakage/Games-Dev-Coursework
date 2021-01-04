@@ -12,19 +12,32 @@ public class ButtonHandler : MonoBehaviour
     PlayerStats ps;
     NavMeshAgent na;
     Animator anim;
+    Skills sk;
 
     GameObject player;
+
+    public GameObject pui;
+    public GameObject sui; //Skills UI
+    public GameObject fire;
+    public GameObject enemy;
 
     int playerdamage;
     bool attack = false;
     bool moveonce = false;
     public bool attackbuttonpressed = false;
 
+    //Skills
+    int firedamage;
+    bool skillmenu = false;
+    float skilltimer;
+    bool skillused = false;
+
     public Transform target;
     public Transform originalspot;
 
     public float enemydistance;
     public float playerogpos;
+
 
     private void Start()
     {
@@ -35,6 +48,7 @@ public class ButtonHandler : MonoBehaviour
         na = GameObject.Find("Player").GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
         anim = GameObject.Find("Player").GetComponent<Animator>();
+        sk = GameObject.Find("GameManager").GetComponent<Skills>();
     }
 
     private void Update()
@@ -47,6 +61,28 @@ public class ButtonHandler : MonoBehaviour
         {
             PlayerAttack();         
         }
+
+        //When you are in the skill menu and you want to go back to the normal player ui because you decide you want to do a normal attack instead, Press the right mouse button down
+        if (Input.GetButtonDown("Fire2") && skillmenu) 
+        {
+            skillmenu = false;
+            pui.SetActive(true);
+            sui.SetActive(false);
+        }
+
+        if (skillused) 
+        {
+            if (skilltimer > 0)
+            {
+                skilltimer -= Time.deltaTime;
+            }
+            else 
+            {
+                //If The Timer is at 0 then it will be the Enemys go
+                tbs.enemyturn = true;
+                skillused = false;
+            }
+        }
     }
     public void attackButton() 
     {
@@ -54,6 +90,14 @@ public class ButtonHandler : MonoBehaviour
         Debug.Log("Attack Button");
 
         attackbuttonpressed = true;
+    }
+
+    public void skillButton() 
+    {
+        pui.SetActive(false);
+
+        sui.SetActive(true);
+        skillmenu = true;
     }
 
     public void escapeButton() 
@@ -108,5 +152,22 @@ public class ButtonHandler : MonoBehaviour
             na.isStopped = false;
         }
         
+    }
+
+    public void FireSkill() 
+    {
+        if (gm.pSP > 0) 
+        {
+            firedamage = sk.skills["Fire"];
+            //You lose SP When doing a Skill
+            gm.pSP -= 5;
+            //Enemy Takes Damage
+            eh.LoseHealth(firedamage);
+            fire = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
+            skillused = true;
+            skilltimer = 5;
+            Destroy(fire, 5);
+        }
+     
     }
 }

@@ -6,6 +6,7 @@ public class TurnBasedSystem : MonoBehaviour
 {
     //Disabling the player UI
     public GameObject pui;
+    public GameObject sk; // Skills Menu
 
     EnemyAI ea;
     EnemyStats es;
@@ -56,12 +57,14 @@ public class TurnBasedSystem : MonoBehaviour
     public void PlayerTurn() 
     {
         pui.SetActive(true);
+        sk.SetActive(false);
         Debug.Log("My Turn");
     }
 
     public void EnemyTurn() 
     {
         pui.SetActive(false);
+        sk.SetActive(false);
         //Debug.Log("Enemy Turn");
 
         //Gets the enemy attack function from the Enemy Ai script

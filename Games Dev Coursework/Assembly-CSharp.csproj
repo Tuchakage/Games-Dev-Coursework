@@ -59,15 +59,16 @@
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\ThirdPersonCamera.cs" />
     <Compile Include="Assets\ButtonHandler.cs" />
+    <Compile Include="Assets\Advantage.cs" />
     <Compile Include="Assets\EnemyAI.cs" />
     <Compile Include="Assets\StartBattle.cs" />
     <Compile Include="Assets\EnemyHealth.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\PlayerStats.cs" />
     <Compile Include="Assets\TurnBasedSystem.cs" />
-    <Compile Include="Assets\EnemyStats.cs" />
-    <Compile Include="Assets\Advantage.cs" />
     <Compile Include="Assets\EnemyBattleTrigger.cs" />
+    <Compile Include="Assets\EnemyStats.cs" />
+    <Compile Include="Assets\Skills.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

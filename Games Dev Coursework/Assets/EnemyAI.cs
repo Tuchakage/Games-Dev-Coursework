@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
 
-    PlayerStats ps;
+    GameManager gm;
     NavMeshAgent na;
     TurnBasedSystem tbs;
 
@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         na = GetComponent<NavMeshAgent>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
     }
@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
             na.isStopped = true;
 
             //Player loses health
-            ps.stats["HP"] -= 10;
+            gm.pHealth -= 10;
 
             //Indicates that the Enemy has already attacked
             attack = true;

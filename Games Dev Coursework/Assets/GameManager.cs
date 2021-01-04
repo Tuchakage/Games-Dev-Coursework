@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     public Slider phealthslider;
     public GameObject player;
     public GameObject enemy;
+    public Slider spslider;
 
     public int pHealth;
+    public int pSP; //Players Stamina Points
+
     //Gets The Players last position
     public Vector3 playerlastpos;
     int currentscene;
@@ -48,19 +51,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
-        
+        //pHealth is set to the HP Stat in the Player Stats Script
+        pHealth = ps.stats["HP"];
+        //SP is set to the SP(Stamina Points) Stat in the Player Stats Script
+        pSP = ps.stats["SP"];
+        spslider.maxValue = ps.stats["SP"];
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //pHealth is set to the HP Stat in the Player Stats
-        pHealth = ps.stats["HP"];
 
         if (currentscene == 1)
         {
             //Updates The Health If In Battle Scene
             phealthslider.value = pHealth;
+            spslider.value = pSP;
         }
         else 
         {
@@ -107,6 +114,7 @@ public class GameManager : MonoBehaviour
         {
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
+            spslider = GameObject.Find("PlayerSP").GetComponent<Slider>();
         }
 
         if (battleend) 
