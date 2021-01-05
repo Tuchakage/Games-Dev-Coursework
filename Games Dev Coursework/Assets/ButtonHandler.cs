@@ -163,10 +163,10 @@ public class ButtonHandler : MonoBehaviour
             gm.pSP -= 5;
             //Enemy Takes Damage
             eh.LoseHealth(firedamage);
-            fire = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
+            GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
             skillused = true;
             skilltimer = 5;
-            Destroy(fire, 5);
+            Destroy(fireprefab, 5);
         }
      
     }

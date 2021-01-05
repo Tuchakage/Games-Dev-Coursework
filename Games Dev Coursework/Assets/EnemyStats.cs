@@ -6,7 +6,8 @@ public class EnemyStats : MonoBehaviour
 {
     public Dictionary<string, int> stats = null;
     //public string attacktype;
-    void Start()
+    //All The stats should be loaded before any other script
+    void Awake()
     {
         stats = new Dictionary<string, int>();
         stats.Add("Attack", 10);

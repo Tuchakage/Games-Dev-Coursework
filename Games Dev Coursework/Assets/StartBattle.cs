@@ -26,7 +26,7 @@ public class StartBattle : MonoBehaviour
         if (col.gameObject.name == "EnemyBack" && col.gameObject.name != "Player")
         {
             //When The Players Sword Hits the back of the Enemy then the Player is guranteed to go First
-            Debug.Log(gameObject.name + " OnCollisionEnter()" + col.gameObject.name);
+            Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Player Advantage");
             playeradvantage = true;
             SceneManager.LoadScene("battle test");
         }

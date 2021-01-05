@@ -40,8 +40,6 @@ public class TurnBasedSystem : MonoBehaviour
         {
             PlayerTurn();
         }
-
-
     }
 
     // Update is called once per frame

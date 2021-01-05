@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         pHealth = ps.stats["HP"];
         //SP is set to the SP(Stamina Points) Stat in the Player Stats Script
         pSP = ps.stats["SP"];
-        spslider.maxValue = ps.stats["SP"];
+
 
     }
 
@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
             spslider = GameObject.Find("PlayerSP").GetComponent<Slider>();
+            spslider.maxValue = ps.stats["SP"];
         }
 
         if (battleend) 

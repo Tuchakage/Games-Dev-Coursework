@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 1540146530}
   - component: {fileID: 1540146531}
   - component: {fileID: 1540146532}
+  - component: {fileID: 1540146533}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -737,7 +738,9 @@ MonoBehaviour:
   phealthslider: {fileID: 0}
   player: {fileID: 1560380792}
   enemy: {fileID: 0}
+  spslider: {fileID: 0}
   pHealth: 0
+  pSP: 0
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
 --- !u!4 &1540146529
@@ -788,6 +791,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bc1332bc353b9f408bcb2662c3da6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1540146533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540146527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf2980a8ba419645a4fafbbf8b78f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1560380792 stripped

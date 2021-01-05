@@ -5,9 +5,9 @@ using UnityEngine;
 public class Skills : MonoBehaviour
 {
     public Dictionary<string, int> skills = null;
-    public string attacktype;
+    //public string attacktype;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         skills = new Dictionary<string, int>();
         skills.Add("Fire", 15);
@@ -16,6 +16,6 @@ public class Skills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

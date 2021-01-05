@@ -2895,7 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pui: {fileID: 895153192}
   sui: {fileID: 2081557174}
-  fire: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+  fire: {fileID: 8154458859099513157, guid: 80557021f69d56c4fabe8bd4a1588439, type: 3}
   enemy: {fileID: 681891011}
   attackbuttonpressed: 0
   target: {fileID: 681891015}
