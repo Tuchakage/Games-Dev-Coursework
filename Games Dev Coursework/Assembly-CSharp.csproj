@@ -56,19 +56,20 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerController.cs" />
-    <Compile Include="Assets\ThirdPersonCamera.cs" />
-    <Compile Include="Assets\ButtonHandler.cs" />
-    <Compile Include="Assets\Advantage.cs" />
-    <Compile Include="Assets\EnemyAI.cs" />
-    <Compile Include="Assets\StartBattle.cs" />
-    <Compile Include="Assets\EnemyHealth.cs" />
-    <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\PlayerStats.cs" />
-    <Compile Include="Assets\TurnBasedSystem.cs" />
-    <Compile Include="Assets\EnemyBattleTrigger.cs" />
-    <Compile Include="Assets\EnemyStats.cs" />
-    <Compile Include="Assets\Skills.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\ButtonHandler.cs" />
+    <Compile Include="Assets\Scripts\Advantage.cs" />
+    <Compile Include="Assets\Scripts\Skills.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\StartBattle.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\TurnBasedSystem.cs" />
+    <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
+    <Compile Include="Assets\Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\battleend.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
