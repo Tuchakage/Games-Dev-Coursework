@@ -7,11 +7,14 @@ using UnityEngine;
 public class battleend : MonoBehaviour
 {
     GameManager gm;
+    EnemySpawn espawn;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,9 @@ public class battleend : MonoBehaviour
             Debug.Log(gm.battleend);
             if (gm.battleend)
             {
-                Destroy(col.gameObject);
-                gm.battleend = false;
+               Destroy(col.gameObject);
+               espawn.maxenemies -= 1;
+               gm.battleend = false;
             }
             
         }

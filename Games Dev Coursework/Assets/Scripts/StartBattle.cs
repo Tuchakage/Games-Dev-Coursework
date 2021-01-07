@@ -9,6 +9,7 @@ public class StartBattle : MonoBehaviour
     public bool playeradvantage = false;
     GameManager gm;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class StartBattle : MonoBehaviour
                 //When The Players Sword Hits the back of the Enemy then the Player is guranteed to go First
                 Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Player Advantage");
                 playeradvantage = true;
+
                 SceneManager.LoadScene("battle test");
             }
             else if (col.gameObject.tag == "Enemy" && col.gameObject.name != "Player") //If the blade touches the enemy not including its back then whoever has a high speed stat will go first

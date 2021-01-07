@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     PlayerStats ps;
+    battleend be;
 
     public Slider phealthslider;
     public GameObject player;
-    public GameObject enemy;
     public Slider spslider;
 
     public int pHealth;
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
+        be = GameObject.Find("Battle End Detection").GetComponent<battleend>();
         //pHealth is set to the HP Stat in the Player Stats Script
         pHealth = ps.stats["HP"];
         //SP is set to the SP(Stamina Points) Stat in the Player Stats Script
@@ -108,8 +109,6 @@ public class GameManager : MonoBehaviour
 
         player = GameObject.Find("Player");
 
-        enemy = GameObject.Find("EnemyCube");
-
         if (currentscene == 1)
         {
             //Look For The Health Slider if the scene has changed to the Battle Scene
@@ -120,8 +119,6 @@ public class GameManager : MonoBehaviour
 
         if (battleend) 
         {
-            //Destroy the Enemy Object you just battled, so you don't encounter it again
-            //Destroy(enemy);
             //Set The Players Position to where he was before the battle
             player.transform.position = playerlastpos;
             

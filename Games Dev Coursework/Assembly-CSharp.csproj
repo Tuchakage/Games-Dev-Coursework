@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\battleend.cs" />
     <Compile Include="Assets\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Scripts\Advantage.cs" />
     <Compile Include="Assets\Scripts\Skills.cs" />
@@ -69,7 +70,8 @@
     <Compile Include="Assets\Scripts\TurnBasedSystem.cs" />
     <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
-    <Compile Include="Assets\Scripts\battleend.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

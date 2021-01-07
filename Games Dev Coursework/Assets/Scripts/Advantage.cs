@@ -12,7 +12,7 @@ public class Advantage : MonoBehaviour
     void Start()
     {
         sb = GameObject.Find("Blade").GetComponent<StartBattle>();
-        ebt = GameObject.Find("EnemyCube").GetComponent<EnemyBattleTrigger>();
+        ebt = GameObject.Find("EnemyCube(Clone)").GetComponent<EnemyBattleTrigger>();
     }
 
     // Update is called once per frame
