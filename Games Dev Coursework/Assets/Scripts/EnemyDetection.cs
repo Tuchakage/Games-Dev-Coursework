@@ -6,13 +6,14 @@ using UnityEngine;
 public class EnemyDetection : MonoBehaviour
 {
     EnemyStats es;
+    EnemyStatHolder esh;
 
     public int espeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        esh = GameObject.Find("GameManager").GetComponent<EnemyStatHolder>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,9 @@ public class EnemyDetection : MonoBehaviour
         {
             es = col.gameObject.GetComponent<EnemyStats>();
             espeed = es.stats["Speed"];
+            //The Enemies Speed will be sent to the EnemyStatHolder on the GameManager object
+            esh.setSpeed(espeed);
+            Debug.Log("Espeed: "+espeed);
         }
     }
 }

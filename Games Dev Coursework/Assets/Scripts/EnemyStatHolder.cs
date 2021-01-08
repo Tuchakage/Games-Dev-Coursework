@@ -15,11 +15,16 @@ public class EnemyStatHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemyspeed = ed.espeed;
     }
 
     public int getESpeed() 
     {
         return enemyspeed;
+    }
+
+    public void setSpeed(int speed) 
+    {
+        enemyspeed = speed;
+        Debug.Log("Setted the Enemy Speed");
     }
 }

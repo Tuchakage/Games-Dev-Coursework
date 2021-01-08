@@ -29,7 +29,7 @@ public class TurnBasedSystem : MonoBehaviour
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         esh = GameObject.Find("GameManager").GetComponent<EnemyStatHolder>();
         playerspeed = ps.stats["Speed"];
-        enemyspeed = esh.enemyspeed;
+        enemyspeed = esh.getESpeed();
         Debug.Log("TURN BASED: " + enemyspeed);
 
         //Enemy Goes First If the speed is higher than the Players And Player Advantage is not true Or If Enemy Advantage is true
