@@ -26,7 +26,11 @@ public class Advantage : MonoBehaviour
         {
             if (sb.collision)
             {
-                ebt = GameObject.Find(sb.enemyref.name).GetComponent<EnemyBattleTrigger>();
+                if (sb.enemyref != null) 
+                {
+                    ebt = GameObject.Find(sb.enemyref.name).GetComponent<EnemyBattleTrigger>();
+                }
+                
             }
         }
 
