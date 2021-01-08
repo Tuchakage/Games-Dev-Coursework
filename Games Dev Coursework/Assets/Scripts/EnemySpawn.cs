@@ -58,6 +58,8 @@ public class EnemySpawn : MonoBehaviour
             {
                 //2 Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
                 enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
+                //Change The Name For Each Object
+                enemy.name = "Enemy " + i; 
                 //The Enemy GameObject Will be added to the enemy list
                 enemies.Add(enemy);
             }
