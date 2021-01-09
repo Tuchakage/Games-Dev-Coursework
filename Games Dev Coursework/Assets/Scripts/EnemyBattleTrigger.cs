@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class EnemyBattleTrigger : MonoBehaviour
 {
-    public bool enemyadvantage = false;
+    EnemyStatHolder esh;
+    EnemyStats es;
+    Advantage adv;
+    public int espeed;
+
+
+    public bool collision = false; // When this is set to true then the Advantage Script can find the name of the object 
     // Start is called before the first frame update
     void Start()
     {
-        
+        esh = GameObject.Find("GameManager").GetComponent<EnemyStatHolder>();
+        adv = GameObject.Find("GameManager").GetComponent<Advantage>();
     }
 
     // Update is called once per frame
@@ -21,15 +28,22 @@ public class EnemyBattleTrigger : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         //If Enemy Touches The Player Then A Battle Will Start
-        if (col.gameObject.name != "EnemyBack" && col.gameObject.name != "Blade" && col.gameObject.name != "Battle End Detection" && col.gameObject.name != "EnemyDetection")
+        if (col.gameObject.name != "EnemyBack" && col.gameObject.name != "Blade" && col.gameObject.name != "Battle End Detection")
         {
             Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Enemy Advantage");
             //When The Enemy Hits The Player then the Enemy is guranteed to go first
-            enemyadvantage = true;
+            adv.setEnemyAdvantage(true);
+
             SceneManager.LoadScene("battle test");
 
         }
 
+    }
+
+
+    private void OnTriggerExit(Collider col)
+    {
+        collision = false;
     }
 
 }

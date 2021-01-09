@@ -8,9 +8,9 @@ public class StartBattle : MonoBehaviour
     GameObject player;
     public bool playeradvantage = false;
     GameManager gm;
+
     EnemyStatHolder esh;
     EnemyStats es;
-
     public int espeed;
 
     public bool collision = false;// When this is set to true then the Advantage Script can find the name of the object 
