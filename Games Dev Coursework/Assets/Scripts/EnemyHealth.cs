@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        es = GameObject.Find("GameManager").GetComponent<EnemyStats>();
+        es = GetComponent<EnemyStats>();
 
         //ehealth is set to the value in Enemy Stats for HP
         ehealth = es.stats["HP"];

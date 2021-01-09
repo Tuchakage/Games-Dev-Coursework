@@ -5,17 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class EnemyBattleTrigger : MonoBehaviour
 {
-    EnemyStatHolder esh;
-    EnemyStats es;
     Advantage adv;
-    public int espeed;
 
 
     public bool collision = false; // When this is set to true then the Advantage Script can find the name of the object 
     // Start is called before the first frame update
     void Start()
     {
-        esh = GameObject.Find("GameManager").GetComponent<EnemyStatHolder>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
     }
 

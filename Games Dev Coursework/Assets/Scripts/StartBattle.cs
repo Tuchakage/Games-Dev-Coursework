@@ -9,10 +9,6 @@ public class StartBattle : MonoBehaviour
     public bool playeradvantage = false;
     GameManager gm;
 
-    EnemyStatHolder esh;
-    EnemyStats es;
-    public int espeed;
-
     public bool collision = false;// When this is set to true then the Advantage Script can find the name of the object 
     public GameObject enemyref; //Reference of the Enemy Game Object
     // Start is called before the first frame update
@@ -20,7 +16,6 @@ public class StartBattle : MonoBehaviour
     {
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        esh = GameObject.Find("GameManager").GetComponent<EnemyStatHolder>();
     }
 
     // Update is called once per frame
@@ -53,12 +48,6 @@ public class StartBattle : MonoBehaviour
                 //Sets the variable to whatever object the blade has collided with
                 enemyref = col.gameObject;
                 Debug.Log(gameObject.name + " OnCollisionEnter()" + col.gameObject.name + " Neutral");
-
-                es = col.gameObject.GetComponent<EnemyStats>();
-                espeed = es.stats["Speed"];
-                //The Enemies Speed will be sent to the EnemyStatHolder on the GameManager object
-                esh.setSpeed(espeed);
-                Debug.Log("Espeed: " + espeed);
                 SceneManager.LoadScene("battle test");
             }
         }

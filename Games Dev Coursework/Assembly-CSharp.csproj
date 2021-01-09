@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\EnemyStatHolder.cs" />
     <Compile Include="Assets\Scripts\TurnBasedSystem.cs" />
     <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />

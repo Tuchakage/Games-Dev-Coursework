@@ -214,7 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playeradvantage: 0
-  espeed: 0
   collision: 0
   enemyref: {fileID: 0}
 --- !u!64 &407306731
@@ -555,7 +554,6 @@ GameObject:
   - component: {fileID: 1540146532}
   - component: {fileID: 1540146533}
   - component: {fileID: 1540146534}
-  - component: {fileID: 1540146535}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -651,19 +649,6 @@ MonoBehaviour:
   enemyspawner: {fileID: 1917200372088524460, guid: 568b4e5db8e89894c91c4b83a0a288af, type: 3}
   enemy: {fileID: 0}
   maxenemies: 5
---- !u!114 &1540146535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540146527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5822714b61403394c9a4bb11a8b293e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyspeed: 0
 --- !u!1 &1547182104
 GameObject:
   m_ObjectHideFlags: 0
