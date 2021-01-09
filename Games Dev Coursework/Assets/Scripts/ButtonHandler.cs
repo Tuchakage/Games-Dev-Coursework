@@ -166,7 +166,10 @@ public class ButtonHandler : MonoBehaviour
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
             skillused = true;
             skilltimer = 5;
+            sui.SetActive(false);
+            skillmenu = false;
             Destroy(fireprefab, 5);
+
         }
      
     }

@@ -13,6 +13,7 @@ public class EnemyBattleTrigger : MonoBehaviour
     void Start()
     {
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
+        adv.setEnemyAdvantage(false);
     }
 
     // Update is called once per frame
@@ -40,6 +41,7 @@ public class EnemyBattleTrigger : MonoBehaviour
     private void OnTriggerExit(Collider col)
     {
         collision = false;
+        
     }
 
 }

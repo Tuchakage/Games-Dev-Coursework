@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class StartBattle : MonoBehaviour
 {
     GameObject player;
-    public bool playeradvantage = false;
     GameManager gm;
+    Advantage adv;
 
     public bool collision = false;// When this is set to true then the Advantage Script can find the name of the object 
     public GameObject enemyref; //Reference of the Enemy Game Object
@@ -16,6 +16,8 @@ public class StartBattle : MonoBehaviour
     {
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        adv = GameObject.Find("GameManager").GetComponent<Advantage>();
+        adv.setPlayerAdvantage(false);
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class StartBattle : MonoBehaviour
             {
                 //When The Players Sword Hits the back of the Enemy then the Player is guranteed to go First
                 Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Player Advantage");
-                playeradvantage = true;
+                adv.setPlayerAdvantage(true);
                 //Blade has touched the Enemy
                 collision = true;
                 //Sets the variable to whatever object the blade has collided with
@@ -57,7 +59,7 @@ public class StartBattle : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        collision = false;
+        collision = false;       
     }
 
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TurnBasedSystem : MonoBehaviour
 {
     //Disabling the player UI
     public GameObject pui;
     public GameObject sk; // Skills Menu
+    public TMP_Text advtext;
 
     EnemyAI ea;
     EnemyStats es;
@@ -14,10 +16,10 @@ public class TurnBasedSystem : MonoBehaviour
     StartBattle sb;
     Advantage adv;
 
-
     int playerspeed;
     int enemyspeed;
-
+    public float texttimer = 3;
+    public bool textused = false;
     public bool enemyturn = false;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,25 @@ public class TurnBasedSystem : MonoBehaviour
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         playerspeed = ps.stats["Speed"];
         enemyspeed = es.stats["Speed"];
-        Debug.Log("TURN BASED: " + enemyspeed);
+        Debug.Log("TURN BASED SYSTEM SCRIPT ESPEED: " + enemyspeed);
+
+        if (adv.GetPlayerAdvantage())
+        {
+            advtext.text = "PLAYER ADVANTAGE";
+            textused = true;
+            advtext.color = new Color(0, 0, 1, 1);
+        }
+        else if (adv.GetEnemyAdvantage())
+        {
+            advtext.text = "ENEMY ADVANTAGE";
+            advtext.color = new Color(1, 0, 0, 1);
+            textused = true;
+        }
+        else 
+        {
+            advtext.text = " ";
+        }
+        
 
         //Enemy Goes First If the speed is higher than the Players And Player Advantage is not true Or If Enemy Advantage is true
         if (playerspeed < enemyspeed && !adv.GetPlayerAdvantage() || adv.GetEnemyAdvantage())
@@ -49,6 +69,19 @@ public class TurnBasedSystem : MonoBehaviour
         if (enemyturn)
         {
             EnemyTurn();
+        }
+
+        if (textused) 
+        {
+            if (texttimer > 0)
+            {
+                texttimer -= Time.deltaTime;
+            }
+            else 
+            {
+                advtext.text = " ";
+                textused = false;
+            }
         }
 
     }

@@ -11,6 +11,7 @@ public class Advantage : MonoBehaviour
     EnemyBattleTrigger ebt;
 
     bool enemyadvantage = false;
+    bool playeradvantage = false;
 
     int currentscene;
     // Start is called before the first frame update
@@ -42,7 +43,7 @@ public class Advantage : MonoBehaviour
     public bool GetPlayerAdvantage() 
     {
         
-        return sb.playeradvantage; 
+        return playeradvantage; 
     }
 
     public bool GetEnemyAdvantage() 
@@ -53,6 +54,11 @@ public class Advantage : MonoBehaviour
     public void setEnemyAdvantage(bool adv) 
     {
         enemyadvantage = adv;
+    }
+
+    public void setPlayerAdvantage(bool adv)
+    {
+        playeradvantage = adv;
     }
 
     //Whenever the Game Object is enabled this function will run
