@@ -10,7 +10,7 @@ public class TurnBasedSystem : MonoBehaviour
     public GameObject sk; // Skills Menu
     public TMP_Text advtext;
 
-    EnemyAI ea;
+    BattleEnemyAI ea;
     EnemyStats es;
     PlayerStats ps;
     StartBattle sb;
@@ -24,7 +24,7 @@ public class TurnBasedSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ea = GameObject.Find("Enemy").GetComponent<EnemyAI>();
+        ea = GameObject.Find("Enemy").GetComponent<BattleEnemyAI>();
         es = GameObject.Find("Enemy").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         sb = GameObject.Find("Blade").GetComponent<StartBattle>();

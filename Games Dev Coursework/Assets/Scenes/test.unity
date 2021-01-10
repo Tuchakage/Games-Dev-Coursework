@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3c2c2b2be7d19b7419f87124ddf782bf, type: 2}
 --- !u!1001 &262473778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,8 +617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc1332bc353b9f408bcb2662c3da6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyadvantage: 0
-  playeradvantage: 0
 --- !u!114 &1540146533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,7 +646,7 @@ MonoBehaviour:
   spawnpoints:
   - {fileID: 1732032990}
   - {fileID: 1071531553}
-  enemyspawner: {fileID: 1917200372088524460, guid: 568b4e5db8e89894c91c4b83a0a288af, type: 3}
+  enemyspawner: {fileID: 6264478106003880793, guid: 57752d0e719189344a692e6dbb196854, type: 3}
   enemy: {fileID: 0}
   maxenemies: 5
 --- !u!1 &1547182104
