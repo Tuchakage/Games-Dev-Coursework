@@ -32,7 +32,7 @@ public class StartBattle : MonoBehaviour
         if (!gm.battleend) 
         {
             //If The Blade touches the Enemy Back Then A Battle Will Start and the player is guranteed to go first
-            if (col.gameObject.name == "EnemyBack" && col.gameObject.name != "Player")
+            if (col.gameObject.name == "EnemyBack")
             {
                 //When The Players Sword Hits the back of the Enemy then the Player is guranteed to go First
                 Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Player Advantage");
@@ -45,7 +45,7 @@ public class StartBattle : MonoBehaviour
                 gm.setEnemyObject(col.gameObject.name);
                 SceneManager.LoadScene("battle test");
             }
-            else if (col.gameObject.tag == "Enemy" && col.gameObject.name != "Player") //If the blade touches the enemy not including its back then whoever has a high speed stat will go first
+            else if (col.gameObject.tag == "Enemy") //If the blade touches the enemy not including its back then whoever has a high speed stat will go first
             {
                 collision = true;
                 //Sets the variable to whatever object the blade has collided with

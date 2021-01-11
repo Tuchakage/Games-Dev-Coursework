@@ -27,7 +27,7 @@ public class EnemyBattleTrigger : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         //If Enemy Touches The Player Then A Battle Will Start
-        if (col.gameObject.tag != "Enemy" && col.gameObject.name != "EnemyBack" && col.gameObject.name != "Blade" && col.gameObject.name != "Battle End Detection" && col.gameObject.name != "Terrain")
+        if (col.gameObject.tag == "Player")
         {
             gm.setEnemyObject(this.gameObject.name);
             Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Enemy Advantage");
