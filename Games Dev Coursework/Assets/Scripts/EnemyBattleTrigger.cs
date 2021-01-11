@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EnemyBattleTrigger : MonoBehaviour
 {
     Advantage adv;
+    GameManager gm;
 
 
     public bool collision = false; // When this is set to true then the Advantage Script can find the name of the object 
@@ -14,6 +15,7 @@ public class EnemyBattleTrigger : MonoBehaviour
     {
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         adv.setEnemyAdvantage(false);
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class EnemyBattleTrigger : MonoBehaviour
         //If Enemy Touches The Player Then A Battle Will Start
         if (col.gameObject.tag != "Enemy" && col.gameObject.name != "EnemyBack" && col.gameObject.name != "Blade" && col.gameObject.name != "Battle End Detection" && col.gameObject.name != "Terrain")
         {
+            gm.setEnemyObject(this.gameObject.name);
             Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Enemy Advantage");
             //When The Enemy Hits The Player then the Enemy is guranteed to go first
             adv.setEnemyAdvantage(true);

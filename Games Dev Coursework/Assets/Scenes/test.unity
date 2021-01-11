@@ -572,9 +572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd104d3c5103cec4faa34f6852433fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyenemy: {fileID: 0}
   phealthslider: {fileID: 0}
   player: {fileID: 1560380792}
   spslider: {fileID: 0}
+  enemy: 
   pHealth: 0
   pSP: 0
   playerlastpos: {x: 0, y: 0, z: 0}
@@ -648,72 +650,11 @@ MonoBehaviour:
   - {fileID: 1071531553}
   enemyspawner: {fileID: 6264478106003880793, guid: 57752d0e719189344a692e6dbb196854, type: 3}
   enemy: {fileID: 0}
+  enemylastpos: []
   maxenemies: 5
---- !u!1 &1547182104
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1547182105}
-  - component: {fileID: 1547182107}
-  - component: {fileID: 1547182106}
-  m_Layer: 0
-  m_Name: Battle End Detection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1547182105
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547182104}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1560380796}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1547182106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547182104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d025abc0a5e0244bad67989de569726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &1547182107
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547182104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 14.42
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1560380792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9026043177549520073, guid: 7c28433dd707b424894972ab1c177345, type: 3}
-  m_PrefabInstance: {fileID: 8179552473713889949}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1560380796 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8505367709077014131, guid: 7c28433dd707b424894972ab1c177345, type: 3}
   m_PrefabInstance: {fileID: 8179552473713889949}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1732032990

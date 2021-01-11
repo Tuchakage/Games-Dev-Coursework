@@ -9,17 +9,17 @@ public class EnemySpawn : MonoBehaviour
     public List<GameObject> spawnpoints = null;
     public GameObject enemyspawner;//This is where the prefab is stored
     public GameObject enemy;//This is where the spawned in Enemies will be put
+    public List<Vector3> enemylastpos = null;
 
     public int maxenemies;
     int currentscene;
+    bool regpos = false; //This is to make it so that all the positions of the enemies have already been stored only once
 
     GameManager gm;
-    battleend be;
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        be = GameObject.Find("Battle End Detection").GetComponent<battleend>();
 
     }
     private void Update()
@@ -33,8 +33,18 @@ public class EnemySpawn : MonoBehaviour
             if (enemies[i] == null) 
             {
                 enemies.RemoveAt(i);
+                enemylastpos.RemoveAt(i);
             }
         }
+
+        if (currentscene == 0) 
+        {
+            for (int i = 0; i < maxenemies; i++)
+            {
+                enemylastpos[i] = enemies[i].transform.position;
+            }
+        }
+
 
     }
     void OnEnable()
@@ -62,9 +72,11 @@ public class EnemySpawn : MonoBehaviour
                 enemy.name = "Enemy " + i; 
                 //The Enemy GameObject Will be added to the enemy list
                 enemies.Add(enemy);
+                enemylastpos.Add(enemies[i].transform.position);
+           
             }
         }
-
+        regpos = true;
 
 
     }

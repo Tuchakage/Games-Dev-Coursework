@@ -42,6 +42,7 @@ public class StartBattle : MonoBehaviour
                 //Sets the variable to whatever object the blade has collided with
                 enemyref = col.gameObject;
 
+                gm.setEnemyObject(col.gameObject.name);
                 SceneManager.LoadScene("battle test");
             }
             else if (col.gameObject.tag == "Enemy" && col.gameObject.name != "Player") //If the blade touches the enemy not including its back then whoever has a high speed stat will go first
@@ -50,6 +51,8 @@ public class StartBattle : MonoBehaviour
                 //Sets the variable to whatever object the blade has collided with
                 enemyref = col.gameObject;
                 Debug.Log(gameObject.name + " OnCollisionEnter()" + col.gameObject.name + " Neutral");
+
+                gm.setEnemyObject(col.gameObject.name);
                 SceneManager.LoadScene("battle test");
             }
         }

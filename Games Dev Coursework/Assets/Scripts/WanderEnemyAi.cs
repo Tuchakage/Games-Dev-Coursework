@@ -27,7 +27,7 @@ public class WanderEnemyAi : MonoBehaviour
     {
         playerdist = Vector3.Distance(player.transform.position, transform.position);
 
-        if (playerdist < 10)
+        if (playerdist < 5)
         {
             Chasing();
 
@@ -38,7 +38,6 @@ public class WanderEnemyAi : MonoBehaviour
         {
             startwander = true;
             Wander();
-            Debug.Log("Player Distance more than 10");
         }
         else
         {
@@ -66,6 +65,6 @@ public class WanderEnemyAi : MonoBehaviour
 
         //Makes it so the Enemy will follow this Wander Target
         na.SetDestination(wandertarget);
-        Debug.Log(wandertarget + " and " + (transform.position - wandertarget).magnitude);       
+        //Debug.Log(wandertarget + " and " + (transform.position - wandertarget).magnitude);       
     }
 }

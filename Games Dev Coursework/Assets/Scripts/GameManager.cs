@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     PlayerStats ps;
-    battleend be;
+    EnemySpawn espawn;
 
+    public GameObject destroyenemy;
     public Slider phealthslider;
     public GameObject player;
     public Slider spslider;
-
+    public string enemy;
     public int pHealth;
     public int pSP; //Players Stamina Points
 
@@ -51,12 +52,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
-        be = GameObject.Find("Battle End Detection").GetComponent<battleend>();
         //pHealth is set to the HP Stat in the Player Stats Script
         pHealth = ps.stats["HP"];
         //SP is set to the SP(Stamina Points) Stat in the Player Stats Script
         pSP = ps.stats["SP"];
-
+        espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
 
     }
 
@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
             Destroy(player);
         }
 
-        
     }
 
     //Whenever the Game Object is enabled this function will run
@@ -96,6 +95,8 @@ public class GameManager : MonoBehaviour
         //Adds OnSceneLoaded()
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        //Will find the Enemy GameObject by name
+        destroyenemy = GameObject.Find(enemy);
     }
 
     //When A New Scene Loads this function will be run
@@ -120,12 +121,23 @@ public class GameManager : MonoBehaviour
         if (battleend) 
         {
             //Set The Players Position to where he was before the battle
-            player.transform.position = playerlastpos;
-            
+            player.transform.position = playerlastpos;           
+            Destroy(destroyenemy);
+            //Reduce the max Amount Of Enemies spawned by 1
+            espawn.maxenemies -= 1;
+            battleend = false;
         }
-        
 
 
+    }
+
+    public string getEnemyObject() 
+    {
+        return enemy;
+    }
+    public void setEnemyObject(string go) 
+    {
+        enemy = go;
     }
 
 
