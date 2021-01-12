@@ -16,16 +16,18 @@ public class TurnBasedSystem : MonoBehaviour
     StartBattle sb;
     Advantage adv;
 
+    int random;
     int playerspeed;
     int enemyspeed;
     public float texttimer = 3;
     public bool textused = false;
     public bool enemyturn = false;
+    bool choseanumber = false;
     // Start is called before the first frame update
     void Start()
     {
-        ea = GameObject.Find("Enemy").GetComponent<BattleEnemyAI>();
-        es = GameObject.Find("Enemy").GetComponent<EnemyStats>();
+        ea = GameObject.Find("Enemy(battle)").GetComponent<BattleEnemyAI>();
+        es = GameObject.Find("Enemy(battle)").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         sb = GameObject.Find("Blade").GetComponent<StartBattle>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
@@ -91,6 +93,7 @@ public class TurnBasedSystem : MonoBehaviour
         pui.SetActive(true);
         sk.SetActive(false);
         Debug.Log("My Turn");
+        choseanumber = false;
     }
 
     public void EnemyTurn() 
@@ -98,9 +101,26 @@ public class TurnBasedSystem : MonoBehaviour
         pui.SetActive(false);
         sk.SetActive(false);
         //Debug.Log("Enemy Turn");
+        if (!choseanumber) 
+        {
+            random = Random.Range(1, 3);
 
-        //Gets the enemy attack function from the Enemy Ai script
-        ea.EnemyAttack();
+            Debug.Log("Random Number Chosen: " + random);
+            choseanumber = true;
+        }
+
+        if (random == 1 || (random == 2 && ea.enemysp <= 0))
+        {
+            //Gets the enemy attack function from the Enemy Ai script
+            ea.EnemyAttack();
+        }
+        else if (random == 2 && ea.enemysp > 0) 
+        {
+            ea.Fire();
+            Debug.Log("FIRE ATTACK");
+        }
+
+
     }
 
 

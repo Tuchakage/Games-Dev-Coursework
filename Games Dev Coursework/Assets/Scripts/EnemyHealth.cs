@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     EnemyStats es;
 
     public Slider ehealthslider;
-    public int ehealth;
+    private int ehealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
         //ehealth is set to the value in Enemy Stats for HP
         ehealth = es.stats["HP"];
+        ehealthslider.maxValue = ehealth;
     }
 
     // Update is called once per frame

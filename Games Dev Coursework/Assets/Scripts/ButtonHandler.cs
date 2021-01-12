@@ -41,7 +41,7 @@ public class ButtonHandler : MonoBehaviour
 
     private void Start()
     {
-        eh = GameObject.Find("Enemy").GetComponent<EnemyHealth>();
+        eh = GameObject.Find("Enemy(battle)").GetComponent<EnemyHealth>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();

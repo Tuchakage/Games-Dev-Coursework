@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b32ba454d6c4b5c41a59869370907ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8084854973141751649, guid: b32ba454d6c4b5c41a59869370907ce3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -378,7 +382,6 @@ GameObject:
   - component: {fileID: 694116930}
   - component: {fileID: 694116933}
   - component: {fileID: 694116932}
-  - component: {fileID: 694116934}
   - component: {fileID: 694116931}
   m_Layer: 0
   m_Name: PlayerTrigger
@@ -434,19 +437,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694116929}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &694116934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694116929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9c0bcc0889f944fbf4a8ce00217105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +899,7 @@ MonoBehaviour:
   enemy: 
   pHealth: 0
   pSP: 0
+  keys: 0
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
 --- !u!4 &1540146529
@@ -1048,7 +1039,6 @@ GameObject:
   - component: {fileID: 1940643317}
   - component: {fileID: 1940643321}
   - component: {fileID: 1940643320}
-  - component: {fileID: 1940643319}
   - component: {fileID: 1940643318}
   m_Layer: 0
   m_Name: PlayerTrigger
@@ -1083,19 +1073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7800523f4378e9e43868f1bf9e9ad933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1940643319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940643316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9c0bcc0889f944fbf4a8ce00217105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
 --- !u!65 &1940643320
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2130,6 +2107,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026043177549520073, guid: 7c28433dd707b424894972ab1c177345, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026043177549520073, guid: 7c28433dd707b424894972ab1c177345, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:

@@ -10,13 +10,21 @@ public class BattleEnemyAI : MonoBehaviour
     GameManager gm;
     NavMeshAgent na;
     TurnBasedSystem tbs;
+    EnemyStats es;
+    Skills sk;
 
     public Transform target;
     public Transform originalspot;
+    public GameObject fire;
+    GameObject player;
 
     float enemydist;
     public float originalspotdist;
     bool attack = false;
+    int firedmg;
+    public int enemysp;
+    bool eskillused;
+    public float eskilltimer = 5;
 
     //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
@@ -26,6 +34,10 @@ public class BattleEnemyAI : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         na = GetComponent<NavMeshAgent>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
+        es = GetComponent<EnemyStats>();
+        sk = GameObject.Find("GameManager").GetComponent<Skills>();
+        enemysp = es.stats["SP"];
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -34,6 +46,22 @@ public class BattleEnemyAI : MonoBehaviour
         //Get the dsitance between the player and the enemy
         enemydist = Vector3.Distance(target.transform.position, transform.position);
         originalspotdist = Vector3.Distance(originalspot.transform.position, transform.position);
+
+        if (eskillused)
+        {
+            if (eskilltimer > 0)
+            {
+                eskilltimer -= Time.deltaTime;
+            }
+            else
+            {
+                tbs.enemyturn = false;
+                //If The Timer is at 0 then it will be the Players go
+                tbs.PlayerTurn();
+                eskillused = false;
+                attack = false;
+            }
+        }
     }
 
     public void EnemyAttack()
@@ -50,7 +78,7 @@ public class BattleEnemyAI : MonoBehaviour
             na.isStopped = true;
 
             //Player loses health
-            gm.pHealth -= 10;
+            gm.pHealth -= es.stats["Attack"];
 
             //Indicates that the Enemy has already attacked
             attack = true;
@@ -85,5 +113,23 @@ public class BattleEnemyAI : MonoBehaviour
             na.isStopped = false;
         }
 
+    }
+
+    public void Fire() 
+    {
+        if (enemysp > 0) 
+        {
+            if (!attack) 
+            {
+                firedmg = sk.skills["Fire"];
+                gm.pHealth -= firedmg;
+                enemysp -= 5;               
+                eskillused = true;
+                eskilltimer = 5;
+                GameObject fireprefab = Instantiate(fire, player.transform.position, player.transform.rotation);
+                Destroy(fireprefab, 5);
+                attack = true;
+            }        
+        }
     }
 }

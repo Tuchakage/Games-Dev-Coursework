@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public string enemy;
     public int pHealth;
     public int pSP; //Players Stamina Points
+    public int keys = 0;
 
     //Gets The Players last position
     public Vector3 playerlastpos;
