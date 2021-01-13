@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
             //.magnitude checks the length of our direction vector
             if (direction.magnitude >= 0.1)
             {
+                anim.SetBool("running", true);
                 //Getting the angle we want to use
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
 
@@ -51,8 +52,11 @@ public class PlayerController : MonoBehaviour
 
                 //Allows us to move in the direction of the Camera
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
+            else 
+            {
+                anim.SetBool("running", false);
             }
         }
 

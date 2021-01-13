@@ -11,7 +11,7 @@ public class ButtonHandler : MonoBehaviour
     GameManager gm;
     PlayerStats ps;
     NavMeshAgent na;
-    Animator anim;
+    public Animator anim;
     Skills sk;
     ThirdPersonCamera tpc;
     EnemyStats es;
@@ -93,11 +93,20 @@ public class ButtonHandler : MonoBehaviour
                 skillused = false;
             }
         }
+
+        if (block)
+        {
+            anim.SetBool("block", true);
+        }
+        else 
+        {
+            anim.SetBool("block", false);
+        }
     }
 
     public void Block() 
     {
-        block = true;
+        block = true;  
         tbs.enemyturn = true;
     }
     public void attackButton() 
@@ -132,6 +141,7 @@ public class ButtonHandler : MonoBehaviour
         {
             na.SetDestination(target.position);
             na.isStopped = false;
+            anim.SetBool("running", true);
             moveonce = true;
         }
         if (enemydistance < 3 && !attack) // If the Player is near the Enemy and it hasn't attacked yet
@@ -156,6 +166,7 @@ public class ButtonHandler : MonoBehaviour
             tpc.backtopos = false;
             na.SetDestination(target.position);
             na.isStopped = true;
+            anim.SetBool("running", false);
             attack = false;
             attackbuttonpressed = false;
             //When it gets back to position it will be the Enemies turn
@@ -166,6 +177,7 @@ public class ButtonHandler : MonoBehaviour
         {
             //Player will move towards the player
             na.isStopped = false;
+            anim.SetBool("running", true);
         }
         
     }
@@ -174,6 +186,7 @@ public class ButtonHandler : MonoBehaviour
     {
         if (gm.pSP > 0) 
         {
+            anim.SetTrigger("cast");
             firedamage = sk.skills["Fire"];
             //You lose SP When doing a Skill
             gm.pSP -= 5;

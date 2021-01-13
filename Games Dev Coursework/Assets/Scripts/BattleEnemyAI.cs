@@ -84,6 +84,7 @@ public class BattleEnemyAI : MonoBehaviour
             if (!bh.block)
             {
                 gm.pHealth -= attackdmg;
+                bh.anim.SetTrigger("hit");
             }
             else 
             {
@@ -137,6 +138,7 @@ public class BattleEnemyAI : MonoBehaviour
                 if (!bh.block)
                 {
                     gm.pHealth -= firedmg;
+                    bh.anim.SetTrigger("hit");
                 }
                 else 
                 {
