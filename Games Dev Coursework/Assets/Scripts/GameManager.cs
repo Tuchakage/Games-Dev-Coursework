@@ -126,7 +126,6 @@ public class GameManager : MonoBehaviour
             Destroy(destroyenemy);
             //Reduce the max Amount Of Enemies spawned by 1
             espawn.maxenemies -= 1;
-            espawn.SpawnEnemiesToLastPos();
             battleend = false;
         }
 
