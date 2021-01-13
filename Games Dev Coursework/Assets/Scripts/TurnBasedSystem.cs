@@ -15,6 +15,7 @@ public class TurnBasedSystem : MonoBehaviour
     PlayerStats ps;
     StartBattle sb;
     Advantage adv;
+    ButtonHandler bh;
 
     int random;
     int playerspeed;
@@ -31,6 +32,7 @@ public class TurnBasedSystem : MonoBehaviour
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         sb = GameObject.Find("Blade").GetComponent<StartBattle>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
+        bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
         playerspeed = ps.stats["Speed"];
         enemyspeed = es.stats["Speed"];
         Debug.Log("TURN BASED SYSTEM SCRIPT ESPEED: " + enemyspeed);
@@ -90,6 +92,8 @@ public class TurnBasedSystem : MonoBehaviour
 
     public void PlayerTurn() 
     {
+        //When Players Turn again then it will no longer be blocking
+        bh.block = false;
         pui.SetActive(true);
         sk.SetActive(false);
         Debug.Log("My Turn");

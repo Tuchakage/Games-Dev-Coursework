@@ -13,6 +13,8 @@ public class ButtonHandler : MonoBehaviour
     NavMeshAgent na;
     Animator anim;
     Skills sk;
+    ThirdPersonCamera tpc;
+    EnemyStats es;
 
     GameObject player;
 
@@ -25,6 +27,8 @@ public class ButtonHandler : MonoBehaviour
     bool attack = false;
     bool moveonce = false;
     public bool attackbuttonpressed = false;
+    public string attacktype;
+    public bool block = false; //Is The Player Blocking?
 
     //Skills
     int firedamage;
@@ -49,6 +53,8 @@ public class ButtonHandler : MonoBehaviour
         player = GameObject.Find("Player");
         anim = GameObject.Find("Player").GetComponent<Animator>();
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
+        tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
+        es = enemy.GetComponent<EnemyStats>();
     }
 
     private void Update()
@@ -57,9 +63,13 @@ public class ButtonHandler : MonoBehaviour
         enemydistance = Vector3.Distance(target.transform.position, player.transform.position);
         playerogpos = Vector3.Distance(originalspot.transform.position, player.transform.position);
 
-        if (attackbuttonpressed == true) 
+        if (attackbuttonpressed == true)
         {
-            PlayerAttack();         
+            PlayerAttack();
+        }
+        else 
+        {
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         //When you are in the skill menu and you want to go back to the normal player ui because you decide you want to do a normal attack instead, Press the right mouse button down
@@ -84,12 +94,19 @@ public class ButtonHandler : MonoBehaviour
             }
         }
     }
+
+    public void Block() 
+    {
+        block = true;
+        tbs.enemyturn = true;
+    }
     public void attackButton() 
     {
         playerdamage = ps.stats["Attack"];
         Debug.Log("Attack Button");
-
+        attacktype = "Physical";
         attackbuttonpressed = true;
+     
     }
 
     public void skillButton() 
@@ -136,19 +153,18 @@ public class ButtonHandler : MonoBehaviour
 
         else if (playerogpos < 2.1 && attack) // Once it gets back to its original position after its attack then it will stop and the destination will be set to the Enemy again if it attacks again
         {
+            tpc.backtopos = false;
             na.SetDestination(target.position);
             na.isStopped = true;
             attack = false;
-
             attackbuttonpressed = false;
             //When it gets back to position it will be the Enemies turn
-            tbs.enemyturn = true;
-
+            tbs.enemyturn = true;          
         }
         //When the Player has already used its moveonce variable which is treated like its in the OnStart() function and is not attacking and is already at the original position 
         else if (playerogpos < 2.1 && !attack && moveonce)
         {
-            //Enemy will move towards the player
+            //Player will move towards the player
             na.isStopped = false;
         }
         
@@ -161,8 +177,20 @@ public class ButtonHandler : MonoBehaviour
             firedamage = sk.skills["Fire"];
             //You lose SP When doing a Skill
             gm.pSP -= 5;
-            //Enemy Takes Damage
-            eh.LoseHealth(firedamage);
+
+            attacktype = "Fire";
+
+            if (es.Weakness == attacktype)
+            {
+                //Enemy Takes Double Damage
+                eh.LoseHealth(firedamage * 2);
+            }
+            else 
+            {
+                //Enemy Takes Damage
+                eh.LoseHealth(firedamage);
+            }
+
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
             skillused = true;
             skilltimer = 5;

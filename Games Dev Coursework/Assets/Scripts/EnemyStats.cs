@@ -8,6 +8,7 @@ public class EnemyStats : MonoBehaviour
 
     public int ehp;
     public int esp;
+    public string Weakness;
     //public string attacktype;
     //All The stats should be loaded before any other script
     void Awake()

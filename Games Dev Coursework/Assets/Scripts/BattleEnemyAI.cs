@@ -12,6 +12,7 @@ public class BattleEnemyAI : MonoBehaviour
     TurnBasedSystem tbs;
     EnemyStats es;
     Skills sk;
+    ButtonHandler bh;
 
     public Transform target;
     public Transform originalspot;
@@ -22,6 +23,7 @@ public class BattleEnemyAI : MonoBehaviour
     public float originalspotdist;
     bool attack = false;
     int firedmg;
+    int attackdmg;
     public int enemysp;
     bool eskillused;
     public float eskilltimer = 5;
@@ -38,6 +40,7 @@ public class BattleEnemyAI : MonoBehaviour
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         enemysp = es.stats["SP"];
         player = GameObject.Find("Player");
+        bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
     }
 
     // Update is called once per frame
@@ -76,9 +79,18 @@ public class BattleEnemyAI : MonoBehaviour
         {
             //Enemy will stop
             na.isStopped = true;
-
+            attackdmg = es.stats["Attack"];
             //Player loses health
-            gm.pHealth -= es.stats["Attack"];
+            if (!bh.block)
+            {
+                gm.pHealth -= attackdmg;
+            }
+            else 
+            {
+                //Decrease Attack damage by 30% if Player is blocking
+                gm.pHealth -= (attackdmg*30/100);
+            }
+            
 
             //Indicates that the Enemy has already attacked
             attack = true;
@@ -122,7 +134,17 @@ public class BattleEnemyAI : MonoBehaviour
             if (!attack) 
             {
                 firedmg = sk.skills["Fire"];
-                gm.pHealth -= firedmg;
+                if (!bh.block)
+                {
+                    gm.pHealth -= firedmg;
+                }
+                else 
+                {
+                    //Reduce Damage by 30% if Blocking
+                    firedmg -= (firedmg * 30 / 100);
+                    gm.pHealth -= firedmg;
+                }
+                
                 enemysp -= 5;               
                 eskillused = true;
                 eskilltimer = 5;
