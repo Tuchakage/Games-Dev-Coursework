@@ -15,8 +15,8 @@ public class BattleEnemyAI : MonoBehaviour
     ButtonHandler bh;
     public Animator eanim;
 
-    public Transform target;
-    public Transform originalspot;
+    Transform target;
+    Transform originalspot;
     public GameObject fire;
     GameObject player;
 
@@ -43,6 +43,8 @@ public class BattleEnemyAI : MonoBehaviour
         player = GameObject.Find("Player");
         bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
         eanim = GetComponent<Animator>();
+        target = player.transform;
+        originalspot = GameObject.Find("EnemyOriginalPosition").GetComponent<Transform>();
     }
 
     // Update is called once per frame

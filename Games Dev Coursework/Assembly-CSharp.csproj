@@ -73,6 +73,9 @@
     <Compile Include="Assets\Scripts\TurnBasedSystem.cs" />
     <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\EnemyBattleSpawner.cs" />
+    <Compile Include="Assets\Scripts\LevelNameSender.cs" />
+    <Compile Include="Assets\Scripts\BattleLevelChanger.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

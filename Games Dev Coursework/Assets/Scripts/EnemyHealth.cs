@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         es = GetComponent<EnemyStats>();
-
+        ehealthslider = GameObject.Find("EnemyHealth").GetComponent<Slider>();
         //ehealth is set to the value in Enemy Stats for HP
         ehealth = es.stats["HP"];
         ehealthslider.maxValue = ehealth;
