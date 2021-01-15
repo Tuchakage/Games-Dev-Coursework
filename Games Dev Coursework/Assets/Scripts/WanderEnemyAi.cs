@@ -12,6 +12,7 @@ public class WanderEnemyAi : MonoBehaviour
 
     public float playerdist;
     public float wandertimer = 5;
+    float wanderSpeed = 0.5f;
     int wanderRange = 10;
     bool startwander = false; //This Variable will get the wander function working after the enemy loses the chase against the player
     // Start is called before the first frame update
@@ -65,6 +66,7 @@ public class WanderEnemyAi : MonoBehaviour
 
         //Makes it so the Enemy will follow this Wander Target
         na.SetDestination(wandertarget);
+        na.speed = wanderSpeed;
         //Debug.Log(wandertarget + " and " + (transform.position - wandertarget).magnitude);       
     }
 }

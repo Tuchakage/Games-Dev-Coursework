@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4631983665173092, guid: f1035c4060e022c46a6732040e129f85, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4631983665173092, guid: f1035c4060e022c46a6732040e129f85, type: 3}
       propertyPath: m_LocalScale.x
@@ -9277,7 +9277,7 @@ MonoBehaviour:
   - {fileID: 1732032990}
   - {fileID: 1071531553}
   - {fileID: 1227015702}
-  enemyspawner: {fileID: 6264478106003880793, guid: 57752d0e719189344a692e6dbb196854, type: 3}
+  enemyspawner: {fileID: 8736736173598231385, guid: 53078a067d3911d43b8aab20ffe7638a, type: 3}
   enemy: {fileID: 0}
   enemylastpos: []
   see: []

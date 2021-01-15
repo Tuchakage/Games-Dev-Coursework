@@ -13,6 +13,7 @@ public class BattleEnemyAI : MonoBehaviour
     EnemyStats es;
     Skills sk;
     ButtonHandler bh;
+    public Animator eanim;
 
     public Transform target;
     public Transform originalspot;
@@ -41,6 +42,7 @@ public class BattleEnemyAI : MonoBehaviour
         enemysp = es.stats["SP"];
         player = GameObject.Find("Player");
         bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
+        eanim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -65,6 +67,11 @@ public class BattleEnemyAI : MonoBehaviour
                 attack = false;
             }
         }
+
+        if (!attack) 
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
     public void EnemyAttack()
@@ -74,6 +81,7 @@ public class BattleEnemyAI : MonoBehaviour
             na.SetDestination(target.position);
             na.isStopped = false;
             moveonce = true;
+            eanim.SetBool("iswalking", true);
         }
         if (enemydist < 3 && !attack) // If the Enemy is near the player and it hasn't attacked yet
         {
@@ -84,6 +92,7 @@ public class BattleEnemyAI : MonoBehaviour
             if (!bh.block)
             {
                 gm.pHealth -= attackdmg;
+                //Player Animation for when he gets hit plays
                 bh.anim.SetTrigger("hit");
             }
             else 
@@ -91,8 +100,8 @@ public class BattleEnemyAI : MonoBehaviour
                 //Decrease Attack damage by 30% if Player is blocking
                 gm.pHealth -= (attackdmg*30/100);
             }
-            
 
+            eanim.SetTrigger("punch");
             //Indicates that the Enemy has already attacked
             attack = true;
             //Debug.Log("1");
@@ -102,17 +111,19 @@ public class BattleEnemyAI : MonoBehaviour
         {
             na.SetDestination(originalspot.position);
             na.isStopped = false;
+            eanim.SetBool("iswalking", true);
             //Debug.Log("2");
 
         }
 
         else if (originalspotdist < 0.5 && attack) // Once it gets back to its original position after its attack then it will stop and the destination will be set to the player again if it attacks again
         {
+            
             na.SetDestination(target.position);
             na.isStopped = true;
             attack = false;
             //Debug.Log("Works");
-
+            eanim.SetBool("iswalking", false);
             //Used to indicate the end of the enemy turn
             tbs.enemyturn = false;
 

@@ -27,8 +27,8 @@ public class TurnBasedSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ea = GameObject.Find("Enemy(battle)").GetComponent<BattleEnemyAI>();
-        es = GameObject.Find("Enemy(battle)").GetComponent<EnemyStats>();
+        ea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
+        es = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         sb = GameObject.Find("Blade").GetComponent<StartBattle>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();

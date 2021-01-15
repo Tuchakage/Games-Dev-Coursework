@@ -15,6 +15,7 @@ public class ButtonHandler : MonoBehaviour
     Skills sk;
     ThirdPersonCamera tpc;
     EnemyStats es;
+    BattleEnemyAI bea;
 
     GameObject player;
 
@@ -45,7 +46,7 @@ public class ButtonHandler : MonoBehaviour
 
     private void Start()
     {
-        eh = GameObject.Find("Enemy(battle)").GetComponent<EnemyHealth>();
+        eh = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
@@ -55,6 +56,8 @@ public class ButtonHandler : MonoBehaviour
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
         es = enemy.GetComponent<EnemyStats>();
+        //So we can get the Enemies Animator
+        bea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
     }
 
     private void Update()
@@ -150,6 +153,8 @@ public class ButtonHandler : MonoBehaviour
             na.isStopped = true;
             //Attack Animation Of The Player Will Play
             anim.SetTrigger("attack");
+            //Enemy Animation for when he gets hit plays
+            bea.eanim.SetTrigger("hit");
             //Indicates that the Player has already attacked
             attack = true;
             //Enemy Takes Damage
@@ -203,7 +208,8 @@ public class ButtonHandler : MonoBehaviour
                 //Enemy Takes Damage
                 eh.LoseHealth(firedamage);
             }
-
+            //Enemy Animation for when he gets hit plays
+            bea.eanim.SetTrigger("hit");
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
             skillused = true;
             skilltimer = 5;
