@@ -28,7 +28,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (currentscene == 0) 
+        if (currentscene != 0 || currentscene != 1) 
         {
             
             for (int i = 0; i < enemies.Count; i++)
@@ -59,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentscene != 1)
+        if (currentscene != 0 || currentscene != 1)
         {
             if (!firstspawn) 
             {

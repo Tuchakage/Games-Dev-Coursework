@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             phealthslider.value = pHealth;
             spslider.value = pSP;
         }
-        else 
+        else
         {
             //If Not In Battle Scene then it will keep record of the players last position
             if (!battleend) 
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         if (currentscene == 1)
         {

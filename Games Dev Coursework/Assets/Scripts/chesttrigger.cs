@@ -15,17 +15,6 @@ public class chesttrigger : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
- 
-    }
-
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.name == "Player")
