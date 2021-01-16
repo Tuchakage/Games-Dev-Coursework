@@ -61,12 +61,15 @@
     <Compile Include="Assets\Scripts\WanderEnemyAi.cs" />
     <Compile Include="Assets\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Scripts\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\HubNameLevel.cs" />
     <Compile Include="Assets\Scripts\LevelNameSender.cs" />
     <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\Advantage.cs" />
+    <Compile Include="Assets\Scripts\SceneDoorSwitcher.cs" />
     <Compile Include="Assets\Scripts\Skills.cs" />
     <Compile Include="Assets\Scripts\BattleEnemyAI.cs" />
     <Compile Include="Assets\Scripts\StartBattle.cs" />
+    <Compile Include="Assets\Scripts\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\BattleLevelChanger.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -76,9 +79,6 @@
     <Compile Include="Assets\Scripts\EnemyBattleSpawner.cs" />
     <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
-    <Compile Include="Assets\Scripts\SceneDoorSwitcher.cs" />
-    <Compile Include="Assets\Scripts\HubSceneChanger.cs" />
-    <Compile Include="Assets\Scripts\HubNameLevel.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

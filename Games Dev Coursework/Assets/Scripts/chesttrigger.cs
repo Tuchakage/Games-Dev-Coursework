@@ -7,7 +7,7 @@ public class chesttrigger : MonoBehaviour
     Animator anim;
     GameManager gm;
 
-    bool keycollected = false;
+    public bool keycollected = false;
     // Start is called before the first frame update
     void Start()
     {
