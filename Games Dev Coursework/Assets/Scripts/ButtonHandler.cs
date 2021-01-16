@@ -118,13 +118,15 @@ public class ButtonHandler : MonoBehaviour
         Debug.Log("Attack Button");
         attacktype = "Physical";
         attackbuttonpressed = true;
+        //Whenever the button is pressed then disable all the other Buttons
+        pui.SetActive(false);
      
     }
 
     public void skillButton() 
     {
+        //Whenever the button is pressed then disable all the other Buttons
         pui.SetActive(false);
-
         sui.SetActive(true);
         skillmenu = true;
     }

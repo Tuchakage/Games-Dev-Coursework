@@ -13,18 +13,14 @@ public class EnemySpawn : MonoBehaviour
     public List<string> see = null;
 
     public int maxenemies;
+    int maxspawnpoints;
     int currentscene;
     bool firstspawn = false; //This will make the enemies spawn in at first at their spawnpoints, only to be done once
     GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            enemylastpos.Add(enemies[i].transform.position);
-            see.Add(enemies[i].gameObject.name);
-            Debug.Log("Spawn");
-        }
+
     }
     private void Update()
     {
@@ -59,10 +55,21 @@ public class EnemySpawn : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentscene != 0 || currentscene != 1)
+        //When in the Dungeon Level
+        if (currentscene == 2)
         {
-            if (!firstspawn) 
+            if (!firstspawn)
             {
+                //If in Dungeon Level then there will be 3 spawnpoints that need to be found
+                maxspawnpoints = 3;
+                //Find the Spawnpoint GameObjects and put it into the spawnpoints list
+                for (int i = 1; i < maxspawnpoints + 1; i++)
+                {
+                    GameObject spawnpoint = GameObject.Find("Spawnpoint" + i);
+                    Debug.Log("Found " + spawnpoint);
+                    spawnpoints.Add(spawnpoint);
+                }
+
                 for (int i = 0; i < maxenemies; i++)
                 {
                     //Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
@@ -71,15 +78,11 @@ public class EnemySpawn : MonoBehaviour
                     enemy.name = "Enemy " + i;
                     //The Enemy GameObject Will be added to the enemy list
                     enemies.Add(enemy);
-
                     //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
-                    if (enemies[i] == null)
-                    {
-                        enemylastpos.RemoveAt(i);
-                        see.RemoveAt(i);
-                    }
+                    enemylastpos.Add(enemies[i].transform.position);
+                    see.Add(enemies[i].gameObject.name);
                 }
-                Debug.Log("No This one Works");
+                Debug.Log("First Time Spawning Enemies");
                 firstspawn = true;
             }
         }
@@ -102,7 +105,7 @@ public class EnemySpawn : MonoBehaviour
                 enemylastpos.RemoveAt(i);
                 see.RemoveAt(i);
             }
-            Debug.Log("Works");
+            Debug.Log("SpawnEnemiesToLastPos() Called");
 
         }
     }

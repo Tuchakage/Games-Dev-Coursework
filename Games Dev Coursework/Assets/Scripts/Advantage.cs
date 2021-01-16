@@ -73,7 +73,7 @@ public class Advantage : MonoBehaviour
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
+        //Debug.Log("OnSceneLoaded: " + scene.name);
         //Check What Scene you are on
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
