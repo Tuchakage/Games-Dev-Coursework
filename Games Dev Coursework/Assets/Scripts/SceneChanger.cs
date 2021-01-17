@@ -15,8 +15,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         hbl = GameObject.Find("GameManager").GetComponent<HubNameLevel>();
-        ct = GameObject.Find("Chest").GetComponentInChildren<chesttrigger>();
-        forgotkeytxt = GameObject.Find("NeedKeyText").GetComponent<TMP_Text>();
+
     }
 
     // Update is called once per frame
@@ -67,5 +66,10 @@ public class SceneChanger : MonoBehaviour
     {
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
+        if (currentscene != 0) 
+        {
+            ct = GameObject.Find("Chest").GetComponentInChildren<chesttrigger>();
+            forgotkeytxt = GameObject.Find("NeedKeyText").GetComponent<TMP_Text>();
+        }
     }
 }

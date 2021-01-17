@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     private CharacterController controller;
     public Transform camera;
-
+    private Vector3 playerVelocity;
     public float speed = 1.0f;
 
     public float turnSmoothTime = 0.1f;
 
     private float turnSmoothVelocity;
-
+    float gravity = -9.2f;
     int currentscene;
 
     // Start is called before the first frame update
@@ -69,7 +69,9 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
+        //Gravity
+        playerVelocity.y += gravity * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
 
     }
 }

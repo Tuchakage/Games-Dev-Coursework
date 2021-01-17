@@ -124,6 +124,34 @@ Transform:
   m_Father: {fileID: 648591260516157112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -2.033848, y: 122.722855, z: -12.143797}
+--- !u!64 &1204130824846560158
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756863010485645877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7401353886334607404, guid: b32ba454d6c4b5c41a59869370907ce3, type: 3}
+--- !u!114 &1204130824846560159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756863010485645877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74c8de99ba3ea14caea5eb391d998c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0
+  enemyref: {fileID: 0}
 --- !u!1 &1194997116570646409
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,34 +213,6 @@ Transform:
   m_Father: {fileID: 1675154238481342107}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1204130824846560158
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756863010485645877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7401353886334607404, guid: b32ba454d6c4b5c41a59869370907ce3, type: 3}
---- !u!114 &1204130824846560159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756863010485645877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74c8de99ba3ea14caea5eb391d998c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collision: 0
-  enemyref: {fileID: 0}
 --- !u!1 &1345112706781264694
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 1204130824797148819}
   - component: {fileID: 1204130824797148818}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player(Roaming)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,7 +427,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.84, z: 0}
 --- !u!114 &1204130824797148818
 MonoBehaviour:
   m_ObjectHideFlags: 0
