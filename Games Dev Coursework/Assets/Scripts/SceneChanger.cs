@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 //When the player touches the trigger it gets the string in HubNameLevel and depending on whats inside of it the scene will change to that level
 public class SceneChanger : MonoBehaviour
 {
     HubNameLevel hbl;
     chesttrigger ct;
     int currentscene;
+
+    TMP_Text forgotkeytxt;
     // Start is called before the first frame update
     void Start()
     {
         hbl = GameObject.Find("GameManager").GetComponent<HubNameLevel>();
         ct = GameObject.Find("Chest").GetComponentInChildren<chesttrigger>();
+        forgotkeytxt = GameObject.Find("NeedKeyText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -37,8 +41,17 @@ public class SceneChanger : MonoBehaviour
             {
                 SceneManager.LoadScene("hub");
             }
+            else if (currentscene != 0 && !ct.keycollected) 
+            {
+                forgotkeytxt.text = "GET THE KEY FROM THE CHEST FIRST!";
+            }
         }
 
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        forgotkeytxt.text = " ";
     }
 
     void OnEnable()
