@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
         currentscene = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log("Current Scene: "+currentscene);
     }
 
     // Update is called once per frame

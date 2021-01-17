@@ -19,7 +19,7 @@ public class WanderEnemyAi : MonoBehaviour
     void Start()
     {
         na = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         Wander();
     }
 

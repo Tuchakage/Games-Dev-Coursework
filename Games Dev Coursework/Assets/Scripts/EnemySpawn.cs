@@ -24,7 +24,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (currentscene != 0 || currentscene != 1) 
+        if (currentscene != 1) 
         {
             
             for (int i = 0; i < enemies.Count; i++)
@@ -58,36 +58,45 @@ public class EnemySpawn : MonoBehaviour
         //When in the Dungeon Level
         if (currentscene == 2)
         {
-            if (!firstspawn)
-            {
-                //If in Dungeon Level then there will be 3 spawnpoints that need to be found
-                maxspawnpoints = 3;
-                //Find the Spawnpoint GameObjects and put it into the spawnpoints list
-                for (int i = 1; i < maxspawnpoints + 1; i++)
-                {
-                    GameObject spawnpoint = GameObject.Find("Spawnpoint" + i);
-                    Debug.Log("Found " + spawnpoint);
-                    spawnpoints.Add(spawnpoint);
-                }
-
-                for (int i = 0; i < maxenemies; i++)
-                {
-                    //Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
-                    enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
-                    //Change The Name For Each Object
-                    enemy.name = "Enemy " + i;
-                    //The Enemy GameObject Will be added to the enemy list
-                    enemies.Add(enemy);
-                    //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
-                    enemylastpos.Add(enemies[i].transform.position);
-                    see.Add(enemies[i].gameObject.name);
-                }
-                Debug.Log("First Time Spawning Enemies");
-                firstspawn = true;
-            }
+            maxenemies = 3;
+            maxspawnpoints = 3;
+            FirstTimeSpawn();
+        }
+        else if (currentscene == 3) //When in the Desert Level
+        {
+            maxenemies = 4;
+            maxspawnpoints = 4;
+            FirstTimeSpawn();
         }
     }
+    public void FirstTimeSpawn() 
+    {
+        if (!firstspawn)
+        {
+            //Find the Spawnpoint GameObjects and put it into the spawnpoints list
+            for (int i = 1; i < maxspawnpoints + 1; i++)
+            {
+                GameObject spawnpoint = GameObject.Find("Spawnpoint" + i);
+                Debug.Log("Found " + spawnpoint);
+                spawnpoints.Add(spawnpoint);
+            }
 
+            for (int i = 0; i < maxenemies; i++)
+            {
+                //Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
+                enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
+                //Change The Name For Each Object
+                enemy.name = "Enemy " + i;
+                //The Enemy GameObject Will be added to the enemy list
+                enemies.Add(enemy);
+                //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
+                enemylastpos.Add(enemies[i].transform.position);
+                see.Add(enemies[i].gameObject.name);
+            }
+            Debug.Log("First Time Spawning Enemies");
+            firstspawn = true;
+        }
+    }
     public void SpawnEnemiesToLastPos()
     {
         for (int i = 0; i < maxenemies; i++)

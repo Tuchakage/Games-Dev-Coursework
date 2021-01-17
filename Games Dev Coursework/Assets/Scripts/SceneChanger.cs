@@ -33,7 +33,7 @@ public class SceneChanger : MonoBehaviour
             {
                 if (hbl.getLevelName() == "Dungeon")
                 {
-                    SceneManager.LoadScene("test");
+                    SceneManager.LoadScene("dungeon");
                 }
             }
             else if (currentscene == 2 && ct.keycollected) //If you are in the Dungeons Level
