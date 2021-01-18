@@ -60,13 +60,13 @@ public class EnemySpawn : MonoBehaviour
         {
             maxenemies = 3;
             maxspawnpoints = 3;
-            FirstTimeSpawn();
+            SpawnEnemies();
         }
         else if (currentscene == 3) //When in the Desert Level
         {
             maxenemies = 4;
             maxspawnpoints = 4;
-            FirstTimeSpawn();
+            SpawnEnemies();
         }
     }
     public void SpawnEnemies() 
