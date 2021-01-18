@@ -17,7 +17,7 @@ public class chesttrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.gameObject.tag == "Player")
         {
             if (Input.GetKey(KeyCode.E))
             {

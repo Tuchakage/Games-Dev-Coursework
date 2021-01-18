@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
         //Debug.Log(mode);
-
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
@@ -126,7 +125,8 @@ public class GameManager : MonoBehaviour
         if (battleend) 
         {
             //Set The Players Position to where he was before the battle
-            player.transform.position = playerlastpos;           
+            player.transform.position = playerlastpos;
+            Debug.Log("Player Last Position " +player.transform.position);
             Destroy(destroyenemy);
             //Reduce the max Amount Of Enemies spawned by 1
             espawn.maxenemies -= 1;

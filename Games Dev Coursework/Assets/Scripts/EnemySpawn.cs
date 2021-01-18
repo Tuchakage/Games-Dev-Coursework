@@ -101,10 +101,6 @@ public class EnemySpawn : MonoBehaviour
             Debug.Log("First Time Spawning Enemies");
             firstspawn = true;
         }
-        else 
-        {
-
-        }
     }
 
     public void SpawnEnemies() 

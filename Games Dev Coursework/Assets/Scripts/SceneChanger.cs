@@ -26,6 +26,7 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        Debug.Log("hew");
         if (col.gameObject.tag == "Player") 
         {
             //If you are in the Hub world and the getlevelname is set to Dungeon then you will be loaded into the Dungeon level
@@ -36,11 +37,11 @@ public class SceneChanger : MonoBehaviour
                     SceneManager.LoadScene("dungeon");
                 }
             }
-            else if (currentscene == 2 && ct.keycollected) //If you are in the Dungeons Level
+            else if ((currentscene == 2 && ct.keycollected) || currentscene == 3 && ct.keycollected) //If you are in the Dungeons Level
             {
                 SceneManager.LoadScene("hub");
             }
-            else if (currentscene != 0 && !ct.keycollected) 
+            else if (currentscene != 0 && !ct.keycollected)
             {
                 forgotkeytxt.text = "GET THE KEY FROM THE CHEST FIRST!";
             }
@@ -50,7 +51,11 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        forgotkeytxt.text = " ";
+        if (currentscene != 0) 
+        {
+            forgotkeytxt.text = " ";
+        }
+        
     }
 
     void OnEnable()
