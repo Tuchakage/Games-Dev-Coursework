@@ -16,6 +16,7 @@ public class ButtonHandler : MonoBehaviour
     ThirdPersonCamera tpc;
     EnemyStats es;
     BattleEnemyAI bea;
+    BattleLevelChanger blc;
 
     GameObject player;
 
@@ -58,6 +59,7 @@ public class ButtonHandler : MonoBehaviour
         es = enemy.GetComponent<EnemyStats>();
         //So we can get the Enemies Animator
         bea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
+        blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
     }
 
     private void Update()
@@ -135,7 +137,16 @@ public class ButtonHandler : MonoBehaviour
     {
         Debug.Log("Escape Button");
         gm.battleend = true;
-        SceneManager.LoadScene("test");
+
+        if (blc.GetLevelName() == "Dungeon")
+        {
+            SceneManager.LoadScene("dungeon");
+        }
+        else if (blc.GetLevelName() == "Desert") 
+        {
+            SceneManager.LoadScene("desert");
+        }
+        
         
 
     }

@@ -290,6 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 562590401}
+  - component: {fileID: 562590402}
   m_Layer: 0
   m_Name: Spawnpoints
   m_TagString: Untagged
@@ -315,6 +316,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &562590402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562590400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40159b261a6195843a76e7e005642d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &778617089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -332,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519651118386601098, guid: 74bc35c9f4ba773498bb7173fa067715, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7519651118386601098, guid: 74bc35c9f4ba773498bb7173fa067715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -393,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777469181809006, guid: 2bd413b982191d54396bb381188bb4d0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4777469181809006, guid: 2bd413b982191d54396bb381188bb4d0, type: 3}
       propertyPath: m_LocalScale.x
@@ -551,6 +564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelname: 
+  dung: {fileID: 0}
+  desert: {fileID: 0}
 --- !u!114 &1707709829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +596,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   enemylastpos: []
   see: []
-  maxenemies: 3
+  maxenemies: 0
 --- !u!114 &1707709831
 MonoBehaviour:
   m_ObjectHideFlags: 0

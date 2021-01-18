@@ -69,7 +69,7 @@ public class EnemySpawn : MonoBehaviour
             FirstTimeSpawn();
         }
     }
-    public void FirstTimeSpawn() 
+    public void SpawnEnemies() 
     {
         if (!firstspawn)
         {
@@ -96,26 +96,26 @@ public class EnemySpawn : MonoBehaviour
             Debug.Log("First Time Spawning Enemies");
             firstspawn = true;
         }
-    }
-    public void SpawnEnemiesToLastPos()
-    {
-        for (int i = 0; i < maxenemies; i++)
+        else 
         {
-            //2 Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
-            enemy = Instantiate(enemyspawner, enemylastpos[i], Quaternion.identity);
-            //Change The Name For Each Object
-            enemy.name = "Enemy " + i;
-            //The Enemy GameObject Will be added to the enemy list
-            enemies.Add(enemy);
-
-            //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
-            if (enemies[i] == null)
+            for (int i = 0; i < maxenemies; i++)
             {
-                enemylastpos.RemoveAt(i);
-                see.RemoveAt(i);
-            }
-            Debug.Log("SpawnEnemiesToLastPos() Called");
+                //2 Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
+                enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
+                //Change The Name For Each Object
+                enemy.name = "Enemy " + i;
+                //The Enemy GameObject Will be added to the enemy list
+                enemies.Add(enemy);
 
+                //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
+                if (enemies[i] == null)
+                {
+                    enemylastpos.RemoveAt(i);
+                    see.RemoveAt(i);
+                }
+                Debug.Log("SpawnEnemiesToLastPos() Called");
+
+            }
         }
     }
 
