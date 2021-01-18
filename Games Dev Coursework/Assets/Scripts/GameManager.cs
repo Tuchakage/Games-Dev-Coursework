@@ -100,6 +100,10 @@ public class GameManager : MonoBehaviour
         destroyenemy = GameObject.Find(enemy);
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -128,6 +132,7 @@ public class GameManager : MonoBehaviour
             espawn.maxenemies -= 1;
             espawn.SpawnEnemies();
             battleend = false;
+            Debug.Log("Battle End Has Been Set To " + battleend);
         }
 
 

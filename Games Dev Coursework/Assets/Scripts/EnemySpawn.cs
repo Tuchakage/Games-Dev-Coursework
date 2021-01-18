@@ -34,10 +34,9 @@ public class EnemySpawn : MonoBehaviour
                 {         
                     enemies.RemoveAt(i);
                 }
-                enemylastpos[i] = enemies[i].transform.position;
+                //enemylastpos[i] = enemies[i].transform.position;
             }
         }
-
 
     }
     void OnEnable()
@@ -49,30 +48,36 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        //When in the Dungeon Level
-        if (currentscene == 2)
-        {
-            maxenemies = 3;
-            maxspawnpoints = 3;
-            SpawnEnemies();
-        }
-        else if (currentscene == 3) //When in the Desert Level
-        {
-            maxenemies = 4;
-            maxspawnpoints = 4;
-            SpawnEnemies();
-        }
+        FirstTimeSpawn();
+
     }
-    public void SpawnEnemies() 
+    public void FirstTimeSpawn() 
     {
         if (!firstspawn)
         {
+            //When in the Dungeon Level
+            if (currentscene == 2)
+            {
+                maxenemies = 3;
+                maxspawnpoints = 3;
+            }
+            else if (currentscene == 3) //When in the Desert Level
+            {
+                maxenemies = 4;
+                maxspawnpoints = 4;
+            }
+
             //Find the Spawnpoint GameObjects and put it into the spawnpoints list
             for (int i = 1; i < maxspawnpoints + 1; i++)
             {
@@ -98,24 +103,29 @@ public class EnemySpawn : MonoBehaviour
         }
         else 
         {
-            for (int i = 0; i < maxenemies; i++)
-            {
-                //2 Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
-                enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
-                //Change The Name For Each Object
-                enemy.name = "Enemy " + i;
-                //The Enemy GameObject Will be added to the enemy list
-                enemies.Add(enemy);
 
-                //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
-                if (enemies[i] == null)
-                {
-                    enemylastpos.RemoveAt(i);
-                    see.RemoveAt(i);
-                }
-                Debug.Log("SpawnEnemiesToLastPos() Called");
+        }
+    }
 
-            }
+    public void SpawnEnemies() 
+    {
+        for (int i = 0; i < maxenemies; i++)
+        {
+            //2 Enemy GameObjects will be spawned in using the enemy prefab and the list of spawnpoints
+            enemy = Instantiate(enemyspawner, spawnpoints[i].transform.position, Quaternion.identity);
+            //Change The Name For Each Object
+            enemy.name = "Enemy " + i;
+            //The Enemy GameObject Will be added to the enemy list
+            enemies.Add(enemy);
+
+            //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
+            //if (enemies[i] == null)
+            //{
+            //    enemylastpos.RemoveAt(i);
+            //    see.RemoveAt(i);
+            //}
+            Debug.Log("SpawnEnemiesToLastPos() Called");
+
         }
     }
 

@@ -43,6 +43,11 @@ public class BattleLevelChanger : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
