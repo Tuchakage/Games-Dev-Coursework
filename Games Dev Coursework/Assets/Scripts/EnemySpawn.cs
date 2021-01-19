@@ -59,15 +59,19 @@ public class EnemySpawn : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        FirstTimeSpawn();
+        if (currentscene != 0) 
+        {
+            FirstTimeSpawn();
+        }
+        
 
     }
     public void FirstTimeSpawn() 
     {
         if (!firstspawn)
         {
-            //When in the Dungeon Level
-            if (currentscene == 2)
+            //When its the first time Spawning you need to set the max enemies and max spawnpoints for each level
+            if (currentscene == 2)//When in the Dungeon Level
             {
                 maxenemies = 3;
                 maxspawnpoints = 3;
@@ -77,7 +81,11 @@ public class EnemySpawn : MonoBehaviour
                 maxenemies = 4;
                 maxspawnpoints = 4;
             }
-
+            else if (currentscene == 4)//When in the Bar Level
+            {
+                maxenemies = 1;
+                maxspawnpoints = 1;
+            }
             //Find the Spawnpoint GameObjects and put it into the spawnpoints list
             for (int i = 1; i < maxspawnpoints + 1; i++)
             {

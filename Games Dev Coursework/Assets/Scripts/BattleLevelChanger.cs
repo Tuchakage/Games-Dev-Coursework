@@ -8,6 +8,7 @@ public class BattleLevelChanger : MonoBehaviour
     public string levelname;
     public GameObject dung;//The Dungeon GameObject that will be disabled/ enabled on the battle scene depending on the level
     public GameObject desert;//The Desert GameObject that will be disabled/ enabled on the battle scene depending on the level
+    public GameObject bar;
     int currentscene;
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,6 @@ public class BattleLevelChanger : MonoBehaviour
         //Debug.Log("OnEnable called");
         //Adds OnSceneLoaded()
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-
-
-
     }
 
     private void OnDisable()
@@ -51,9 +48,6 @@ public class BattleLevelChanger : MonoBehaviour
     //When A New Scene Loads this function will be run
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Debug.Log("OnSceneLoaded: " + scene.name);
-        //Debug.Log(mode);
-
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
@@ -62,17 +56,22 @@ public class BattleLevelChanger : MonoBehaviour
             //Set all the battle environments to false after finding them
             dung = GameObject.Find("Dungeon");
             dung.SetActive(false);
-
             desert = GameObject.Find("Desert");
             desert.SetActive(false);
+            bar = GameObject.Find("Bar");
+            bar.SetActive(false);
 
             if (levelname == "Dungeon")
             {
                 dung.SetActive(true);
             }
-            else if (levelname == "Desert") 
+            else if (levelname == "Desert")
             {
                 desert.SetActive(true);
+            }
+            else if (levelname == "Bar") 
+            {
+                bar.SetActive(true);
             }
         }
 

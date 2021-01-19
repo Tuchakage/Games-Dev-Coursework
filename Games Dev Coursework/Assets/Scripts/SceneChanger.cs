@@ -26,7 +26,6 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("hew");
         if (col.gameObject.tag == "Player") 
         {
             //If you are in the Hub world and the getlevelname is set to Dungeon then you will be loaded into the Dungeon level
@@ -36,8 +35,16 @@ public class SceneChanger : MonoBehaviour
                 {
                     SceneManager.LoadScene("dungeon");
                 }
+                else if (hbl.getLevelName() == "Desert")
+                {
+                    SceneManager.LoadScene("desert");
+                }
+                else if (hbl.getLevelName() == "Bar")
+                {
+                    SceneManager.LoadScene("bar");
+                }
             }
-            else if ((currentscene == 2 && ct.keycollected) || currentscene == 3 && ct.keycollected) //If you are in the Dungeons Level
+            else if (currentscene > 1 && ct.keycollected) //If you are not in the hub or battle level then when you collide with this object you will go back to the hub
             {
                 SceneManager.LoadScene("hub");
             }

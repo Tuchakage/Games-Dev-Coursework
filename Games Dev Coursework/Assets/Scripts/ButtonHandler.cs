@@ -138,6 +138,7 @@ public class ButtonHandler : MonoBehaviour
         Debug.Log("Escape Button");
         gm.battleend = true;
 
+        //These If Statements make it so that when you press the Escape button depending on the scene you were just in, it will spawn you back in
         if (blc.GetLevelName() == "Dungeon")
         {
             SceneManager.LoadScene("dungeon");
@@ -146,7 +147,10 @@ public class ButtonHandler : MonoBehaviour
         {
             SceneManager.LoadScene("desert");
         }
-        
+        else if (blc.GetLevelName() == "Bar") 
+        {
+            SceneManager.LoadScene("bar");
+        }
         
 
     }
