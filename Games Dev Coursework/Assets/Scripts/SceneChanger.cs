@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-//When the player touches the trigger it gets the string in HubNameLevel and depending on whats inside of it the scene will change to that level
+//When the player touches the trigger in the Hub Level it gets the string in HubNameLevel and depending on whats inside of it the scene will change to that level
 public class SceneChanger : MonoBehaviour
 {
     HubNameLevel hbl;
+    LevelCompleteManager lcm;
     chesttrigger ct;
     int currentscene;
 
@@ -15,6 +16,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         hbl = GameObject.Find("GameManager").GetComponent<HubNameLevel>();
+        lcm = GameObject.Find("GameManager").GetComponent<LevelCompleteManager>();
 
     }
 
@@ -47,6 +49,19 @@ public class SceneChanger : MonoBehaviour
             else if (currentscene > 1 && ct.keycollected) //If you are not in the hub or battle level then when you collide with this object you will go back to the hub
             {
                 SceneManager.LoadScene("hub");
+                //Depending on the level you are on, the levelcomplete will be set to true
+                if (hbl.getLevelName() == "Dungeon")
+                {
+                    lcm.levelcomplete["Dungeon"] = true;
+                }
+                else if (hbl.getLevelName() == "Desert")
+                {
+                    lcm.levelcomplete["Desert"] = true;
+                }
+                else if (hbl.getLevelName() == "Bar")
+                {
+                    lcm.levelcomplete["Bar"] = true;
+                }
             }
             else if (currentscene != 0 && !ct.keycollected)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 //This holds the level name which depends on the door you open in the hub world
 public class HubNameLevel : MonoBehaviour
 {
-    string levelname;
+    public string levelname;
     // Start is called before the first frame update
     void Start()
     {

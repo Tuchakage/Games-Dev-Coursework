@@ -412,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397315665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.7, y: 1.1274319, z: -30.11}
+  m_LocalPosition: {x: -9.7, y: -0.1, z: -30.11}
   m_LocalScale: {x: 2.2912, y: 2.2912, z: 2.2912}
   m_Children: []
   m_Father: {fileID: 0}
@@ -884,6 +884,7 @@ MonoBehaviour:
   levelname: 
   dung: {fileID: 0}
   desert: {fileID: 0}
+  bar: {fileID: 0}
 --- !u!114 &1707709829
 MonoBehaviour:
   m_ObjectHideFlags: 0

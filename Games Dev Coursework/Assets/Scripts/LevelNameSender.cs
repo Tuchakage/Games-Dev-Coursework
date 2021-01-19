@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//This is mainly for Game Developers and not the Players Just in case they want to test things out in only one scene without going through the hub
 //The Purpose of this Script is so that when the player touches the trigger this script will send the level name to the BattleLevelChanger Script
 public class LevelNameSender : MonoBehaviour
 {
