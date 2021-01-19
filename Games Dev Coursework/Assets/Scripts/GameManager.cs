@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Slider phealthslider;
     public GameObject player;
     public Slider spslider;
+    GameObject finallevelportal; // The Portal to the final level will be disabled and enabled with this variable 
+
     public string enemy;
     public int pHealth;
     public int pSP; //Players Stamina Points
@@ -113,8 +115,16 @@ public class GameManager : MonoBehaviour
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
         player = GameObject.FindGameObjectWithTag("Player");
-
-        if (currentscene == 1)
+        if (currentscene == 0) 
+        {
+            finallevelportal = GameObject.Find("FinalLevelPortal");
+            if (keys < 3) 
+            {
+                //Disable The Portal until you have 3 keys 
+                finallevelportal.SetActive(false);
+            }
+        }
+        else if (currentscene == 1)
         {
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();

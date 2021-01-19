@@ -55,6 +55,11 @@ public class SceneDoorSwitcher : MonoBehaviour
                 doorname = " ";
                 hbl.SetLevelName(doorname);
             }
+
+            if (doorname == "FinalLevel") 
+            {
+                hbl.SetLevelName(doorname);
+            }
         }
     }
 }

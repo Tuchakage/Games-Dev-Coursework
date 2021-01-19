@@ -45,6 +45,10 @@ public class SceneChanger : MonoBehaviour
                 {
                     SceneManager.LoadScene("bar");
                 }
+                else if (hbl.getLevelName() == "FinalLevel")
+                {
+                    SceneManager.LoadScene("final");
+                }
             }
             else if (currentscene > 1 && ct.keycollected) //If you are not in the hub or battle level then when you collide with this object you will go back to the hub
             {
