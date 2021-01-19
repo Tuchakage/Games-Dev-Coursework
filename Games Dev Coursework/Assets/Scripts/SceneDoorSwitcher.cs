@@ -33,9 +33,17 @@ public class SceneDoorSwitcher : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E)) 
             {
-                dunganim.SetTrigger("opendoor");
-                bardoorLanim.SetTrigger("opendoor");
-                bardoorRanim.SetTrigger("opendoor");
+                //If you enter the trigger and the door name is Dungeon then the dungeon door will open
+                if (doorname == "Dungeon") 
+                {
+                    dunganim.SetTrigger("opendoor");
+                }               
+                else if (doorname == "Bar") //If the Door name is bar then open the Bar doors
+                {
+                    bardoorLanim.SetTrigger("opendoor");
+                    bardoorRanim.SetTrigger("opendoor");
+                }
+
                 hbl.SetLevelName(doorname);
             }
             
