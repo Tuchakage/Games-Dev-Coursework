@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
                 finallevelportal.SetActive(false);
             }
         }
-        else if (currentscene == 1)
+        else if (currentscene == 1 || currentscene == 6)
         {
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
