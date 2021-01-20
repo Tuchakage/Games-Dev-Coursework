@@ -63,7 +63,6 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         if (currentscene != 1 && currentscene != 6)
         {
-            Debug.Log("Hey");
             yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
             pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
             //Clamping it so Camera cant do a full rotation

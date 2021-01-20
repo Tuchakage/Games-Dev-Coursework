@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //The Purpose Of This Script is so that the Player deals damage but the reason why it is separate is because i have made it an animation event
 public class PlayerDealsDamage : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class PlayerDealsDamage : MonoBehaviour
     EnemyHealth eh;
     BattleEnemyAI bea;
     PlayerStats ps;
+    int currentscene;
 
     int playerdamage;
     // Start is called before the first frame update
     void Start()
     {
+        //Sets Current Scene variable 
+        currentscene = SceneManager.GetActiveScene().buildIndex;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         eh = enemy.GetComponent<EnemyHealth>();
         bea = enemy.GetComponent<BattleEnemyAI>();
@@ -27,18 +31,22 @@ public class PlayerDealsDamage : MonoBehaviour
 
     public void PlayerDealDamage() 
     {
-        playerdamage = ps.stats["Attack"];
-        if (!bea.block)
+        if (currentscene != 1 && currentscene != 6) 
         {
-            //Enemy Takes Damage
-            eh.LoseHealth(playerdamage);
-            //Enemy Animation for when he gets hit plays
-            bea.eanim.SetTrigger("hit");
+            playerdamage = ps.stats["Attack"];
+            if (!bea.block)
+            {
+                //Enemy Takes Damage
+                eh.LoseHealth(playerdamage);
+                //Enemy Animation for when he gets hit plays
+                bea.eanim.SetTrigger("hit");
+            }
+            else
+            {
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(playerdamage * 30 / 100);
+            }
         }
-        else
-        {
-            //Damage To Enemy Reduced By 30%
-            eh.LoseHealth(playerdamage * 30 / 100);
-        }
+
     }
 }
