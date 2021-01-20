@@ -17,6 +17,7 @@ public class ButtonHandler : MonoBehaviour
     EnemyStats es;
     BattleEnemyAI bea;
     BattleLevelChanger blc;
+    PlayerDealsDamage pdd;
 
     GameObject player;
 
@@ -25,7 +26,6 @@ public class ButtonHandler : MonoBehaviour
     public GameObject fire;
     public GameObject enemy;
 
-    int playerdamage;
     bool attack = false;
     bool moveonce = false;
     public bool attackbuttonpressed = false;
@@ -64,6 +64,7 @@ public class ButtonHandler : MonoBehaviour
         //So we can get the Enemies Animator
         bea = enemy.GetComponent<BattleEnemyAI>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
+        pdd = GameObject.Find("Player").GetComponent<PlayerDealsDamage>();
 
         //If on the final boss battle then the target will be the enemy hit box
         if (currentscene == 6)
@@ -130,7 +131,6 @@ public class ButtonHandler : MonoBehaviour
     }
     public void attackButton() 
     {
-        playerdamage = ps.stats["Attack"];
         Debug.Log("Attack Button");
         attacktype = "Physical";
         attackbuttonpressed = true;
@@ -187,18 +187,8 @@ public class ButtonHandler : MonoBehaviour
 
             //Indicates that the Player has already attacked
             attack = true;
-            if (!bea.block)
-            {
-                //Enemy Takes Damage
-                eh.LoseHealth(playerdamage);
-                //Enemy Animation for when he gets hit plays
-                bea.eanim.SetTrigger("hit");
-            }
-            else 
-            {
-                //Damage To Enemy Reduced By 30%
-                eh.LoseHealth(playerdamage * 30 / 100);
-            }
+
+            //Player Damage Is Done In The PlayerDealsDamage script where it will be triggered by the attack animation as an animation event
 
         }
         else if (enemydistance < 3 && attack) // If the Player has finished his attack and is still near the Enemy, it will go back to its original spot

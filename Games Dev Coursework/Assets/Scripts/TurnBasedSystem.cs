@@ -164,7 +164,5 @@ public class TurnBasedSystem : MonoBehaviour
         {
             ea.Block();
         }
-
     }
-
 }
