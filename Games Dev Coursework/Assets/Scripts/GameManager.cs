@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (currentscene == 1)
+        if (currentscene == 1 || currentscene == 6)
         {
             //Updates The Health If In Battle Scene
             phealthslider.value = pHealth;

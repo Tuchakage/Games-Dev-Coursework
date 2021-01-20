@@ -30,7 +30,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         currentscene = SceneManager.GetActiveScene().buildIndex;
         //If not in Battle Scene then you can't use the cursor
-        if (currentscene != 1)
+        if (currentscene != 1 && currentscene !=6)
         {
             if (lockCursor)
             {
@@ -48,7 +48,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Update()
     {
         //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor
-        if (currentscene == 1) 
+        if (currentscene == 1 || currentscene == 6) 
         {
             if (lockCursor) 
             {
@@ -61,14 +61,13 @@ public class ThirdPersonCamera : MonoBehaviour
     // Update is called once per frame after all the other Update Methods
     void LateUpdate()
     {
-        if (currentscene != 1)
+        if (currentscene != 1 && currentscene != 6)
         {
+            Debug.Log("Hey");
             yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
             pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
             //Clamping it so Camera cant do a full rotation
             pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
-
-
 
             //Smoothing Camera Rotation
             currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
@@ -78,7 +77,7 @@ public class ThirdPersonCamera : MonoBehaviour
             //Makes the Camera look at the Target
             transform.position = target.position - transform.forward * dstfromTarget;
         }
-        else if (currentscene == 1 && !bh.attackbuttonpressed)
+        else if ((currentscene == 1 || currentscene == 6) && !bh.attackbuttonpressed) //When the player hasn't pressed anything then the camera will just rotate
         {
             if (!backtopos) 
             {
@@ -89,15 +88,11 @@ public class ThirdPersonCamera : MonoBehaviour
             this.transform.LookAt(target);
             transform.Translate(Vector3.right * Time.deltaTime * rotationspeed);
         }
-        else if (currentscene == 1 && bh.attackbuttonpressed) 
+        else if ((currentscene == 1 || currentscene == 6) && bh.attackbuttonpressed) //Camera will focus on the player once the attack button is pressed
         {
             this.transform.position = new Vector3(12.1f, 4.61f, 31.79f);
             this.transform.eulerAngles = new Vector3(24, 0, 0);
             transform.position = attackcam.position - transform.forward * dstfromTarget;
         }
-
-
-
-
     }
 }

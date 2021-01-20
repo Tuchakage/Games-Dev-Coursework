@@ -10,7 +10,7 @@ public class EnemyBattleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Instantiate(enemyspawners[0], espawnpoint.transform.position, Quaternion.identity);
+        Instantiate(enemyspawners[1], espawnpoint.transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame

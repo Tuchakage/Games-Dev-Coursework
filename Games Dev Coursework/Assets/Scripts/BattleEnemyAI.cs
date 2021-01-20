@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BattleEnemyAI : MonoBehaviour
@@ -19,6 +20,7 @@ public class BattleEnemyAI : MonoBehaviour
     Transform originalspot;
     public GameObject fire;
     GameObject player;
+    GameObject enemyhitbox;
 
     float enemydist;
     public float originalspotdist;
@@ -28,12 +30,15 @@ public class BattleEnemyAI : MonoBehaviour
     public int enemysp;
     bool eskillused;
     public float eskilltimer = 5;
-
+    int currentscene;
     //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
+    public bool block = false;
     // Start is called before the first frame update
     void Start()
     {
+        //Sets Current Scene variable 
+        currentscene = SceneManager.GetActiveScene().buildIndex;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         na = GetComponent<NavMeshAgent>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
@@ -45,13 +50,23 @@ public class BattleEnemyAI : MonoBehaviour
         eanim = GetComponent<Animator>();
         target = player.transform;
         originalspot = GameObject.Find("EnemyOriginalPosition").GetComponent<Transform>();
+        //Enemy Hit box will be where the Enemy also attacks from
+        enemyhitbox = gameObject.transform.Find("EnemyHitbox").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Get the dsitance between the player and the enemy
-        enemydist = Vector3.Distance(target.transform.position, transform.position);
+        //Get the distance between the player and the enemy (If in normal battle scene it will just get the enemies position, in in the final boss scene then it will get the boss enemyhitbox pos)
+        if (currentscene == 1)
+        {
+            enemydist = Vector3.Distance(target.transform.position, transform.position);
+        }
+        else 
+        {
+            enemydist = Vector3.Distance(target.transform.position, enemyhitbox.transform.position);
+        }
+        
         originalspotdist = Vector3.Distance(originalspot.transform.position, transform.position);
 
         if (eskillused)
@@ -73,6 +88,15 @@ public class BattleEnemyAI : MonoBehaviour
         if (!attack) 
         {
             gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+        if (block)
+        {
+            eanim.SetBool("block", true);
+        }
+        else
+        {
+           eanim.SetBool("block", false);
         }
     }
 
@@ -137,6 +161,7 @@ public class BattleEnemyAI : MonoBehaviour
         {
             //Enemy will move towards the player
             na.isStopped = false;
+            eanim.SetBool("iswalking", true);
         }
 
     }
@@ -168,5 +193,15 @@ public class BattleEnemyAI : MonoBehaviour
                 attack = true;
             }        
         }
+    }
+
+    public void Block() 
+    {
+        block = true;
+        Debug.Log("block");
+        //End the enemy turn
+        tbs.enemyturn = false;
+        //Start the Players Turn
+        tbs.PlayerTurn();
     }
 }

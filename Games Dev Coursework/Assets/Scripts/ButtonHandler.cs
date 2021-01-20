@@ -31,6 +31,7 @@ public class ButtonHandler : MonoBehaviour
     public bool attackbuttonpressed = false;
     public string attacktype;
     public bool block = false; //Is The Player Blocking?
+    int currentscene;
 
     //Skills
     int firedamage;
@@ -47,7 +48,10 @@ public class ButtonHandler : MonoBehaviour
 
     private void Start()
     {
-        eh = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>();
+        //Sets Current Scene variable 
+        currentscene = SceneManager.GetActiveScene().buildIndex;
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        eh = enemy.GetComponent<EnemyHealth>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
@@ -58,8 +62,18 @@ public class ButtonHandler : MonoBehaviour
         tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
         es = enemy.GetComponent<EnemyStats>();
         //So we can get the Enemies Animator
-        bea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
+        bea = enemy.GetComponent<BattleEnemyAI>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
+
+        //If on the final boss battle then the target will be the enemy hit box
+        if (currentscene == 6)
+        {
+            target = GameObject.Find("EnemyHitbox").GetComponent<Transform>();
+        }
+        else //If just a normal battle scene then the target will be the enemy
+        {
+            target = enemy.transform;
+        }
     }
 
     private void Update()
@@ -170,12 +184,22 @@ public class ButtonHandler : MonoBehaviour
             na.isStopped = true;
             //Attack Animation Of The Player Will Play
             anim.SetTrigger("attack");
-            //Enemy Animation for when he gets hit plays
-            bea.eanim.SetTrigger("hit");
+
             //Indicates that the Player has already attacked
             attack = true;
-            //Enemy Takes Damage
-            eh.LoseHealth(playerdamage);
+            if (!bea.block)
+            {
+                //Enemy Takes Damage
+                eh.LoseHealth(playerdamage);
+                //Enemy Animation for when he gets hit plays
+                bea.eanim.SetTrigger("hit");
+            }
+            else 
+            {
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(playerdamage * 30 / 100);
+            }
+
         }
         else if (enemydistance < 3 && attack) // If the Player has finished his attack and is still near the Enemy, it will go back to its original spot
         {
@@ -214,17 +238,26 @@ public class ButtonHandler : MonoBehaviour
             gm.pSP -= 5;
 
             attacktype = "Fire";
+            if (!bea.block)
+            {
+                //Check the enemy weakness
+                if (es.Weakness == attacktype)
+                {
+                    //Enemy Takes Double Damage
+                    eh.LoseHealth(firedamage * 2);
+                }
+                else
+                {
+                    //Enemy Takes Damage
+                    eh.LoseHealth(firedamage);
+                }
+            }
+            else
+            {
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(firedamage * 30 / 100);
+            }
 
-            if (es.Weakness == attacktype)
-            {
-                //Enemy Takes Double Damage
-                eh.LoseHealth(firedamage * 2);
-            }
-            else 
-            {
-                //Enemy Takes Damage
-                eh.LoseHealth(firedamage);
-            }
             //Enemy Animation for when he gets hit plays
             bea.eanim.SetTrigger("hit");
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);

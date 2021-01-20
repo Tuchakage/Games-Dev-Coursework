@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TurnBasedSystem : MonoBehaviour
 {
@@ -10,23 +11,29 @@ public class TurnBasedSystem : MonoBehaviour
     public GameObject sk; // Skills Menu
     public TMP_Text advtext;
 
-    BattleEnemyAI ea;
+    BattleEnemyAI ea; //This is where the Enemies moveset is 
     EnemyStats es;
     PlayerStats ps;
     StartBattle sb;
     Advantage adv;
     ButtonHandler bh;
 
+    int currentscene;
     int random;
     int playerspeed;
     int enemyspeed;
     public float texttimer = 3;
     public bool textused = false;
     public bool enemyturn = false;
-    bool choseanumber = false;
+    bool choseanumber = false; //Makes it so that everytime the function is called the number will change
+
+    public int attackorder = 1; //The Final Boss will not randomly choose a move, it will go in a sequence
+
     // Start is called before the first frame update
     void Start()
     {
+        //Sets Current Scene variable 
+        currentscene = SceneManager.GetActiveScene().buildIndex;
         ea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
         es = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
@@ -70,9 +77,13 @@ public class TurnBasedSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyturn)
+        if (enemyturn && currentscene == 1)
         {
             EnemyTurn();
+        }
+        else if (enemyturn && currentscene == 6) 
+        {
+            BossTurn();
         }
 
         if (textused) 
@@ -98,6 +109,17 @@ public class TurnBasedSystem : MonoBehaviour
         sk.SetActive(false);
         Debug.Log("My Turn");
         choseanumber = false;
+        if (currentscene == 6) 
+        {
+            if (attackorder == 1)
+            {
+                attackorder = 2;
+            }
+            else if (attackorder == 2) 
+            {
+                attackorder = 1;
+            }
+        }
     }
 
     public void EnemyTurn() 
@@ -127,5 +149,22 @@ public class TurnBasedSystem : MonoBehaviour
 
     }
 
+    public void BossTurn() 
+    {
+        //When Final Boss Turn again then it will no longer be blocking
+        ea.block = false;
+        pui.SetActive(false);
+        sk.SetActive(false);
+
+        if (attackorder == 1)
+        {
+            ea.EnemyAttack();
+        }
+        else if (attackorder == 2) 
+        {
+            ea.Block();
+        }
+
+    }
 
 }
