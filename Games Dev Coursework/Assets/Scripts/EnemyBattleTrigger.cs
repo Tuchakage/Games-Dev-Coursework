@@ -43,11 +43,7 @@ public class EnemyBattleTrigger : MonoBehaviour
             {
                 SceneManager.LoadScene("battle test");
             }
-            
-
         }
-
-
     }
 
 

@@ -31,7 +31,7 @@ public class PlayerDealsDamage : MonoBehaviour
 
     public void PlayerDealDamage() 
     {
-        if (currentscene != 1 && currentscene != 6) 
+        if (currentscene == 1 || currentscene == 6) 
         {
             playerdamage = ps.stats["Attack"];
             if (!bea.block)

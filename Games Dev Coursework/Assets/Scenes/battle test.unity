@@ -8431,7 +8431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyspawners:
   - {fileID: 6145313510214567974, guid: 0b522019372392a4ca41712529b8033f, type: 3}
-  - {fileID: 8977858501363018650, guid: c65b7d0743c3a9344b661cde62bd5e67, type: 3}
+  - {fileID: 8847500624796691050, guid: 5a38158c46411b74c9e1a27342ed987a, type: 3}
   espawnpoint: {fileID: 1132635166}
 --- !u!4 &397825939
 Transform:
@@ -28428,6 +28428,7 @@ MonoBehaviour:
   texttimer: 3
   textused: 0
   enemyturn: 0
+  attackorder: 1
 --- !u!4 &1031166401
 Transform:
   m_ObjectHideFlags: 0
