@@ -147,7 +147,7 @@ public class ButtonHandler : MonoBehaviour
         skillmenu = true;
     }
 
-    public void escapeButton() 
+    public void escapeButton() //Can be used for the Retry Button As well
     {
         Debug.Log("Escape Button");
         gm.battleend = true;
@@ -165,8 +165,14 @@ public class ButtonHandler : MonoBehaviour
         {
             SceneManager.LoadScene("bar");
         }
-        
 
+        if (gm.pHealth <= 0) 
+        {
+            if (blc.GetLevelName() == "Final") 
+            {
+                SceneManager.LoadScene("final");
+            }
+        }
     }
 
     public void PlayerAttack() 

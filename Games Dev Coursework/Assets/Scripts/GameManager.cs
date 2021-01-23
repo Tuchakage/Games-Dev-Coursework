@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Slider spslider;
     GameObject finallevelportal; // The Portal to the final level will be disabled and enabled with this variable 
+    public GameObject failscreen;
 
     public string enemy;
     public int pHealth;
@@ -72,6 +73,13 @@ public class GameManager : MonoBehaviour
             //Updates The Health If In Battle Scene
             phealthslider.value = pHealth;
             spslider.value = pSP;
+
+            //When The Player Health is 0 Then the Object will be destroyed
+            if (pHealth <= 0)
+            {
+                failscreen.SetActive(true);
+                Destroy(player);
+            }
         }
         else
         {
@@ -83,11 +91,7 @@ public class GameManager : MonoBehaviour
             
         }
         
-        //When The Player Health is 0 Then the Object will be destroyed
-        if (pHealth <= 0) 
-        {
-            Destroy(player);
-        }
+
 
     }
 
@@ -130,6 +134,8 @@ public class GameManager : MonoBehaviour
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
             spslider = GameObject.Find("PlayerSP").GetComponent<Slider>();
             spslider.maxValue = ps.stats["SP"];
+            failscreen = GameObject.Find("FailPanel");
+            failscreen.SetActive(false);
         }
 
         if (battleend) 

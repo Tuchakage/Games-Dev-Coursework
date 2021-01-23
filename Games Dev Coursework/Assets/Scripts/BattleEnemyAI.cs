@@ -50,8 +50,12 @@ public class BattleEnemyAI : MonoBehaviour
         eanim = GetComponent<Animator>();
         target = player.transform;
         originalspot = GameObject.Find("EnemyOriginalPosition").GetComponent<Transform>();
-        //Enemy Hit box will be where the Enemy also attacks from
-        enemyhitbox = gameObject.transform.Find("EnemyHitbox").gameObject;
+
+        if (currentscene == 6) 
+        {
+            //Enemy Hit box will be where the Enemy also attacks from
+            enemyhitbox = gameObject.transform.Find("EnemyHitbox").gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -90,14 +94,19 @@ public class BattleEnemyAI : MonoBehaviour
             gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
-        if (block)
+        //If in the final boss battle then it will look for the Enemy animation state called block
+        if (currentscene == 6) 
         {
-            eanim.SetBool("block", true);
+            if (block)
+            {
+                eanim.SetBool("block", true);
+            }
+            else
+            {
+                eanim.SetBool("block", false);
+            }
         }
-        else
-        {
-           eanim.SetBool("block", false);
-        }
+
     }
 
     public void EnemyAttack()
