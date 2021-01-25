@@ -34,7 +34,6 @@ public class ButtonHandler : MonoBehaviour
     int currentscene;
 
     //Skills
-    int firedamage;
     bool skillmenu = false;
     float skilltimer;
     bool skillused = false;
@@ -144,6 +143,14 @@ public class ButtonHandler : MonoBehaviour
         //Whenever the button is pressed then disable all the other Buttons
         pui.SetActive(false);
         sui.SetActive(true);
+
+        //If tht Thunder Skill hasn't been unlocked then the player can not see the Thunder Skill
+        if (!sk.thunderunlock) 
+        {
+            GameObject thunder = GameObject.Find("Thunder");
+            thunder.SetActive(false);
+        }
+
         skillmenu = true;
     }
 
@@ -229,7 +236,7 @@ public class ButtonHandler : MonoBehaviour
         if (gm.pSP > 0) 
         {
             anim.SetTrigger("cast");
-            firedamage = sk.skills["Fire"];
+            int firedamage = sk.skills["Fire"];
             //You lose SP When doing a Skill
             gm.pSP -= 5;
 
@@ -265,5 +272,46 @@ public class ButtonHandler : MonoBehaviour
 
         }
      
+    }
+
+    public void ThunderSkill()
+    {
+        if (gm.pSP > 0)
+        {
+            anim.SetTrigger("cast");
+            int electricdamage = sk.skills["Thunder"];
+            //You lose SP When doing a Skill
+            gm.pSP -= 5;
+
+            attacktype = "Electric";
+            if (!bea.block)
+            {
+                //Check the enemy weakness
+                if (es.Weakness == attacktype)
+                {
+                    //Enemy Takes Double Damage
+                    eh.LoseHealth(electricdamage * 2);
+                }
+                else
+                {
+                    //Enemy Takes Damage
+                    eh.LoseHealth(electricdamage);
+                }
+            }
+            else
+            {
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(electricdamage * 30 / 100);
+            }
+
+            //Enemy Animation for when he gets hit plays
+            bea.eanim.SetTrigger("hit");
+            //GameObject electricprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
+            skillused = true;
+            skilltimer = 5;
+            sui.SetActive(false);
+            skillmenu = false;
+            //Destroy(electricprefab, 5);
+        }
     }
 }

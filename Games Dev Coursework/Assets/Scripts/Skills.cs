@@ -5,6 +5,7 @@ using UnityEngine;
 public class Skills : MonoBehaviour
 {
     public Dictionary<string, int> skills = null;
+    public bool thunderunlock = false; //The player can use this skill once it has been unlocked
     public int firedmg = 15;
     public int elecdmg = 20;
     //public string attacktype;
@@ -13,12 +14,18 @@ public class Skills : MonoBehaviour
     {
         skills = new Dictionary<string, int>();
         skills.Add("Fire", firedmg);
-        skills.Add("Lightning", elecdmg);
+        skills.Add("Thunder", elecdmg);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public bool UnlockThunderSkill() 
+    {
+        thunderunlock = true;
+        return thunderunlock;
     }
 }

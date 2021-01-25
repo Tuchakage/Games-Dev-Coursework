@@ -9936,6 +9936,7 @@ MonoBehaviour:
   phealthslider: {fileID: 0}
   player: {fileID: 919132149293977172}
   spslider: {fileID: 0}
+  failscreen: {fileID: 0}
   enemy: 
   pHealth: 0
   pSP: 0
@@ -9983,6 +9984,7 @@ MonoBehaviour:
   levelname: 
   dung: {fileID: 0}
   desert: {fileID: 0}
+  bar: {fileID: 0}
 --- !u!114 &1540146532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10007,7 +10009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf2980a8ba419645a4fafbbf8b78f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thunderunlock: 0
   firedmg: 15
+  elecdmg: 20
 --- !u!114 &1540146534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14842,6 +14846,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: chesttype
+      value: key
+      objectReference: {fileID: 0}
     - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
       propertyPath: m_RootOrder
       value: 3

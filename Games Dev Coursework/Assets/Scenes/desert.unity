@@ -253,6 +253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: chesttype
+      value: key
+      objectReference: {fileID: 0}
     - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -322,6 +326,67 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1001 &298776868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: chesttype
+      value: skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 67.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444010176, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844444324844, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: m_Name
+      value: Thunder Chest Unlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
 --- !u!1 &397315665
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cb13f32ecad7f45ad587973a8a791b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelname: 
 --- !u!114 &1707709830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf2980a8ba419645a4fafbbf8b78f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thunderunlock: 0
   firedmg: 15
+  elecdmg: 20
 --- !u!114 &1707709832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +1037,7 @@ MonoBehaviour:
   phealthslider: {fileID: 0}
   player: {fileID: 0}
   spslider: {fileID: 0}
+  failscreen: {fileID: 0}
   enemy: 
   pHealth: 0
   pSP: 0

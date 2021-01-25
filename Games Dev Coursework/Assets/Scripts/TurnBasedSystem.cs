@@ -143,7 +143,7 @@ public class TurnBasedSystem : MonoBehaviour
         else if (random == 2 && ea.enemysp > 0) 
         {
             ea.Fire();
-            Debug.Log("FIRE ATTACK");
+            //Debug.Log("FIRE ATTACK");
         }
 
 

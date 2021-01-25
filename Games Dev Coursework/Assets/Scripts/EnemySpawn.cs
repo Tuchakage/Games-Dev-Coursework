@@ -15,7 +15,7 @@ public class EnemySpawn : MonoBehaviour
     public int maxenemies;
     int maxspawnpoints;
     int currentscene;
-    bool firstspawn = false; //This will make the enemies spawn in at first at their spawnpoints, only to be done once
+    public bool firstspawn = false; //This will make the enemies spawn in at first at their spawnpoints, only to be done once
     GameManager gm;
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,14 @@ public class EnemySpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (currentscene != 1) 
+        if (currentscene != 1)
         {
-            
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 // If anything is null in the enemies gameObject then this code will run which will remove that null gameObject from the list this should be checked throughout the game
-                if (enemies[i] == null) 
-                {         
+                if (enemies[i] == null)
+                {
                     enemies.RemoveAt(i);
                 }
                 //enemylastpos[i] = enemies[i].transform.position;
@@ -59,14 +59,14 @@ public class EnemySpawn : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentscene != 0) 
+        if (currentscene != 0)
         {
             FirstTimeSpawn();
         }
-        
+
 
     }
-    public void FirstTimeSpawn() 
+    public void FirstTimeSpawn()
     {
         if (!firstspawn)
         {
@@ -111,7 +111,7 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies() 
+    public void SpawnEnemies()
     {
         for (int i = 0; i < maxenemies; i++)
         {
@@ -130,6 +130,20 @@ public class EnemySpawn : MonoBehaviour
             //}
             Debug.Log("SpawnEnemiesToLastPos() Called");
 
+        }
+    }
+
+    public bool resetFirstSpawn()
+    {
+        firstspawn = false;
+        return firstspawn;
+    }
+
+    public void ResetList() 
+    {
+        for (int i = 0; i < spawnpoints.Count; i++)
+        {
+            spawnpoints.Clear();
         }
     }
 

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             //If Not In Battle Scene then it will keep record of the players last position
             if (!battleend) 
             {
-                playerlastpos = player.transform.position;
+                //playerlastpos = player.transform.position;
             }
             
         }
