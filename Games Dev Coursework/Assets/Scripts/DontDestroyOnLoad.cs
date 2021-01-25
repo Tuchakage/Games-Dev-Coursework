@@ -53,7 +53,7 @@ public class DontDestroyOnLoad : MonoBehaviour
         if (currentscene == 0) //Reset the First Spawn Variable and Clear everything from The spawnpoints list so that enemies can spawn back in
         {
             es.resetFirstSpawn();
-            es.ResetList();
+            es.ResetSpawnList();
             Destroy(this.gameObject);           
         }
 

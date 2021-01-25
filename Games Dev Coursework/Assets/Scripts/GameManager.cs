@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     int currentscene;
     //To Indicate if a battle has just ended
     public bool battleend = false;
+    public bool hasplayerlost = false; //To Indicate whether the Players Health is 0 Or Less
     public static GameManager Instance
     {
         get
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
             if (pHealth <= 0)
             {
                 failscreen.SetActive(true);
+                hasplayerlost = true;
                 Destroy(player);
             }
         }
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
             //If Not In Battle Scene then it will keep record of the players last position
             if (!battleend) 
             {
-                //playerlastpos = player.transform.position;
+                playerlastpos = player.transform.position;
             }
             
         }
@@ -138,17 +140,24 @@ public class GameManager : MonoBehaviour
             failscreen.SetActive(false);
         }
 
-        if (battleend) 
+        if (battleend && !hasplayerlost)
         {
             //Set The Players Position to where he was before the battle
             player.transform.position = playerlastpos;
-            Debug.Log("Player Last Position " +player.transform.position);
+            Debug.Log("Player Last Position " + player.transform.position);
             Destroy(destroyenemy);
             //Reduce the max Amount Of Enemies spawned by 1
             espawn.maxenemies -= 1;
             espawn.SpawnEnemies();
             battleend = false;
             Debug.Log("Battle End Has Been Set To " + battleend);
+        }
+        else if (battleend && hasplayerlost) //If The Player loses then it means the battle has ended 
+        {
+            //Respawn all the enemies including the one you just battled
+            espawn.FirstTimeSpawn();
+            battleend = false;
+            hasplayerlost = false;
         }
 
 

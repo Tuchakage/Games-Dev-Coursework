@@ -18,6 +18,7 @@ public class ButtonHandler : MonoBehaviour
     BattleEnemyAI bea;
     BattleLevelChanger blc;
     PlayerDealsDamage pdd;
+    EnemySpawn espawn;
 
     GameObject player;
 
@@ -64,6 +65,7 @@ public class ButtonHandler : MonoBehaviour
         bea = enemy.GetComponent<BattleEnemyAI>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
         pdd = GameObject.Find("Player").GetComponent<PlayerDealsDamage>();
+        espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
 
         //If on the final boss battle then the target will be the enemy hit box
         if (currentscene == 6)
@@ -175,6 +177,13 @@ public class ButtonHandler : MonoBehaviour
 
         if (gm.pHealth <= 0) 
         {
+            //Reset Health and SP when you press the Retry button
+            gm.pHealth = 100;
+            gm.pSP = 50;
+            //Reset the First Spawn Variable in Enemy Spawn
+            espawn.resetFirstSpawn();
+            //Delete everything currently in the Spawnpoints list 
+            espawn.ResetSpawnList();
             if (blc.GetLevelName() == "Final") 
             {
                 SceneManager.LoadScene("final");

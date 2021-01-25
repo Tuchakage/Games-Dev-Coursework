@@ -103,8 +103,8 @@ public class EnemySpawn : MonoBehaviour
                 //The Enemy GameObject Will be added to the enemy list
                 enemies.Add(enemy);
                 //If Any GameObject is null then it will destroy the last position of that gameObject, this should be done every scene load otherwise it will delete everything in the lastpos list
-                enemylastpos.Add(enemies[i].transform.position);
-                see.Add(enemies[i].gameObject.name);
+                //enemylastpos.Add(enemies[i].transform.position);
+                //see.Add(enemies[i].gameObject.name);
             }
             Debug.Log("First Time Spawning Enemies");
             firstspawn = true;
@@ -139,7 +139,7 @@ public class EnemySpawn : MonoBehaviour
         return firstspawn;
     }
 
-    public void ResetList() 
+    public void ResetSpawnList() 
     {
         for (int i = 0; i < spawnpoints.Count; i++)
         {
