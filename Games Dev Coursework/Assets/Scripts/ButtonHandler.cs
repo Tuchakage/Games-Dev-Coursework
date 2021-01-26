@@ -38,6 +38,7 @@ public class ButtonHandler : MonoBehaviour
     bool skillmenu = false;
     float skilltimer;
     bool skillused = false;
+    bool checkfornewmoves = false; //When you press the Skill button it will only look for the Thunder Skill once
 
     public Transform target;
     public Transform originalspot;
@@ -147,10 +148,12 @@ public class ButtonHandler : MonoBehaviour
         sui.SetActive(true);
 
         //If tht Thunder Skill hasn't been unlocked then the player can not see the Thunder Skill
-        if (!sk.thunderunlock) 
+        if (!sk.thunderunlock && !checkfornewmoves) 
         {
             GameObject thunder = GameObject.Find("Thunder");
             thunder.SetActive(false);
+            //In this recent battle we have already checked for any new moves once
+            checkfornewmoves = true;
         }
 
         skillmenu = true;
