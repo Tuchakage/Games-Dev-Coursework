@@ -567,7 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ehp: 200
   esp: 150
-  Weakness: 
+  Weakness: Electric
 --- !u!114 &8849279514690128076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +586,7 @@ MonoBehaviour:
   enemysp: 0
   eskilltimer: 5
   moveonce: 0
+  block: 0
 --- !u!195 &8849279514690128077
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\BattleLevelChanger.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\BossCharge.cs" />
     <Compile Include="Assets\Scripts\LevelCompleteManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Assets\Scripts\EnemyBattleSpawner.cs" />
     <Compile Include="Assets\Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
-    <Compile Include="Assets\Scripts\BossCharge.cs" />
+    <Compile Include="Assets\Scripts\RestoreHealth.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

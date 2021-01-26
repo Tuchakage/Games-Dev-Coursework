@@ -21774,6 +21774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918283140}
+  - component: {fileID: 918283141}
   m_Layer: 0
   m_Name: Spawnpoints
   m_TagString: Untagged
@@ -21796,6 +21797,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &918283141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918283139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40159b261a6195843a76e7e005642d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &930849647
 GameObject:
   m_ObjectHideFlags: 0
@@ -21962,6 +21975,7 @@ MonoBehaviour:
   enemylastpos: []
   see: []
   maxenemies: 0
+  firstspawn: 0
 --- !u!114 &937062957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22024,6 +22038,7 @@ MonoBehaviour:
   keys: 0
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
+  hasplayerlost: 0
 --- !u!4 &937062961
 Transform:
   m_ObjectHideFlags: 0

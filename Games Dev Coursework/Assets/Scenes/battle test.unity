@@ -28562,8 +28562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f434de4316e8d84d8ac4045a8462851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pui: {fileID: 0}
-  sk: {fileID: 0}
+  pui: {fileID: 286512625}
+  sk: {fileID: 1738925539}
   advtext: {fileID: 1271075173}
   texttimer: 3
   textused: 0
@@ -31904,7 +31904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462284436826806953, guid: dda43fcf002ad854cb9c2d98dcc6ecb9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dda43fcf002ad854cb9c2d98dcc6ecb9, type: 3}
