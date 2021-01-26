@@ -254,6 +254,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: chestid
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
       propertyPath: chesttype
       value: key
       objectReference: {fileID: 0}
@@ -333,6 +337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
+      propertyPath: chestid
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2547317844413525891, guid: 1d26a44fe3b91774fa8e6aff43f6e935, type: 3}
       propertyPath: chesttype
       value: skill
@@ -927,6 +935,7 @@ GameObject:
   - component: {fileID: 1707709830}
   - component: {fileID: 1707709829}
   - component: {fileID: 1707709828}
+  - component: {fileID: 1707709836}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -982,6 +991,7 @@ MonoBehaviour:
   enemylastpos: []
   see: []
   maxenemies: 0
+  firstspawn: 0
 --- !u!114 &1707709831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1054,7 @@ MonoBehaviour:
   keys: 0
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
+  hasplayerlost: 0
 --- !u!4 &1707709835
 Transform:
   m_ObjectHideFlags: 0
@@ -1058,6 +1069,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707709836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707709827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72d8b7115109834f83572c37c9c6ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708887567
 GameObject:
   m_ObjectHideFlags: 0
