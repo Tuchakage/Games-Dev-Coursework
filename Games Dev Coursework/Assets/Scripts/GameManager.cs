@@ -120,6 +120,12 @@ public class GameManager : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().name;
 
+        //Destroy The GameManager when in the level complete scene which means we can restart the game
+        if (currentscene == "winning screen")
+        {
+            Destroy(this.gameObject);
+        }
+
         player = GameObject.FindGameObjectWithTag("Player");
         if (currentscene == "hub") 
         {
@@ -159,8 +165,6 @@ public class GameManager : MonoBehaviour
             battleend = false;
             hasplayerlost = false;
         }
-
-
 
     }
 
