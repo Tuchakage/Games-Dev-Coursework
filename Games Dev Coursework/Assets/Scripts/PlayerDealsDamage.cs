@@ -9,14 +9,14 @@ public class PlayerDealsDamage : MonoBehaviour
     EnemyHealth eh;
     BattleEnemyAI bea;
     PlayerStats ps;
-    int currentscene;
+    string currentscene;
 
     int playerdamage;
     // Start is called before the first frame update
     void Start()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         eh = enemy.GetComponent<EnemyHealth>();
         bea = enemy.GetComponent<BattleEnemyAI>();
@@ -31,7 +31,7 @@ public class PlayerDealsDamage : MonoBehaviour
 
     public void PlayerDealDamage() 
     {
-        if (currentscene == 1 || currentscene == 6) 
+        if (currentscene == "battle test" || currentscene == "finalbattle") 
         {
             playerdamage = ps.stats["Attack"];
             if (!bea.block)

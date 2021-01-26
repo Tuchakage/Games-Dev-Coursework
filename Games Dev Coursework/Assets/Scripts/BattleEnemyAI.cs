@@ -30,7 +30,7 @@ public class BattleEnemyAI : MonoBehaviour
     public int enemysp;
     bool eskillused;
     public float eskilltimer = 5;
-    int currentscene;
+    string currentscene;
     //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
     public bool block = false;
@@ -38,7 +38,7 @@ public class BattleEnemyAI : MonoBehaviour
     void Start()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         na = GetComponent<NavMeshAgent>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
@@ -51,7 +51,7 @@ public class BattleEnemyAI : MonoBehaviour
         target = player.transform;
         originalspot = GameObject.Find("EnemyOriginalPosition").GetComponent<Transform>();
 
-        if (currentscene == 6) 
+        if (currentscene == "finalbattle") 
         {
             //Enemy Hit box will be where the Enemy also attacks from
             enemyhitbox = gameObject.transform.Find("EnemyHitbox").gameObject;
@@ -62,7 +62,7 @@ public class BattleEnemyAI : MonoBehaviour
     void Update()
     {
         //Get the distance between the player and the enemy (If in normal battle scene it will just get the enemies position, in in the final boss scene then it will get the boss enemyhitbox pos)
-        if (currentscene == 1)
+        if (currentscene == "battle test")
         {
             enemydist = Vector3.Distance(target.transform.position, transform.position);
         }
@@ -95,7 +95,7 @@ public class BattleEnemyAI : MonoBehaviour
         }
 
         //If in the final boss battle then it will look for the Enemy animation state called block
-        if (currentscene == 6) 
+        if (currentscene == "finalboss") 
         {
             if (block)
             {

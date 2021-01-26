@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     //Gets The Players last position
     public Vector3 playerlastpos;
-    int currentscene;
+    string currentscene;
     //To Indicate if a battle has just ended
     public bool battleend = false;
     public bool hasplayerlost = false; //To Indicate whether the Players Health is 0 Or Less
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (currentscene == 1 || currentscene == 6)
+        if (currentscene == "battle test" || currentscene == "finalbattle")
         {
             //Updates The Health If In Battle Scene
             phealthslider.value = pHealth;
@@ -118,10 +118,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("OnSceneLoaded: " + scene.name);
         //Debug.Log(mode);
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
 
         player = GameObject.FindGameObjectWithTag("Player");
-        if (currentscene == 0) 
+        if (currentscene == "hub") 
         {
             finallevelportal = GameObject.Find("FinalLevelPortal");
             if (keys < 3) 
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
                 finallevelportal.SetActive(false);
             }
         }
-        else if (currentscene == 1 || currentscene == 6)
+        else if (currentscene == "battle test" || currentscene == "finalbattle")
         {
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();

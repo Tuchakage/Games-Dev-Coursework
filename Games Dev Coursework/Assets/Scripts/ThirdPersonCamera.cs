@@ -23,14 +23,14 @@ public class ThirdPersonCamera : MonoBehaviour
     private Vector3 rotationSmoothVelocity;
     private Vector3 currentRotation;
 
-    int currentscene;
+    string currentscene;
 
 
     void Start() 
     {
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         //If not in Battle Scene then you can't use the cursor
-        if (currentscene != 1 && currentscene !=6)
+        if (currentscene != "battle test" && currentscene != "finalbattle")
         {
             if (lockCursor)
             {
@@ -48,7 +48,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Update()
     {
         //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor
-        if (currentscene == 1 || currentscene == 6) 
+        if (currentscene == "battle test" || currentscene == "finalbattle") 
         {
             if (lockCursor) 
             {
@@ -61,7 +61,7 @@ public class ThirdPersonCamera : MonoBehaviour
     // Update is called once per frame after all the other Update Methods
     void LateUpdate()
     {
-        if (currentscene != 1 && currentscene != 6)
+        if (currentscene != "battle test" && currentscene != "finalbattle")
         {
             yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
             pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -76,7 +76,7 @@ public class ThirdPersonCamera : MonoBehaviour
             //Makes the Camera look at the Target
             transform.position = target.position - transform.forward * dstfromTarget;
         }
-        else if ((currentscene == 1 || currentscene == 6) && !bh.attackbuttonpressed) //When the player hasn't pressed anything then the camera will just rotate
+        else if ((currentscene == "battle test" || currentscene == "finalbattle") && !bh.attackbuttonpressed) //When the player hasn't pressed anything then the camera will just rotate
         {
             if (!backtopos) 
             {
@@ -87,7 +87,7 @@ public class ThirdPersonCamera : MonoBehaviour
             this.transform.LookAt(target);
             transform.Translate(Vector3.right * Time.deltaTime * rotationspeed);
         }
-        else if ((currentscene == 1 || currentscene == 6) && bh.attackbuttonpressed) //Camera will focus on the player once the attack button is pressed
+        else if ((currentscene == "battle test" || currentscene == "finalbattle") && bh.attackbuttonpressed) //Camera will focus on the player once the attack button is pressed
         {
             this.transform.position = new Vector3(12.1f, 4.61f, 31.79f);
             this.transform.eulerAngles = new Vector3(24, 0, 0);

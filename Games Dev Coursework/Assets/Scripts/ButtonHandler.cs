@@ -32,7 +32,7 @@ public class ButtonHandler : MonoBehaviour
     public bool attackbuttonpressed = false;
     public string attacktype;
     public bool block = false; //Is The Player Blocking?
-    int currentscene;
+    string currentscene;
 
     //Skills
     bool skillmenu = false;
@@ -50,7 +50,7 @@ public class ButtonHandler : MonoBehaviour
     private void Start()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         eh = enemy.GetComponent<EnemyHealth>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
@@ -69,7 +69,7 @@ public class ButtonHandler : MonoBehaviour
         espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
 
         //If on the final boss battle then the target will be the enemy hit box
-        if (currentscene == 6)
+        if (currentscene == "finalbattle")
         {
             target = GameObject.Find("EnemyHitbox").GetComponent<Transform>();
         }

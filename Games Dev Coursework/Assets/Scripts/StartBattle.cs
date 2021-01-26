@@ -9,14 +9,14 @@ public class StartBattle : MonoBehaviour
     GameManager gm;
     Advantage adv;
 
-    int currentscene;
+    string currentscene;
     public bool collision = false;// When this is set to true then the Advantage Script can find the name of the object 
     public GameObject enemyref; //Reference of the Enemy Game Object
     // Start is called before the first frame update
     void Start()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
@@ -35,7 +35,7 @@ public class StartBattle : MonoBehaviour
         if (!gm.battleend) 
         {
             //If The Blade touches the Enemy Back Then A Battle Will Start and the player is guranteed to go first
-            if (col.gameObject.name == "EnemyBack" && currentscene != 5)
+            if (col.gameObject.name == "EnemyBack" && currentscene != "final")
             {
                 //When The Players Sword Hits the back of the Enemy then the Player is guranteed to go First
                 Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Player Advantage");
@@ -48,7 +48,7 @@ public class StartBattle : MonoBehaviour
                 gm.setEnemyObject(col.gameObject.name);
                 SceneManager.LoadScene("battle test");
             }
-            else if (col.gameObject.tag == "Enemy" && currentscene != 5) //If the blade touches the enemy not including its back then whoever has a high speed stat will go first
+            else if (col.gameObject.tag == "Enemy" && currentscene != "final") //If the blade touches the enemy not including its back then whoever has a high speed stat will go first
             {
                 collision = true;
                 //Sets the variable to whatever object the blade has collided with
@@ -58,7 +58,7 @@ public class StartBattle : MonoBehaviour
                 gm.setEnemyObject(col.gameObject.name);
                 SceneManager.LoadScene("battle test");
             }
-            else if (col.gameObject.tag == "Enemy" && currentscene == 5) 
+            else if (col.gameObject.tag == "Enemy" && currentscene == "final") 
             {
                 collision = true;
                 //Sets the variable to whatever object the blade has collided with

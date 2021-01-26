@@ -8,7 +8,7 @@ public class EnemyBattleTrigger : MonoBehaviour
     Advantage adv;
     GameManager gm;
 
-    int currentscene;
+    string currentscene;
     public bool collision = false; // When this is set to true then the Advantage Script can find the name of the object 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class EnemyBattleTrigger : MonoBehaviour
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         adv.setEnemyAdvantage(false);
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class EnemyBattleTrigger : MonoBehaviour
             //When The Enemy Hits The Player then the Enemy is guranteed to go first
             adv.setEnemyAdvantage(true);
 
-            if (currentscene == 5)
+            if (currentscene == "final")
             {
                 SceneManager.LoadScene("finalbattle");
             }

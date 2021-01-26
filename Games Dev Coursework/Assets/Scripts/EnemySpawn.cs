@@ -14,7 +14,7 @@ public class EnemySpawn : MonoBehaviour
 
     public int maxenemies;
     int maxspawnpoints;
-    int currentscene;
+    string currentscene;
     public bool firstspawn = false; //This will make the enemies spawn in at first at their spawnpoints, only to be done once
     GameManager gm;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (currentscene != 1)
+        if (currentscene != "battle test")
         {
 
             for (int i = 0; i < enemies.Count; i++)
@@ -57,9 +57,9 @@ public class EnemySpawn : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
 
-        if (currentscene != 0 && currentscene != 5)
+        if (currentscene != "hub" && currentscene != "final")
         {
             FirstTimeSpawn();
         }
@@ -71,17 +71,17 @@ public class EnemySpawn : MonoBehaviour
         if (!firstspawn)
         {
             //When its the first time Spawning you need to set the max enemies and max spawnpoints for each level
-            if (currentscene == 2)//When in the Dungeon Level
+            if (currentscene == "dungeon")//When in the Dungeon Level
             {
                 maxenemies = 3;
                 maxspawnpoints = 3;
             }
-            else if (currentscene == 3) //When in the Desert Level
+            else if (currentscene == "desert") //When in the Desert Level
             {
                 maxenemies = 4;
                 maxspawnpoints = 4;
             }
-            else if (currentscene == 4)//When in the Bar Level
+            else if (currentscene == "bar")//When in the Bar Level
             {
                 maxenemies = 1;
                 maxspawnpoints = 1;

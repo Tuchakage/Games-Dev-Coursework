@@ -9,7 +9,7 @@ public class SceneChanger : MonoBehaviour
     HubNameLevel hbl;
     LevelCompleteManager lcm;
     chesttrigger ct;
-    int currentscene;
+    string currentscene;
 
     TMP_Text forgotkeytxt;
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class SceneChanger : MonoBehaviour
         if (col.gameObject.tag == "Player") 
         {
             //If you are in the Hub world and the getlevelname is set to Dungeon then you will be loaded into the Dungeon level
-            if (currentscene == 0)
+            if (currentscene == "hub")
             {
                 if (hbl.getLevelName() == "Dungeon")
                 {
@@ -50,7 +50,7 @@ public class SceneChanger : MonoBehaviour
                     SceneManager.LoadScene("final");
                 }
             }
-            else if (currentscene > 1 && ct.keycollected) //If you are not in the hub or battle level then when you collide with this object you will go back to the hub
+            else if ((currentscene == "dungeon" || currentscene == "desert" || currentscene == "bar") && ct.keycollected) //If you are not in the hub or battle level then when you collide with this object you will go back to the hub
             {
                 SceneManager.LoadScene("hub");
                 //Depending on the level you are on, the levelcomplete will be set to true
@@ -67,7 +67,7 @@ public class SceneChanger : MonoBehaviour
                     lcm.levelcomplete["Bar"] = true;
                 }
             }
-            else if (currentscene != 0 && !ct.keycollected)
+            else if (currentscene != "hub" && !ct.keycollected)
             {
                 forgotkeytxt.text = "GET THE KEY FROM THE CHEST FIRST!";
             }
@@ -77,7 +77,7 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (currentscene != 0) 
+        if (currentscene != "hub") 
         {
             forgotkeytxt.text = " ";
         }
@@ -100,8 +100,8 @@ public class SceneChanger : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
-        if (currentscene != 0) 
+        currentscene = SceneManager.GetActiveScene().name;
+        if (currentscene != "hub") 
         {
             ct = GameObject.Find("Chest").GetComponentInChildren<chesttrigger>();
             forgotkeytxt = GameObject.Find("NeedKeyText").GetComponent<TMP_Text>();

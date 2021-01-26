@@ -13,7 +13,7 @@ public class Advantage : MonoBehaviour
     bool enemyadvantage = false;
     bool playeradvantage = false;
 
-    int currentscene;
+    string currentscene;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,7 @@ public class Advantage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentscene != 1) 
+        if (currentscene != "battle test") 
         {
             if (sb.collision)
             {
@@ -75,7 +75,7 @@ public class Advantage : MonoBehaviour
     {
         //Debug.Log("OnSceneLoaded: " + scene.name);
         //Check What Scene you are on
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
 
     }
 }

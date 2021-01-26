@@ -9,17 +9,17 @@ public class EnemyBattleSpawner : MonoBehaviour
     //public GameObject enemyspawner;
     public GameObject espawnpoint;
 
-    int currentscene;
+    string currentscene;
     // Start is called before the first frame update
     void Awake()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
-        if (currentscene == 1)
+        currentscene = SceneManager.GetActiveScene().name;
+        if (currentscene == "battle test")
         {
             Instantiate(enemyspawners[0], espawnpoint.transform.position, Quaternion.identity);
         }
-        else if (currentscene == 6) 
+        else if (currentscene == "finalbattle") 
         {
             Instantiate(enemyspawners[1], espawnpoint.transform.position, Quaternion.identity);
         }

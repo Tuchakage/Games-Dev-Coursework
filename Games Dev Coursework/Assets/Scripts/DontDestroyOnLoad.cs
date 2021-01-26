@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DontDestroyOnLoad : MonoBehaviour
 {
     EnemySpawn es;
-    int currentscene;
+    string currentscene;
     public static DontDestroyOnLoad Instance
     {
         get
@@ -48,9 +48,9 @@ public class DontDestroyOnLoad : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
 
-        if (currentscene == 0) //Reset the First Spawn Variable and Clear everything from The spawnpoints list so that enemies can spawn back in
+        if (currentscene == "hub") //Reset the First Spawn Variable and Clear everything from The spawnpoints list so that enemies can spawn back in
         {
             es.resetFirstSpawn();
             es.ResetSpawnList();

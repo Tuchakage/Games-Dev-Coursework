@@ -15,21 +15,21 @@ public class PlayerController : MonoBehaviour
 
     private float turnSmoothVelocity;
     float gravity = -9.2f;
-    int currentscene;
+    string currentscene;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
     void Update()
     {
         //If in Battle Scene then you can't move
-        if (currentscene != 1) 
+        if (currentscene != "battle test") 
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (currentscene != 1)
+            if (currentscene != "battle test")
             {
                 anim.SetTrigger("attack");
                 Debug.Log("Attack");

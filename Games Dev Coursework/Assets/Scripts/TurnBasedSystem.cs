@@ -18,7 +18,7 @@ public class TurnBasedSystem : MonoBehaviour
     Advantage adv;
     ButtonHandler bh;
 
-    int currentscene;
+    string currentscene;
     int random;
     int playerspeed;
     int enemyspeed;
@@ -33,7 +33,7 @@ public class TurnBasedSystem : MonoBehaviour
     void Start()
     {
         //Sets Current Scene variable 
-        currentscene = SceneManager.GetActiveScene().buildIndex;
+        currentscene = SceneManager.GetActiveScene().name;
         ea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
         es = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
@@ -77,11 +77,11 @@ public class TurnBasedSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyturn && currentscene == 1)
+        if (enemyturn && currentscene == "battle test")
         {
             EnemyTurn();
         }
-        else if (enemyturn && currentscene == 6) 
+        else if (enemyturn && currentscene == "finalbattle") 
         {
             BossTurn();
         }
@@ -109,7 +109,7 @@ public class TurnBasedSystem : MonoBehaviour
         sk.SetActive(false);
         Debug.Log("My Turn");
         choseanumber = false;
-        if (currentscene == 6) 
+        if (currentscene == "finalbattle") 
         {
             if (attackorder == 1)
             {
