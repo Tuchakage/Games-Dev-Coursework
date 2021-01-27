@@ -25,6 +25,7 @@ public class ButtonHandler : MonoBehaviour
     public GameObject pui;
     public GameObject sui; //Skills UI
     public GameObject fire;
+    public GameObject lightning;
     public GameObject enemy;
 
     bool attack = false;
@@ -102,6 +103,7 @@ public class ButtonHandler : MonoBehaviour
             sui.SetActive(false);
         }
 
+        //If Skill used is set to true then a timer will start
         if (skillused) 
         {
             if (skilltimer > 0)
@@ -291,39 +293,14 @@ public class ButtonHandler : MonoBehaviour
         if (gm.pSP > 0)
         {
             anim.SetTrigger("cast");
-            int electricdamage = sk.skills["Thunder"];
-            //You lose SP When doing a Skill
-            gm.pSP -= 5;
 
-            attacktype = "Electric";
-            if (!bea.block)
-            {
-                //Check the enemy weakness
-                if (es.Weakness == attacktype)
-                {
-                    //Enemy Takes Double Damage
-                    eh.LoseHealth(electricdamage * 2);
-                }
-                else
-                {
-                    //Enemy Takes Damage
-                    eh.LoseHealth(electricdamage);
-                }
-            }
-            else
-            {
-                //Damage To Enemy Reduced By 30%
-                eh.LoseHealth(electricdamage * 30 / 100);
-            }
 
-            //Enemy Animation for when he gets hit plays
-            bea.eanim.SetTrigger("hit");
-            //GameObject electricprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
+
+            
             skillused = true;
-            skilltimer = 5;
+            skilltimer = 3;
             sui.SetActive(false);
             skillmenu = false;
-            //Destroy(electricprefab, 5);
         }
     }
 }

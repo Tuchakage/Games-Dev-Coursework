@@ -41039,6 +41039,7 @@ MonoBehaviour:
   pui: {fileID: 286512625}
   sui: {fileID: 1738925539}
   fire: {fileID: 8154458859099513157, guid: 80557021f69d56c4fabe8bd4a1588439, type: 3}
+  lightning: {fileID: 1993853836073833039, guid: 629ba7981b9cb5b4d8a2c9e9ac78b914, type: 3}
   enemy: {fileID: 681891011}
   attackbuttonpressed: 0
   attacktype: 
@@ -47928,3 +47929,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc1908a299f5e54ebb4274ba717324a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: {fileID: 1993853836073833039, guid: 629ba7981b9cb5b4d8a2c9e9ac78b914, type: 3}
