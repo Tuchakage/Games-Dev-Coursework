@@ -9,6 +9,8 @@ public class SceneChanger : MonoBehaviour
     HubNameLevel hbl;
     LevelCompleteManager lcm;
     chesttrigger ct;
+    GameManager gm;
+    PlayerStats ps;
     string currentscene;
 
     TMP_Text forgotkeytxt;
@@ -17,6 +19,8 @@ public class SceneChanger : MonoBehaviour
     {
         hbl = GameObject.Find("GameManager").GetComponent<HubNameLevel>();
         lcm = GameObject.Find("GameManager").GetComponent<LevelCompleteManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
 
     }
 
@@ -47,6 +51,8 @@ public class SceneChanger : MonoBehaviour
                 }
                 else if (hbl.getLevelName() == "FinalLevel")
                 {
+                    //Give the Player SP when going into the Final level
+                    gm.pSP += ps.stats["SP"] / 2;
                     SceneManager.LoadScene("final");
                 }
             }

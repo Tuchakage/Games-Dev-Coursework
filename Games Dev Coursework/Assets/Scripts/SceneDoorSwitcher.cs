@@ -50,7 +50,7 @@ public class SceneDoorSwitcher : MonoBehaviour
             {
                 hbl.SetLevelName(doorname);
             }
-            else if (doorname == "Desert" && lcm.levelcomplete["Desert"]) 
+            else if (doorname == "Desert" && lcm.levelcomplete["Desert"]) //Makes it so that if you have already completed Desert Level you cannot go into it again
             {
                 doorname = " ";
                 hbl.SetLevelName(doorname);

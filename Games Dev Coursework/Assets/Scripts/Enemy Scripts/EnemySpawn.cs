@@ -59,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().name;
 
-        if (currentscene != "hub" && currentscene != "final")
+        if (currentscene != "hub" && currentscene != "final" && currentscene != "finalbattle")
         {
             FirstTimeSpawn();
         }
