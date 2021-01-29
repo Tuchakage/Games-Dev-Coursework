@@ -41044,6 +41044,7 @@ MonoBehaviour:
   attackbuttonpressed: 0
   attacktype: 
   block: 0
+  thunderused: 0
   target: {fileID: 681891015}
   originalspot: {fileID: 1736124121}
   enemydistance: 0

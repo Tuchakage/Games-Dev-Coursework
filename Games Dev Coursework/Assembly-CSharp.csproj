@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBattleTrigger.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\chestlist.cs" />
+    <Compile Include="Assets\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

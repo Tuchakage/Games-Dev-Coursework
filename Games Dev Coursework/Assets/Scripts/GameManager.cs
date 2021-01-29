@@ -73,7 +73,11 @@ public class GameManager : MonoBehaviour
         {
             //Updates The Health If In Battle Scene
             phealthslider.value = pHealth;
+            //Setting Max Value to whatever is in the Player Stats script
+            phealthslider.maxValue = ps.stats["HP"];
             spslider.value = pSP;
+            //Setting Max Value to whatever is in the Player Stats script
+            spslider.maxValue = ps.stats["SP"];
 
             //When The Player Health is 0 Then the Object will be destroyed
             if (pHealth <= 0)
@@ -141,7 +145,6 @@ public class GameManager : MonoBehaviour
             //Look For The Health Slider if the scene has changed to the Battle Scene
             phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
             spslider = GameObject.Find("PlayerSP").GetComponent<Slider>();
-            spslider.maxValue = ps.stats["SP"];
             failscreen = GameObject.Find("FailPanel");
             failscreen.SetActive(false);
         }

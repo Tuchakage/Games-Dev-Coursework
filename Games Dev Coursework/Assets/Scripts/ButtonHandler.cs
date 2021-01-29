@@ -40,6 +40,7 @@ public class ButtonHandler : MonoBehaviour
     float skilltimer;
     bool skillused = false;
     bool checkfornewmoves = false; //When you press the Skill button it will only look for the Thunder Skill once
+    public bool thunderused = false; //Tells the program when the Thunder Skill has been used
 
     public Transform target;
     public Transform originalspot;
@@ -294,9 +295,8 @@ public class ButtonHandler : MonoBehaviour
         {
             anim.SetTrigger("cast");
 
-
-
-            
+            //This means the Thunder Button has been pressed
+            thunderused = true;
             skillused = true;
             skilltimer = 3;
             sui.SetActive(false);

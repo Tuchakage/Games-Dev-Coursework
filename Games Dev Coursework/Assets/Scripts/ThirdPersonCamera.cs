@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class ThirdPersonCamera : MonoBehaviour
 {
     ButtonHandler bh;
+    PauseMenu pause;
     public float mouseSensitivity = 10;
-    public bool lockCursor = true;
+    public bool lockCursor = false;
     //Camera Rotation Of The X Axis Is called Pitch And Y Axis is Yaw
     float pitch;
     float yaw;
@@ -29,14 +30,10 @@ public class ThirdPersonCamera : MonoBehaviour
     void Start() 
     {
         currentscene = SceneManager.GetActiveScene().name;
-        //If not in Battle Scene then you can't use the cursor
+        //If not in Battle Scene then you will look for the Pause Script otherwise look for Button Handler Script
         if (currentscene != "battle test" && currentscene != "finalbattle")
         {
-            if (lockCursor)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            pause = GameObject.Find("Canvas").GetComponent<PauseMenu>();
         }
         else 
         {
@@ -47,15 +44,30 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
-        //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor
-        if (currentscene == "battle test" || currentscene == "finalbattle") 
+        //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor Or if you are not in the battle scene and ispaused variable is true
+        if ((currentscene == "battle test" || currentscene == "finalbattle") || (currentscene != "battle test" && currentscene != "finalbattle" && pause.isPaused))
         {
-            if (lockCursor) 
+            //Cursor Is Enabled
+            if (lockCursor)
             {
                 lockCursor = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Debug.Log("Huh?");
             }
+            
+        }
+        else if ((currentscene != "battle test" && currentscene != "finalbattle" && !pause.isPaused)) //If not in Battle Scene and the game isnt paused
+        {
+            //Disable the Cursor
+            if (!lockCursor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                lockCursor = true;
+                Debug.Log("Ok");
+            }
+            
         }
     }
     // Update is called once per frame after all the other Update Methods

@@ -13,6 +13,7 @@ public class PlayerDealsDamage : MonoBehaviour
     GameManager gm;
     Skills sk;
     EnemyStats es;
+    ButtonHandler bh;
     string currentscene;
     string attacktype;
 
@@ -29,6 +30,7 @@ public class PlayerDealsDamage : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         es = enemy.GetComponent<EnemyStats>();
+        bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
     }
 
     // Update is called once per frame
@@ -61,34 +63,39 @@ public class PlayerDealsDamage : MonoBehaviour
     //At a certain point of the cast animation Thunder will spawn and the enemy will take Damage
     public void Thunder() 
     {
-        int electricdamage = sk.skills["Thunder"];
-        //You lose SP When doing a Skill
-        gm.pSP -= 5;
-
-        attacktype = "Electric";
-        if (!bea.block)
+        //This animation event will only be triggered if the Thunder Skill button is pressed
+        if (bh.thunderused)
         {
-            //Check the enemy weakness
-            if (es.Weakness == attacktype)
+            int electricdamage = sk.skills["Thunder"];
+            //You lose SP When doing a Skill
+            gm.pSP -= 5;
+
+            attacktype = "Electric";
+            if (!bea.block)
             {
-                //Enemy Takes Double Damage
-                eh.LoseHealth(electricdamage * 2);
+                //Check the enemy weakness
+                if (es.Weakness == attacktype)
+                {
+                    //Enemy Takes Double Damage
+                    eh.LoseHealth(electricdamage * 2);
+                }
+                else
+                {
+                    //Enemy Takes Damage
+                    eh.LoseHealth(electricdamage);
+                }
             }
             else
             {
-                //Enemy Takes Damage
-                eh.LoseHealth(electricdamage);
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(electricdamage * 30 / 100);
             }
-        }
-        else
-        {
-            //Damage To Enemy Reduced By 30%
-            eh.LoseHealth(electricdamage * 30 / 100);
+
+            //Enemy Animation for when he gets hit plays
+            bea.eanim.SetTrigger("hit");
+            //Spawns the Lightning in
+            GameObject thunderprefab = Instantiate(lightning, enemy.transform.position, enemy.transform.rotation);
         }
 
-        //Enemy Animation for when he gets hit plays
-        bea.eanim.SetTrigger("hit");
-        //Spawns the Lightning in
-        GameObject thunderprefab = Instantiate(lightning, enemy.transform.position, enemy.transform.rotation);
     }
 }
