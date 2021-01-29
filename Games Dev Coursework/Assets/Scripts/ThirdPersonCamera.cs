@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ThirdPersonCamera : MonoBehaviour
 {
     ButtonHandler bh;
-    PauseMenu pause;
+    public PauseMenu pause;
     public float mouseSensitivity = 10;
     public bool lockCursor = false;
     //Camera Rotation Of The X Axis Is called Pitch And Y Axis is Yaw
@@ -33,7 +33,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //If not in Battle Scene then you will look for the Pause Script otherwise look for Button Handler Script
         if (currentscene != "battle test" && currentscene != "finalbattle")
         {
-            pause = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+            pause = GameObject.FindGameObjectWithTag("Canvas").GetComponent<PauseMenu>();
         }
         else 
         {
@@ -53,7 +53,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 lockCursor = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                Debug.Log("Huh?");
+                //Debug.Log("Cursor enabled");
             }
             
         }
@@ -65,7 +65,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 lockCursor = true;
-                Debug.Log("Ok");
+                //Debug.Log("Cursor Disabled");
             }
             
         }

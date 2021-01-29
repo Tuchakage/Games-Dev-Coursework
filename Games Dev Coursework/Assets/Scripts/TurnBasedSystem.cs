@@ -26,6 +26,7 @@ public class TurnBasedSystem : MonoBehaviour
     public bool textused = false;
     public bool enemyturn = false;
     bool choseanumber = false; //Makes it so that everytime the function is called the number will change
+    bool attackorderchange = false; //Makes it so the Attack Order is only changed once when the function is called
 
     public int attackorder = 1; //The Final Boss will not randomly choose a move, it will go in a sequence
 
@@ -107,18 +108,24 @@ public class TurnBasedSystem : MonoBehaviour
         bh.block = false;
         pui.SetActive(true);
         sk.SetActive(false);
-        Debug.Log("My Turn");
+        //Debug.Log("My Turn");
+        //Enemy randomly chooses what it wants to do again in its next turn
         choseanumber = false;
         if (currentscene == "finalbattle") 
         {
-            if (attackorder == 1)
+            if (!attackorderchange) 
             {
-                attackorder = 2;
+                if (attackorder == 1)
+                {
+                    attackorder = 2;
+                }
+                else if (attackorder == 2)
+                {
+                    attackorder = 1;
+                }
+                attackorderchange = true;
             }
-            else if (attackorder == 2) 
-            {
-                attackorder = 1;
-            }
+
         }
     }
 
@@ -151,11 +158,13 @@ public class TurnBasedSystem : MonoBehaviour
 
     public void BossTurn() 
     {
+        Debug.Log("boss turn");
         //When Final Boss Turn again then it will no longer be blocking
         ea.block = false;
         pui.SetActive(false);
         sk.SetActive(false);
-
+        //The Attack Order is not being changed it will change when it is the players turn
+        attackorderchange = false;
         if (attackorder == 1)
         {
             ea.EnemyAttack();

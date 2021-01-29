@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    PauseMenu pause;
     Animator anim;
     private CharacterController controller;
     public Transform camera;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
         currentscene = SceneManager.GetActiveScene().name;
+        pause = GameObject.FindGameObjectWithTag("Canvas").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
@@ -59,10 +61,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        //If You press the right mouse button down and the game isnt paused then the attack animation will play
+        if (Input.GetButtonDown("Fire1") && !pause.isPaused)
         {
             if (currentscene != "battle test")
-            {
+            {               
                 anim.SetTrigger("attack");
                 Debug.Log("Attack");
             }

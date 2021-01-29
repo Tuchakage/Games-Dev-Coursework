@@ -31,7 +31,7 @@ public class BattleEnemyAI : MonoBehaviour
     bool eskillused;
     public float eskilltimer = 5;
     string currentscene;
-    float eblocktimer = 3;
+    public float eblocktimer = 3;
     //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
     public bool block = false;
@@ -59,8 +59,8 @@ public class BattleEnemyAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // I made this a LateUpdate so that the TurnBasedSystem Script Update function always go first so that the BossTurn() function will be triggered first
+    void LateUpdate()
     {
         //Get the distance between the player and the enemy (If in normal battle scene it will just get the enemies position, in in the final boss scene then it will get the boss enemyhitbox pos)
         if (currentscene == "battle test")
@@ -99,7 +99,8 @@ public class BattleEnemyAI : MonoBehaviour
         //If in the final boss battle then it will look for the Enemy animation state called block
         if (currentscene == "finalbattle") 
         {
-            if (block)
+            //When it is the Enemies turn and hes blocking do a small timer for when it is the players go
+            if (block && tbs.enemyturn)
             {
                 eanim.SetBool("block", true);
                 //Small timer for when the Enemy Blocks
@@ -113,7 +114,10 @@ public class BattleEnemyAI : MonoBehaviour
                     tbs.enemyturn = false;
                     //Start the Players Turn
                     tbs.PlayerTurn();
+                    //Reset the timer so that when it is the enemies turn then it doesnt instantly go back to the Players Turn
+                    eblocktimer = 3;
                 }
+
             }
             else
             {
@@ -221,7 +225,6 @@ public class BattleEnemyAI : MonoBehaviour
     public void Block() 
     {
         block = true;
-        Debug.Log("block");
-
+        //Debug.Log("block");
     }
 }
