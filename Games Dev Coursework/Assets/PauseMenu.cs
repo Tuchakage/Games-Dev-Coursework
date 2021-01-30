@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -31,6 +32,14 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        //Updates the health and sp slider value to whatever value is stored in the GameManager
+        phealthslider.value = gm.pHealth;
+        //Setting Max Value to whatever is in the Player Stats script
+        phealthslider.maxValue = ps.stats["HP"];
+        spslider.value = gm.pSP;
+        //Setting Max Value to whatever is in the Player Stats script
+        spslider.maxValue = ps.stats["SP"];
     }
 
     public void Resume() 
@@ -44,20 +53,14 @@ public class PauseMenu : MonoBehaviour
     public void Pause() 
     {
         pauseMenuUI.SetActive(true);
-        //Look for the Health and SP Sliders when paused
-        phealthslider = GameObject.Find("PlayerHealth").GetComponent<Slider>();
-        spslider = GameObject.Find("PlayerSP").GetComponent<Slider>();
 
-        //Updates the health and sp slider value to whatever value is stored in the GameManager
-        phealthslider.value = gm.pHealth;
-        //Setting Max Value to whatever is in the Player Stats script
-        phealthslider.maxValue = ps.stats["HP"];
-        spslider.value = gm.pSP;
-        //Setting Max Value to whatever is in the Player Stats script
-        spslider.maxValue = ps.stats["SP"];
         //Freeze Time in the game
         Time.timeScale = 0f;
         isPaused = true;
+    }
+    public void MainMenu() 
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame() 

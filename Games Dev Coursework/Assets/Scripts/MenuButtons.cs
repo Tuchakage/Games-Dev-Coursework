@@ -24,6 +24,8 @@ public class MenuButtons : MonoBehaviour
     public void PlayGame() 
     {
         SceneManager.LoadScene("hub");
+        //This is here because when you press the play button after pressing the main menu button when you are actually in game, when you load in it is frozen like you are still paused
+        Time.timeScale = 1f;
     }
 
     public void ExitGame() 

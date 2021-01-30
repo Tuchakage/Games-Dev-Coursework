@@ -124,10 +124,11 @@ public class GameManager : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().name;
 
-        //Destroy The GameManager when in the level complete scene which means we can restart the game
-        if (currentscene == "winning screen")
+        //Destroy The GameManager when in the level complete scene or the Main Menu Scene which means we can restart the game
+        if (currentscene == "winning screen" || currentscene == "MainMenu")
         {
             Destroy(this.gameObject);
+            Debug.Log("Destroy This Object");
         }
 
         player = GameObject.FindGameObjectWithTag("Player");

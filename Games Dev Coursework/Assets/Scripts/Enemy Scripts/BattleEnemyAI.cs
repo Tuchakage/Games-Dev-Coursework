@@ -61,7 +61,6 @@ public class BattleEnemyAI : MonoBehaviour
         }
     }
 
-    // I made this a LateUpdate so that the TurnBasedSystem Script Update function always go first so that the BossTurn() function will be triggered first
     void Update()
     {
         //Get the distance between the player and the enemy (If in normal battle scene it will just get the enemies position, in in the final boss scene then it will get the boss enemyhitbox pos)
