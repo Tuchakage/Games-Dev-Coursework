@@ -84,6 +84,8 @@ public class PlayerDealsDamage : MonoBehaviour
                     //Enemy Takes Damage
                     eh.LoseHealth(electricdamage);
                 }
+                //Enemy Animation for when he gets hit plays
+                bea.eanim.SetTrigger("hit");
             }
             else
             {
@@ -91,8 +93,7 @@ public class PlayerDealsDamage : MonoBehaviour
                 eh.LoseHealth(electricdamage * 30 / 100);
             }
 
-            //Enemy Animation for when he gets hit plays
-            bea.eanim.SetTrigger("hit");
+
             //Spawns the Lightning in
             GameObject thunderprefab = Instantiate(lightning, enemy.transform.position, enemy.transform.rotation);
         }

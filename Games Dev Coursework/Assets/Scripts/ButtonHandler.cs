@@ -269,6 +269,8 @@ public class ButtonHandler : MonoBehaviour
                     //Enemy Takes Damage
                     eh.LoseHealth(firedamage);
                 }
+                //Enemy Animation for when he gets hit plays
+                bea.eanim.SetTrigger("hit");
             }
             else
             {
@@ -276,8 +278,7 @@ public class ButtonHandler : MonoBehaviour
                 eh.LoseHealth(firedamage * 30 / 100);
             }
 
-            //Enemy Animation for when he gets hit plays
-            bea.eanim.SetTrigger("hit");
+
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
             skillused = true;
             skilltimer = 5;

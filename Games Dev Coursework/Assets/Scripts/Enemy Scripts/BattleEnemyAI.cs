@@ -32,6 +32,8 @@ public class BattleEnemyAI : MonoBehaviour
     public float eskilltimer = 5;
     string currentscene;
     public float eblocktimer = 3;
+    bool eblocktimerdone = false; //Used to indicate whether the timer for blocking is done or not
+
     //Used to make the cube move towards the player the first time when the function is called 
     public bool moveonce = false;
     public bool block = false;
@@ -60,7 +62,7 @@ public class BattleEnemyAI : MonoBehaviour
     }
 
     // I made this a LateUpdate so that the TurnBasedSystem Script Update function always go first so that the BossTurn() function will be triggered first
-    void LateUpdate()
+    void Update()
     {
         //Get the distance between the player and the enemy (If in normal battle scene it will just get the enemies position, in in the final boss scene then it will get the boss enemyhitbox pos)
         if (currentscene == "battle test")
@@ -90,6 +92,7 @@ public class BattleEnemyAI : MonoBehaviour
             }
         }
 
+        //If its not attacking then it stays facing forward
         if (!attack) 
         {
             gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
@@ -100,23 +103,29 @@ public class BattleEnemyAI : MonoBehaviour
         if (currentscene == "finalbattle") 
         {
             //When it is the Enemies turn and hes blocking do a small timer for when it is the players go
-            if (block && tbs.enemyturn)
+            if (block)
             {
                 eanim.SetBool("block", true);
-                //Small timer for when the Enemy Blocks
-                if (eblocktimer > 0)
+                if (!eblocktimerdone) 
                 {
-                    eblocktimer -= Time.deltaTime;
+                    //Small timer for when the Enemy Blocks
+                    if (eblocktimer > 0)
+                    {
+                        eblocktimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        //End the enemy turn
+                        tbs.enemyturn = false;
+                        //Start the Players Turn
+                        tbs.PlayerTurn();
+                        //Reset the timer so that when it is the enemies turn then it doesnt instantly go back to the Players Turn
+                        eblocktimer = 3;
+                        //Set the blocktimer to true so that it wont keep looping through this else statement
+                        eblocktimerdone = true;
+                    }
                 }
-                else
-                {
-                    //End the enemy turn
-                    tbs.enemyturn = false;
-                    //Start the Players Turn
-                    tbs.PlayerTurn();
-                    //Reset the timer so that when it is the enemies turn then it doesnt instantly go back to the Players Turn
-                    eblocktimer = 3;
-                }
+
 
             }
             else
@@ -225,6 +234,8 @@ public class BattleEnemyAI : MonoBehaviour
     public void Block() 
     {
         block = true;
+        //Reset this variable so you can use the eblocktimer again
+        eblocktimerdone = false;
         //Debug.Log("block");
     }
 }
