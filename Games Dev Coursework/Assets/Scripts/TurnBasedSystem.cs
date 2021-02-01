@@ -69,7 +69,7 @@ public class TurnBasedSystem : MonoBehaviour
             enemyturn = true;
         }
         //Player Goes First if its speed is higher than the Enemys And Enemy Advantage is not true Or If Player Advantage is true
-        else if (playerspeed > enemyspeed && adv.GetEnemyAdvantage() || adv.GetPlayerAdvantage())
+        else if (playerspeed > enemyspeed && !adv.GetEnemyAdvantage() || adv.GetPlayerAdvantage())
         {
             PlayerTurn();
         }
