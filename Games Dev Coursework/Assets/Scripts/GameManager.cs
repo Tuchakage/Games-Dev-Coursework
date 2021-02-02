@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
-
-
     }
     // Start is called before the first frame update
     void Start()
@@ -68,7 +66,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (currentscene == "battle test" || currentscene == "finalbattle")
         {
             //Updates The Health If In Battle Scene
@@ -96,9 +93,6 @@ public class GameManager : MonoBehaviour
             }
             
         }
-        
-
-
     }
 
     //Whenever the Game Object is enabled this function will run

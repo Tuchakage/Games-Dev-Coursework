@@ -9,14 +9,14 @@ public class EnemySpawn : MonoBehaviour
     public List<GameObject> spawnpoints = null;
     public GameObject enemyspawner;//This is where the prefab is stored
     public GameObject enemy;//This is where the spawned in Enemies will be put
-    public List<Vector3> enemylastpos = null;
-    public List<string> see = null;
+    public List<Vector3> enemylastpos = null; //Used for testing
+    public List<string> see = null; //Used for testing
 
     public int maxenemies;
     int maxspawnpoints;
     string currentscene;
     public bool firstspawn = false; //This will make the enemies spawn in at first at their spawnpoints, only to be done once
-    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +44,6 @@ public class EnemySpawn : MonoBehaviour
         //Debug.Log("OnEnable called");
         //Adds OnSceneLoaded()
         SceneManager.sceneLoaded += OnSceneLoaded;
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }
 

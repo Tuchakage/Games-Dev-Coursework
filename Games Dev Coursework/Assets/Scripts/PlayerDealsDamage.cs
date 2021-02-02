@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 //The Purpose Of This Script is so that the Player deals damage but the reason why it is separate is because i have made it an animation event
 public class PlayerDealsDamage : MonoBehaviour
 {
-    GameObject enemy;
-    public GameObject lightning;
+
     EnemyHealth eh;
     BattleEnemyAI bea;
     PlayerStats ps;
@@ -14,6 +13,10 @@ public class PlayerDealsDamage : MonoBehaviour
     Skills sk;
     EnemyStats es;
     ButtonHandler bh;
+
+    GameObject enemy;
+    public GameObject lightning;
+
     string currentscene;
     string attacktype;
 

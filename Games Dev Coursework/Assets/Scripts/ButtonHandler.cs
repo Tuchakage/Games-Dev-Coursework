@@ -17,7 +17,6 @@ public class ButtonHandler : MonoBehaviour
     EnemyStats es;
     BattleEnemyAI bea;
     BattleLevelChanger blc;
-    PlayerDealsDamage pdd;
     EnemySpawn espawn;
 
     GameObject player;
@@ -64,10 +63,8 @@ public class ButtonHandler : MonoBehaviour
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
         es = enemy.GetComponent<EnemyStats>();
-        //So we can get the Enemies Animator
         bea = enemy.GetComponent<BattleEnemyAI>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
-        pdd = GameObject.Find("Player").GetComponent<PlayerDealsDamage>();
         espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
 
         //If on the final boss battle then the target will be the enemy hit box
@@ -199,12 +196,24 @@ public class ButtonHandler : MonoBehaviour
 
     public void PlayerAttack() 
     {
+        //This if statement acts like a Start() Function but it will only trigger when you press the attack button
         if (!moveonce)
         {
+            //When the attack button is pressed then the destination will be set to the target
             na.SetDestination(target.position);
+            //This will make the player move
+            na.isStopped = false;
+            //Running animation is played
+            anim.SetBool("running", true);
+            //Set this to true because we will not need it anymore
+            moveonce = true;
+        }
+        //When the Player has already used its moveonce variable which is treated like its in the OnStart() function and is not attacking and is already at the original position 
+        else if (playerogpos < 2.1 && !attack && moveonce)
+        {
+            //Player will move towards the player
             na.isStopped = false;
             anim.SetBool("running", true);
-            moveonce = true;
         }
         if (enemydistance < 3 && !attack) // If the Player is near the Enemy and it hasn't attacked yet
         {
@@ -224,7 +233,6 @@ public class ButtonHandler : MonoBehaviour
             na.SetDestination(originalspot.position);
             na.isStopped = false;
         }
-
         else if (playerogpos < 2.1 && attack) // Once it gets back to its original position after its attack then it will stop and the destination will be set to the Enemy again if it attacks again
         {
             tpc.backtopos = false;
@@ -235,15 +243,7 @@ public class ButtonHandler : MonoBehaviour
             attackbuttonpressed = false;
             //When it gets back to position it will be the Enemies turn
             tbs.enemyturn = true;          
-        }
-        //When the Player has already used its moveonce variable which is treated like its in the OnStart() function and is not attacking and is already at the original position 
-        else if (playerogpos < 2.1 && !attack && moveonce)
-        {
-            //Player will move towards the player
-            na.isStopped = false;
-            anim.SetBool("running", true);
-        }
-        
+        }       
     }
 
     public void FireSkill() 

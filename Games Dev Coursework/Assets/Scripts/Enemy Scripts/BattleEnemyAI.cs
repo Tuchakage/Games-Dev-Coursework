@@ -203,30 +203,27 @@ public class BattleEnemyAI : MonoBehaviour
 
     public void Fire() 
     {
-        if (enemysp > 0) 
+        if (enemysp > 0 && !attack) 
         {
-            if (!attack) 
+            firedmg = sk.skills["Fire"];
+            if (!bh.block)
             {
-                firedmg = sk.skills["Fire"];
-                if (!bh.block)
-                {
-                    gm.pHealth -= firedmg;
-                    bh.anim.SetTrigger("hit");
-                }
-                else 
-                {
-                    //Reduce Damage by 30% if Blocking
-                    firedmg -= (firedmg * 30 / 100);
-                    gm.pHealth -= firedmg;
-                }
-                
-                enemysp -= 5;               
-                eskillused = true;
-                eskilltimer = 5;
-                GameObject fireprefab = Instantiate(fire, player.transform.position, player.transform.rotation);
-                Destroy(fireprefab, 5);
-                attack = true;
-            }        
+                gm.pHealth -= firedmg;
+                bh.anim.SetTrigger("hit");
+            }
+            else
+            {
+                //Reduce Damage by 30% if Blocking
+                firedmg -= (firedmg * 30 / 100);
+                gm.pHealth -= firedmg;
+            }
+
+            enemysp -= 5;
+            eskillused = true;
+            eskilltimer = 5;
+            GameObject fireprefab = Instantiate(fire, player.transform.position, player.transform.rotation);
+            Destroy(fireprefab, 5);
+            attack = true;
         }
     }
 

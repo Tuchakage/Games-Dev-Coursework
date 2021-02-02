@@ -76,6 +76,5 @@ public class BattleLevelChanger : MonoBehaviour
                 bar.SetActive(true);
             }
         }
-
     }
 }

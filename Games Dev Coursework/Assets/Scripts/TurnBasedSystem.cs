@@ -14,7 +14,6 @@ public class TurnBasedSystem : MonoBehaviour
     BattleEnemyAI ea; //This is where the Enemies moveset is 
     EnemyStats es;
     PlayerStats ps;
-    StartBattle sb;
     Advantage adv;
     ButtonHandler bh;
 
@@ -38,7 +37,6 @@ public class TurnBasedSystem : MonoBehaviour
         ea = GameObject.FindGameObjectWithTag("Enemy").GetComponent<BattleEnemyAI>();
         es = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
-        sb = GameObject.Find("Blade").GetComponent<StartBattle>();
         adv = GameObject.Find("GameManager").GetComponent<Advantage>();
         bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
         playerspeed = ps.stats["Speed"];
