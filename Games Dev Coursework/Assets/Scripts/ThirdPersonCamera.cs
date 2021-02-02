@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ThirdPersonCamera : MonoBehaviour
 {
     ButtonHandler bh;
-    public PauseMenu pause;
+    Menus menu;
     public float mouseSensitivity = 10;
     public bool lockCursor = false;
     //Camera Rotation Of The X Axis Is called Pitch And Y Axis is Yaw
@@ -33,7 +33,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //If not in Battle Scene then you will look for the Pause Script otherwise look for Button Handler Script
         if (currentscene != "battle test" && currentscene != "finalbattle")
         {
-            pause = GameObject.FindGameObjectWithTag("Canvas").GetComponent<PauseMenu>();
+            menu = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Menus>();
         }
         else 
         {
@@ -45,7 +45,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Update()
     {
         //Checks to see if the current scene is scene 1 (Battle Scene) Where it will allow you to use the cursor Or if you are not in the battle scene and ispaused variable is true
-        if ((currentscene == "battle test" || currentscene == "finalbattle") || (currentscene != "battle test" && currentscene != "finalbattle" && pause.isPaused))
+        if ((currentscene == "battle test" || currentscene == "finalbattle") || (currentscene != "battle test" && currentscene != "finalbattle" && menu.isPaused))
         {
             //Cursor Is Enabled
             if (lockCursor)
@@ -57,7 +57,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             
         }
-        else if ((currentscene != "battle test" && currentscene != "finalbattle" && !pause.isPaused)) //If not in Battle Scene and the game isnt paused
+        else if ((currentscene != "battle test" && currentscene != "finalbattle" && !menu.isPaused)) //If not in Battle Scene and the game isnt paused
         {
             //Disable the Cursor
             if (!lockCursor)

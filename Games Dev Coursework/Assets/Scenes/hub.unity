@@ -24808,10 +24808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  phealthslider: {fileID: 161466217}
-  spslider: {fileID: 786676474}
   pauseMenuUI: {fileID: 822515149}
-  keyamount: {fileID: 789372144}
 --- !u!1 &1073330091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1784612528550548, guid: 2d0f20d11945dcf40bc89cbe6339221c, type: 3}

@@ -149,9 +149,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 345861664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d2a84562d75034bb52743e9e6ceec7, type: 3}
+  m_Script: {fileID: 11500000, guid: ca6275c38e5be5c4da0bda03c424ef3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  phealthslider: {fileID: 0}
+  spslider: {fileID: 0}
+  pauseMenuUI: {fileID: 0}
+  keyamount: {fileID: 0}
 --- !u!4 &345861666
 Transform:
   m_ObjectHideFlags: 0
@@ -543,8 +548,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 345861665}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

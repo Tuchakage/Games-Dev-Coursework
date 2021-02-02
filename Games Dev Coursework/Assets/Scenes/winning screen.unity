@@ -457,8 +457,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1947274636}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: ToMainMenu
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -800,9 +800,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947274635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d2a84562d75034bb52743e9e6ceec7, type: 3}
+  m_Script: {fileID: 11500000, guid: ca6275c38e5be5c4da0bda03c424ef3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  pauseMenuUI: {fileID: 0}
 --- !u!4 &1947274637
 Transform:
   m_ObjectHideFlags: 0
