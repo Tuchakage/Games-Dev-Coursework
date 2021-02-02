@@ -14,13 +14,12 @@ public class ButtonHandler : MonoBehaviour
     ThirdPersonCamera tpc;
     BattleLevelChanger blc;
     EnemySpawn espawn;
+    AudioManager am;
 
     GameObject player;
 
     public GameObject pui;
     public GameObject sui; //Skills UI
-    public GameObject fire;
-    public GameObject lightning;
     public GameObject enemy;
 
     bool attack = false;
@@ -58,6 +57,7 @@ public class ButtonHandler : MonoBehaviour
         tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
         espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         //If on the final boss battle then the target will be the enemy hit box
         if (currentscene == "finalbattle")
@@ -213,6 +213,8 @@ public class ButtonHandler : MonoBehaviour
             na.isStopped = true;
             //Attack Animation Of The Player Will Play
             anim.SetTrigger("attack");
+            //Play Sword Swing Sound
+            am.SwordSwingSound();
 
             //Indicates that the Player has already attacked
             attack = true;

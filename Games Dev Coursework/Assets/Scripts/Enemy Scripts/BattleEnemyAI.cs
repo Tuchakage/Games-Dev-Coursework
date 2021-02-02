@@ -222,7 +222,8 @@ public class BattleEnemyAI : MonoBehaviour
             eskillused = true;
             eskilltimer = 5;
             GameObject fireprefab = Instantiate(fire, player.transform.position, Quaternion.Euler(-90, 0, 0));
-            Destroy(fireprefab, 5);
+            //Destroy the Fire Prefab after 2 seconds
+            Destroy(fireprefab, 2);
             attack = true;
         }
     }

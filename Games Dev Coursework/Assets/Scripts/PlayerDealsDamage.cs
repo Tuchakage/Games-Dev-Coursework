@@ -90,6 +90,7 @@ public class PlayerDealsDamage : MonoBehaviour
 
 
             GameObject fireprefab = Instantiate(fire, enemy.transform.position, Quaternion.Euler(-90, 0, 0));
+            //Destroy the Fire Prefab after 2 seconds
             Destroy(fireprefab, 2);
             //Fire Skill has finished
             bh.fireused = false;

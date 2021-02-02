@@ -989,12 +989,12 @@ MonoBehaviour:
   anim: {fileID: 0}
   pui: {fileID: 1347051732}
   sui: {fileID: 672215328}
-  fire: {fileID: 8154458859099513157, guid: 80557021f69d56c4fabe8bd4a1588439, type: 3}
-  lightning: {fileID: 0}
   enemy: {fileID: 0}
   attackbuttonpressed: 0
   attacktype: 
   block: 0
+  thunderused: 0
+  fireused: 0
   target: {fileID: 2599678041132350850, guid: 167248e5d9a992c45b1d13c55efb0a27, type: 3}
   originalspot: {fileID: 1974293797}
   enemydistance: 0
@@ -1673,6 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightning: {fileID: 1993853836073833039, guid: 629ba7981b9cb5b4d8a2c9e9ac78b914, type: 3}
+  fire: {fileID: 8154458859099513157, guid: 80557021f69d56c4fabe8bd4a1588439, type: 3}
 --- !u!1 &766152711
 GameObject:
   m_ObjectHideFlags: 0

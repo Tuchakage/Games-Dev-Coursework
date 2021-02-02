@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     Menus menu;
+    AudioManager am;
     Animator anim;
+
     private CharacterController controller;
     public Transform camera;
     private Vector3 playerVelocity;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         currentscene = SceneManager.GetActiveScene().name;
         menu = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Menus>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,9 @@ public class PlayerController : MonoBehaviour
             //.magnitude checks the length of our direction vector
             if (direction.magnitude >= 0.1)
             {
+                //Play the running animation
                 anim.SetBool("running", true);
+
                 //Getting the angle we want to use
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
 
@@ -67,13 +72,18 @@ public class PlayerController : MonoBehaviour
             if (currentscene != "battle test")
             {               
                 anim.SetTrigger("attack");
+                //Play the Sword Swing Sound
+                am.SwordSwingSound();
                 Debug.Log("Attack");
-            }
-            
+            }          
         }
         //Gravity
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
 
+    public void PlayFootSteps() 
+    {
+        am.FootSteps();
     }
 }
