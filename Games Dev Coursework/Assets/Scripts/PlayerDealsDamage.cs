@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//The Purpose Of This Script is so that the Player deals damage but the reason why it is separate is because i have made it an animation event
+//The Purpose Of This Script is so that the Player deals damage but the reason why it is separate is because i have made it as an animation event
 public class PlayerDealsDamage : MonoBehaviour
 {
-
     EnemyHealth eh;
     BattleEnemyAI bea;
     PlayerStats ps;
@@ -36,12 +35,6 @@ public class PlayerDealsDamage : MonoBehaviour
         bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlayerDealDamage() 
     {
         if (currentscene == "battle test" || currentscene == "finalbattle") 
@@ -60,7 +53,6 @@ public class PlayerDealsDamage : MonoBehaviour
                 eh.LoseHealth(playerdamage * 30 / 100);
             }
         }
-
     }
 
     //At a certain point of the cast animation Thunder will spawn and the enemy will take Damage

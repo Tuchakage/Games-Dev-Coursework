@@ -56,7 +56,5 @@ public class DontDestroyOnLoad : MonoBehaviour
             es.ResetSpawnList();
             Destroy(this.gameObject);           
         }
-
-
     }
 }

@@ -13,12 +13,6 @@ public class RestoreHealth : MonoBehaviour
         ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player") 
@@ -30,9 +24,7 @@ public class RestoreHealth : MonoBehaviour
             else 
             {
                 Debug.Log("You Dont need To Heal");
-            }
-            
-            
+            }           
         }
     }
 }

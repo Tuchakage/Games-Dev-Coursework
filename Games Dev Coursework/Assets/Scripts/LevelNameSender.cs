@@ -13,11 +13,6 @@ public class LevelNameSender : MonoBehaviour
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void OnTriggerEnter(Collider col)
     {       
         if (col.gameObject.tag == "Player") 

@@ -23,12 +23,6 @@ public class StartBattle : MonoBehaviour
         adv.setPlayerAdvantage(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider col) 
     {
         //The Trigger will only work if it is not at the end of the battle 

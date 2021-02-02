@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//The Purpose of this script is for when the Enemy hits the Player first
 public class EnemyBattleTrigger : MonoBehaviour
 {
     Advantage adv;

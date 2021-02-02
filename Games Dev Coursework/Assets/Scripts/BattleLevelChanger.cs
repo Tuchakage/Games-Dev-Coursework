@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 //This is the script that will change the environment of the battle scene
 public class BattleLevelChanger : MonoBehaviour
 {
-    HubNameLevel hbl;
     public string levelname;
     public GameObject dung;//The Dungeon GameObject that will be disabled/ enabled on the battle scene depending on the level
     public GameObject desert;//The Desert GameObject that will be disabled/ enabled on the battle scene depending on the level
@@ -14,8 +13,7 @@ public class BattleLevelChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //This is here just incase
-        hbl = GetComponent<HubNameLevel>();
+
     }
 
     // Update is called once per frame
