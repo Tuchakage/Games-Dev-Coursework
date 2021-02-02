@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using TMPro;
 
 public class ButtonHandler : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ButtonHandler : MonoBehaviour
     public GameObject pui;
     public GameObject sui; //Skills UI
     public GameObject enemy;
+
+    public TMP_Text nosp;
 
     bool attack = false;
     bool moveonce = false;
@@ -41,6 +44,8 @@ public class ButtonHandler : MonoBehaviour
 
     public float enemydistance;
     public float playerogpos;
+    float texttimer = 3;
+    bool textused = false;
 
 
     private void Start()
@@ -58,7 +63,8 @@ public class ButtonHandler : MonoBehaviour
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
         espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-
+        //Make the text Empty
+        nosp.text = " ";
         //If on the final boss battle then the target will be the enemy hit box
         if (currentscene == "finalbattle")
         {
@@ -115,6 +121,20 @@ public class ButtonHandler : MonoBehaviour
         else 
         {
             anim.SetBool("block", false);
+        }
+
+        //If the text to show that you have no SP left is being used
+        if (textused) 
+        {
+            if (texttimer > 0)
+            {
+                texttimer -= Time.deltaTime;
+            }
+            else
+            {
+                nosp.text = " ";
+                textused = false;
+            }
         }
     }
 
@@ -242,7 +262,7 @@ public class ButtonHandler : MonoBehaviour
 
     public void FireSkill() 
     {
-        if (gm.pSP > 0) 
+        if (gm.pSP > 0)
         {
             anim.SetTrigger("cast");
 
@@ -251,10 +271,17 @@ public class ButtonHandler : MonoBehaviour
             skilltimer = 5;
             sui.SetActive(false);
             skillmenu = false;
-
-
         }
-     
+        else 
+        {
+            //Set the timer to 3 seconds
+            texttimer = 3;
+            //When SP is 0 or less then this text will pop up
+            nosp.text = "YOU DONT HAVE ANY SP LEFT";
+            nosp.color = new Color(1, 0, 0, 1);
+            //To show that text is being used
+            textused = true;
+        }
     }
 
     public void ThunderSkill()
@@ -262,13 +289,22 @@ public class ButtonHandler : MonoBehaviour
         if (gm.pSP > 0)
         {
             anim.SetTrigger("cast");
-
             //This means the Thunder Button has been pressed
             thunderused = true;
             skillused = true;
             skilltimer = 3;
             sui.SetActive(false);
             skillmenu = false;
+        }
+        else 
+        {
+            //Set the timer to 3 seconds
+            texttimer = 3;
+            //When SP is 0 or less then this text will pop up
+            nosp.text = "YOU DONT HAVE ANY SP LEFT";
+            nosp.color = new Color(1, 0, 0, 1);
+            //To show that Text is being used
+            textused = true;
         }
     }
 }

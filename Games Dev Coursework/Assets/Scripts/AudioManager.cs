@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip grassfootsteps;
     public AudioClip woodfootsteps;
     public AudioClip stonefootsteps;
+    public AudioClip slash;
+    public AudioClip punch;
 
     //Background Music
     public AudioClip desertbgm;
@@ -148,5 +150,17 @@ public class AudioManager : MonoBehaviour
             fs.Play();
         }
 
+    }
+
+    public void SlashSFX() 
+    {
+        soundfx.clip = slash;
+        soundfx.Play();
+    }
+
+    public void PunchSFX() 
+    {
+        soundfx.clip = punch;
+        soundfx.Play();
     }
 }

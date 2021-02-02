@@ -87,11 +87,11 @@ public class TurnBasedSystem : MonoBehaviour
 
         if (textused) 
         {
-            if (texttimer > 0)
+            if (texttimer > 0) //Timer will go down if the text timer is more than 0
             {
                 texttimer -= Time.deltaTime;
             }
-            else 
+            else //When it reaches 0 the text will be empty and textused will be set to false
             {
                 advtext.text = " ";
                 textused = false;

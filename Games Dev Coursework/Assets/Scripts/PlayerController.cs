@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     AudioManager am;
     Animator anim;
 
+    GameObject sword;
     private CharacterController controller;
     public Transform camera;
     private Vector3 playerVelocity;

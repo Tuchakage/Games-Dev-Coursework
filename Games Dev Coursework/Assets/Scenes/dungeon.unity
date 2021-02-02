@@ -14021,10 +14021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  phealthslider: {fileID: 1622965697}
-  spslider: {fileID: 847971340}
   pauseMenuUI: {fileID: 908711131}
-  keyamount: {fileID: 853358147}
 --- !u!114 &1369442882
 MonoBehaviour:
   m_ObjectHideFlags: 0

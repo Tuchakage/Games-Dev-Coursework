@@ -12952,6 +12952,8 @@ MonoBehaviour:
   grassfootsteps: {fileID: 8300000, guid: 977ab03a751aa43438c344fa068e6595, type: 3}
   woodfootsteps: {fileID: 8300000, guid: 01dc562b3e2a71f44b2ae41c73e39357, type: 3}
   stonefootsteps: {fileID: 8300000, guid: 3221c1ca03c91564bac95ea4f095e754, type: 3}
+  slash: {fileID: 8300000, guid: 9ea5c56318f85434ca25b8019e8fa597, type: 3}
+  punch: {fileID: 8300000, guid: b257de28ac3f0704d9441c1d7155ea0c, type: 3}
   desertbgm: {fileID: 8300000, guid: f23929593e0fdc84baebf34bebb9a42f, type: 3}
   hubbgm: {fileID: 8300000, guid: 9e75e434971b36949999117e0cd141d6, type: 3}
   dungeonbgm: {fileID: 8300000, guid: b9efba67d9878484a9dc84eef7d85486, type: 3}
@@ -16101,7 +16103,7 @@ MonoBehaviour:
   enemy: 
   pHealth: 0
   pSP: 0
-  keys: 3
+  keys: 0
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
   hasplayerlost: 0

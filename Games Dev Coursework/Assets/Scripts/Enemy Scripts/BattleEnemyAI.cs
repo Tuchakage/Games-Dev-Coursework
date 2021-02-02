@@ -13,6 +13,7 @@ public class BattleEnemyAI : MonoBehaviour
     TurnBasedSystem tbs;
     EnemyStats es;
     Skills sk;
+    AudioManager am;
     ButtonHandler bh;
     public Animator eanim;
 
@@ -53,6 +54,7 @@ public class BattleEnemyAI : MonoBehaviour
         eanim = GetComponent<Animator>();
         target = player.transform;
         originalspot = GameObject.Find("EnemyOriginalPosition").GetComponent<Transform>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         if (currentscene == "finalbattle") 
         {
@@ -155,6 +157,8 @@ public class BattleEnemyAI : MonoBehaviour
                 gm.pHealth -= attackdmg;
                 //Player Animation for when he gets hit plays
                 bh.anim.SetTrigger("hit");
+                //Play Punch Sound
+                am.PunchSFX();
             }
             else 
             {
@@ -205,6 +209,7 @@ public class BattleEnemyAI : MonoBehaviour
     {
         if (enemysp > 0 && !attack) 
         {
+            eanim.SetTrigger("cast");
             firedmg = sk.skills["Fire"];
             if (!bh.block)
             {

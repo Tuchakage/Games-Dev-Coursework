@@ -12,6 +12,7 @@ public class PlayerDealsDamage : MonoBehaviour
     Skills sk;
     EnemyStats es;
     ButtonHandler bh;
+    AudioManager am;
 
     GameObject enemy;
     public GameObject lightning;
@@ -34,6 +35,7 @@ public class PlayerDealsDamage : MonoBehaviour
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         es = enemy.GetComponent<EnemyStats>();
         bh = GameObject.Find("ButtonHandler").GetComponent<ButtonHandler>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     public void PlayerDealDamage() 
@@ -47,6 +49,8 @@ public class PlayerDealsDamage : MonoBehaviour
                 eh.LoseHealth(playerdamage);
                 //Enemy Animation for when he gets hit plays
                 bea.eanim.SetTrigger("hit");
+                //Play The Slash Sound
+                am.SlashSFX();
             }
             else
             {
@@ -128,6 +132,7 @@ public class PlayerDealsDamage : MonoBehaviour
 
             //Spawns the Lightning in
             GameObject thunderprefab = Instantiate(lightning, enemy.transform.position, enemy.transform.rotation);
+            Destroy(thunderprefab, 2);
             //Thunder skill has finished
             bh.thunderused = false;
         }
