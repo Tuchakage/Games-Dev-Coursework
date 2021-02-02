@@ -32508,7 +32508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf2980a8ba419645a4fafbbf8b78f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thunderunlock: 0
+  thunderunlock: 1
   firedmg: 15
   elecdmg: 20
 --- !u!1 &1434004955 stripped
@@ -41045,6 +41045,7 @@ MonoBehaviour:
   attacktype: 
   block: 0
   thunderused: 0
+  fireused: 0
   target: {fileID: 681891015}
   originalspot: {fileID: 1736124121}
   enemydistance: 0
@@ -47931,3 +47932,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightning: {fileID: 1993853836073833039, guid: 629ba7981b9cb5b4d8a2c9e9ac78b914, type: 3}
+  fire: {fileID: 8154458859099513157, guid: 80557021f69d56c4fabe8bd4a1588439, type: 3}

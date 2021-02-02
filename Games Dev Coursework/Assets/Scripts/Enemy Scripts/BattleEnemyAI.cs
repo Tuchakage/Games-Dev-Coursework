@@ -221,7 +221,7 @@ public class BattleEnemyAI : MonoBehaviour
             enemysp -= 5;
             eskillused = true;
             eskilltimer = 5;
-            GameObject fireprefab = Instantiate(fire, player.transform.position, player.transform.rotation);
+            GameObject fireprefab = Instantiate(fire, player.transform.position, Quaternion.Euler(-90, 0, 0));
             Destroy(fireprefab, 5);
             attack = true;
         }

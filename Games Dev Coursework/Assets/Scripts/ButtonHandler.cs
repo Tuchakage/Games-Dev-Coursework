@@ -6,16 +6,12 @@ using UnityEngine.AI;
 
 public class ButtonHandler : MonoBehaviour
 {
-    EnemyHealth eh;
     TurnBasedSystem tbs;
     GameManager gm;
-    PlayerStats ps;
     NavMeshAgent na;
     public Animator anim;
     Skills sk;
     ThirdPersonCamera tpc;
-    EnemyStats es;
-    BattleEnemyAI bea;
     BattleLevelChanger blc;
     EnemySpawn espawn;
 
@@ -40,7 +36,7 @@ public class ButtonHandler : MonoBehaviour
     bool skillused = false;
     bool checkfornewmoves = false; //When you press the Skill button it will only look for the Thunder Skill once
     public bool thunderused = false; //Tells the program when the Thunder Skill has been used
-
+    public bool fireused = false;
     public Transform target;
     public Transform originalspot;
 
@@ -53,17 +49,13 @@ public class ButtonHandler : MonoBehaviour
         //Sets Current Scene variable 
         currentscene = SceneManager.GetActiveScene().name;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
-        eh = enemy.GetComponent<EnemyHealth>();
         tbs = GameObject.Find("TurnBasedSystem").GetComponent<TurnBasedSystem>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ps = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         na = GameObject.Find("Player").GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
         anim = GameObject.Find("Player").GetComponent<Animator>();
         sk = GameObject.Find("GameManager").GetComponent<Skills>();
         tpc = GameObject.Find("Third Person Camera").GetComponent<ThirdPersonCamera>();
-        es = enemy.GetComponent<EnemyStats>();
-        bea = enemy.GetComponent<BattleEnemyAI>();
         blc = GameObject.Find("GameManager").GetComponent<BattleLevelChanger>();
         espawn = GameObject.Find("GameManager").GetComponent<EnemySpawn>();
 
@@ -251,39 +243,13 @@ public class ButtonHandler : MonoBehaviour
         if (gm.pSP > 0) 
         {
             anim.SetTrigger("cast");
-            int firedamage = sk.skills["Fire"];
-            //You lose SP When doing a Skill
-            gm.pSP -= 5;
 
-            attacktype = "Fire";
-            if (!bea.block)
-            {
-                //Check the enemy weakness
-                if (es.Weakness == attacktype)
-                {
-                    //Enemy Takes Double Damage
-                    eh.LoseHealth(firedamage * 2);
-                }
-                else
-                {
-                    //Enemy Takes Damage
-                    eh.LoseHealth(firedamage);
-                }
-                //Enemy Animation for when he gets hit plays
-                bea.eanim.SetTrigger("hit");
-            }
-            else
-            {
-                //Damage To Enemy Reduced By 30%
-                eh.LoseHealth(firedamage * 30 / 100);
-            }
-
-            GameObject fireprefab = Instantiate(fire, enemy.transform.position, enemy.transform.rotation);
+            fireused = true;
             skillused = true;
             skilltimer = 5;
             sui.SetActive(false);
             skillmenu = false;
-            Destroy(fireprefab, 5);
+
 
         }
      

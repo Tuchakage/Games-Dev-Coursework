@@ -15,6 +15,7 @@ public class PlayerDealsDamage : MonoBehaviour
 
     GameObject enemy;
     public GameObject lightning;
+    public GameObject fire;
 
     string currentscene;
     string attacktype;
@@ -56,10 +57,46 @@ public class PlayerDealsDamage : MonoBehaviour
     }
 
     //At a certain point of the cast animation Thunder will spawn and the enemy will take Damage
-    public void Thunder() 
+    public void Skills() 
     {
+        if (bh.fireused)
+        {
+            int firedamage = sk.skills["Fire"];
+            //You lose SP When doing a Skill
+            gm.pSP -= 5;
+
+            attacktype = "Fire";
+            if (!bea.block)
+            {
+                //Check the enemy weakness
+                if (es.Weakness == attacktype)
+                {
+                    //Enemy Takes Double Damage
+                    eh.LoseHealth(firedamage * 2);
+                }
+                else
+                {
+                    //Enemy Takes Damage
+                    eh.LoseHealth(firedamage);
+                }
+                //Enemy Animation for when he gets hit plays
+                bea.eanim.SetTrigger("hit");
+            }
+            else
+            {
+                //Damage To Enemy Reduced By 30%
+                eh.LoseHealth(firedamage * 30 / 100);
+            }
+
+
+            GameObject fireprefab = Instantiate(fire, enemy.transform.position, Quaternion.Euler(-90, 0, 0));
+            Destroy(fireprefab, 2);
+            //Fire Skill has finished
+            bh.fireused = false;
+        }
+
         //This animation event will only be triggered if the Thunder Skill button is pressed
-        if (bh.thunderused)
+        else if (bh.thunderused)
         {
             int electricdamage = sk.skills["Thunder"];
             //You lose SP When doing a Skill
@@ -88,9 +125,10 @@ public class PlayerDealsDamage : MonoBehaviour
                 eh.LoseHealth(electricdamage * 30 / 100);
             }
 
-
             //Spawns the Lightning in
             GameObject thunderprefab = Instantiate(lightning, enemy.transform.position, enemy.transform.rotation);
+            //Thunder skill has finished
+            bh.thunderused = false;
         }
 
     }
