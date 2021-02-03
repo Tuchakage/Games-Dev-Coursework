@@ -16103,7 +16103,7 @@ MonoBehaviour:
   enemy: 
   pHealth: 0
   pSP: 0
-  keys: 0
+  keys: 3
   playerlastpos: {x: 0, y: 0, z: 0}
   battleend: 0
   hasplayerlost: 0

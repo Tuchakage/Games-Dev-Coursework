@@ -17,10 +17,12 @@ public class EnemyBattleSpawner : MonoBehaviour
         currentscene = SceneManager.GetActiveScene().name;
         if (currentscene == "battle test")
         {
+            //Spawn the first Enemy in the list, when more characters are added then you can make them randomly be spawned in by making the 0 a variable that gets a random number
             Instantiate(enemyspawners[0], espawnpoint.transform.position, Quaternion.identity);
         }
         else if (currentscene == "finalbattle") 
         {
+            //This Spawns the Boss Enemy in
             Instantiate(enemyspawners[1], espawnpoint.transform.position, Quaternion.identity);
         }
     }

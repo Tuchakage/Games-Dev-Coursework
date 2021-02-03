@@ -9,12 +9,12 @@ public class BattleEnemyAI : MonoBehaviour
 {
 
     GameManager gm;
-    NavMeshAgent na;
     TurnBasedSystem tbs;
     EnemyStats es;
     Skills sk;
     AudioManager am;
     ButtonHandler bh;
+    NavMeshAgent na;
     public Animator eanim;
 
     Transform target;
@@ -25,14 +25,14 @@ public class BattleEnemyAI : MonoBehaviour
 
     float enemydist;
     public float originalspotdist;
-    bool attack = false;
+    bool attack = false; //Used to indicate when the Enemy has attaked
     int firedmg;
     int attackdmg;
     public int enemysp;
     bool eskillused;
-    public float eskilltimer = 5;
+    public float eskilltimer = 5; //The time until it is the Players Turn After using a skill
     string currentscene;
-    public float eblocktimer = 3;
+    public float eblocktimer = 3; //The time until it is the Players Turn After Blocking
     bool eblocktimerdone = false; //Used to indicate whether the timer for blocking is done or not
 
     //Used to make the cube move towards the player the first time when the function is called 
@@ -77,6 +77,7 @@ public class BattleEnemyAI : MonoBehaviour
         
         originalspotdist = Vector3.Distance(originalspot.transform.position, transform.position);
 
+        //If a Skill is used then this timer will go up
         if (eskillused)
         {
             if (eskilltimer > 0)
@@ -205,6 +206,7 @@ public class BattleEnemyAI : MonoBehaviour
 
     public void Fire() 
     {
+        //If the Enemy SP is more than 0 and attack variable is false
         if (enemysp > 0 && !attack) 
         {
             eanim.SetTrigger("cast");
@@ -221,12 +223,14 @@ public class BattleEnemyAI : MonoBehaviour
                 gm.pHealth -= firedmg;
             }
 
+            //Lose 5 sp
             enemysp -= 5;
             eskillused = true;
             eskilltimer = 5;
             GameObject fireprefab = Instantiate(fire, player.transform.position, Quaternion.Euler(-90, 0, 0));
             //Destroy the Fire Prefab after 2 seconds
             Destroy(fireprefab, 2);
+            //Enemy is attacking
             attack = true;
         }
     }

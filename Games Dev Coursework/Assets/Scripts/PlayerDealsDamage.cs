@@ -38,6 +38,7 @@ public class PlayerDealsDamage : MonoBehaviour
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
+    //At a certain point of the attack animation this function will be called
     public void PlayerDealDamage() 
     {
         if (currentscene == "battle test" || currentscene == "finalbattle") 

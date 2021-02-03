@@ -14,31 +14,6 @@ public class Advantage : MonoBehaviour
     bool playeradvantage = false;
 
     string currentscene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        sb = GameObject.Find("Blade").GetComponent<StartBattle>();
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentscene != "battle test") 
-        {
-            if (sb.collision)
-            {
-                if (sb.enemyref != null) 
-                {
-                    ebt = GameObject.Find(sb.enemyref.name).GetComponent<EnemyBattleTrigger>();
-                }
-                
-            }
-        }
-
-        
-    }
 
     public bool GetPlayerAdvantage() 
     {

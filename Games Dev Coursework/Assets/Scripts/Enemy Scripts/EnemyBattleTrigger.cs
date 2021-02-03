@@ -19,17 +19,12 @@ public class EnemyBattleTrigger : MonoBehaviour
         currentscene = SceneManager.GetActiveScene().name;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider col)
     {
         //If Enemy Touches The Player Then A Battle Will Start
         if (col.gameObject.tag == "Player")
         {
+            //The Game Object that touches the player will be sent over to the Game Object
             gm.setEnemyObject(this.gameObject.name);
             Debug.Log(gameObject.name + " Hit " + col.gameObject.name + " Enemy Advantage");
             //When The Enemy Hits The Player then the Enemy is guranteed to go first
@@ -49,8 +44,7 @@ public class EnemyBattleTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        collision = false;
-        
+        collision = false;      
     }
 
 }
