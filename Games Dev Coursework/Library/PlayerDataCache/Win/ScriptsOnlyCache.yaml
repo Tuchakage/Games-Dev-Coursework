@@ -42,10 +42,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -316,6 +314,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2292}
     - Class: 114
       Script: {instanceID: 2350}
+    - Class: 114
+      Script: {instanceID: 2438}
     - Class: 114
       Script: {instanceID: 2520}
     - Class: 114
@@ -815,6 +815,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2350}
     - Class: 114
+      Script: {instanceID: 2438}
+    - Class: 114
       Script: {instanceID: 2520}
     - Class: 114
       Script: {instanceID: 2596}
@@ -824,6 +826,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2884}
     - Class: 114
       Script: {instanceID: 2894}
+    - Class: 114
+      Script: {instanceID: 2944}
     - Class: 114
       Script: {instanceID: 2946}
     - Class: 114
@@ -1687,4 +1691,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/finalbattle.unity
   - Assets/Scenes/winning screen.unity
   playerPath: C:/Users/tucha/Documents/GitHub/Games-Dev-Coursework/Games Dev Coursework/Build
-    Version Of Game/Games Dev Coursework.exe
+    Version Of Game/Beetle Slayer.exe

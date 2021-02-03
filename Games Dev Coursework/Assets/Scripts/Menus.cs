@@ -35,7 +35,7 @@ public class Menus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentscene != "MainMenu" && currentscene != "winning screen" && currentscene != "battle test" && currentscene != "finalbattle") 
+        if (currentscene != "MainMenu" && currentscene != "winning screen") 
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -49,16 +49,20 @@ public class Menus : MonoBehaviour
                     Pause();
                 }
             }
-            //The number of keys you have will be what shows up in the text
-            keyamount.text = "Keys: " + gm.keys;
 
-            //Updates the health and sp slider value to whatever value is stored in the GameManager
-            phealthslider.value = gm.pHealth;
-            //Setting Max Value to whatever is in the Player Stats script
-            phealthslider.maxValue = ps.stats["HP"];
-            spslider.value = gm.pSP;
-            //Setting Max Value to whatever is in the Player Stats script
-            spslider.maxValue = ps.stats["SP"];
+            if (currentscene != "finalbattle" && currentscene != "battle test") 
+            {
+                //The number of keys you have will be what shows up in the text
+                keyamount.text = "Keys: " + gm.keys;
+
+                //Updates the health and sp slider value to whatever value is stored in the GameManager
+                phealthslider.value = gm.pHealth;
+                //Setting Max Value to whatever is in the Player Stats script
+                phealthslider.maxValue = ps.stats["HP"];
+                spslider.value = gm.pSP;
+                //Setting Max Value to whatever is in the Player Stats script
+                spslider.maxValue = ps.stats["SP"];
+            }
         } 
     }
 
