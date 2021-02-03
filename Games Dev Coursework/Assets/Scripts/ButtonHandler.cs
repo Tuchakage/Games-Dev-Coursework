@@ -223,7 +223,7 @@ public class ButtonHandler : MonoBehaviour
         //When the Player has already used its moveonce variable which is treated like its in the OnStart() function and is not attacking and is already at the original position 
         else if (playerogpos < 2.1 && !attack && moveonce)
         {
-            //Player will move towards the player
+            //Player will move towards the enemy
             na.isStopped = false;
             anim.SetBool("running", true);
         }
